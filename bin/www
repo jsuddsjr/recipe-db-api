@@ -8,6 +8,7 @@ const http = require('node:http')
 const process = require('node:process')
 const {default: mongoose} = require('mongoose')
 const debug = require('debug')('recipe-db-api:server')
+const {initDb} = require('../db/connect.js')
 const app = require('../app.js')
 
 /**
@@ -91,15 +92,11 @@ async function onListening() {
 	const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port
 	debug('Listening on ' + bind)
 
-	try {
-		// Mongo DB Connections
-		await mongoose.connect(process.env.MONGO_DB_URL, {
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-		})
-		console.log('MongoDB Connection Succeeded.')
-	} catch (error) {
-		console.log('Error in DB connection: ' + error)
-		throw error
-	}
+	initDb((error) => {
+		if (error) {
+			throw error
+		} else {
+			console.log('Database connected.')
+		}
+	})
 }
