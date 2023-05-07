@@ -1,5 +1,6 @@
 const path = require('node:path')
 const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 const cors = require('cors')
 const express = require('express')
 const logger = require('morgan')
@@ -10,7 +11,7 @@ const userRouter = require('./routes/user.js')
 const app = express()
 
 // Middleware Connections
-app.use(express.json({strict: false}))
+app.use(bodyParser.json({strict: false}))
 app.use(express.urlencoded({extended: false}))
 app.use(logger('dev'))
 app.use(cookieParser())

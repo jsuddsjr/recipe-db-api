@@ -1,7 +1,7 @@
-const mongo = require('mongodb').MongoClient
+const mongoose = require('mongoose')
 const config = require('../config/config.js')
 
-/** @type {MongoClient} */
+/** @type {mongoose.Mongoose} */
 let _db
 
 /**
@@ -23,31 +23,15 @@ const initDb = (callback) => {
 		return callback(null, _db)
 	}
 
-	mongo
-		.connect(config.MONGO_DB_URL, {
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-		})
-		.then((client) => {
-			_db = client
+	mongoose.connect(config.MONGO_DB_URL).then(
+		(value) => {
+			_db = value
 			callback(null, _db)
-		})
-		.catch((error) => {
+		},
+		(error) => {
 			callback(error)
-		})
+		},
+	)
 }
 
-/**
- *
- * @param {String} name
- * @returns {Db}
- */
-const getDb = (name) => {
-	if (!_db) {
-		throw new Error('Db not initialized')
-	}
-
-	return _db.db(name)
-}
-
-module.exports = {initDb, getDb}
+module.exports = {initDb}
