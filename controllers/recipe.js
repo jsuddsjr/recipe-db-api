@@ -42,10 +42,7 @@ const getSingle = async (request, response) => {
  */
 const postSingle = async (request, response) => {
 	try {
-		const result = await Recipe.create(request.body, {
-			validateBeforeSave: true,
-			validateModifiedOnly: true,
-		})
+		const result = await Recipe.create(request.body, {validateBeforeSave: true})
 		response.status(201).send(result)
 	} catch {}
 }
