@@ -11,7 +11,7 @@ router.get('/', async (request, response) => {
 		/* FetchProfile */ true,
 	)
 
-	response.render('user', {
+	response.render('view.user', {
 		title: 'User',
 		userid: user.id,
 	})
