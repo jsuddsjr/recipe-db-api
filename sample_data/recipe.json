@@ -2,18 +2,20 @@
     "_id": {
         "$oid": "6456b1e5920fb2341245ce53"
     },
-    "@context": "https://schema.org/",
     "@type": "Recipe",
     "name": "Party Coffee Cake",
     "image": [
-        "https://example.com/photos/1x1/photo.jpg",
-        "https://example.com/photos/4x3/photo.jpg",
-        "https://example.com/photos/16x9/photo.jpg"
+        {
+            "@type": "ImageObject",
+            "contentUrl": "https://example.com/photos/1x1/photo.jpg",
+            "description": "Best thing since sliced bread.",
+            "width": "400",
+            "height": "300",
+            "accessibilitySummary": "A slice of coffee cake with a steaming cup of tea."
+        }
     ],
-    "author": {
-        "@type": "Person",
-        "name": "Mary Stone"
-    },
+    "author_id": "645e638760c3b38ff277b420",
+    "owner_id": "6456be3627f2d14364cfc08a",
     "datePublished": "2018-03-10",
     "description": "This coffee cake is awesome and perfect for parties.",
     "prepTime": "PT20M",
@@ -23,10 +25,14 @@
     "recipeYield": "10",
     "recipeCategory": "Dessert",
     "recipeCuisine": "American",
-    "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "270 calories"
-    },
+    "nutrition_ids": [
+        "645da4656bca5d09293d5a93",
+        "645da4656bca5d09293d5a94",
+        "645da4656bca5d09293d5a95",
+        "645da4656bca5d09293d5a96",
+        "645da4656bca5d09293d5a97",
+        "645da4656bca5d09293d5a98"
+    ],
     "recipeIngredient": [
         "2 cups of flour",
         "3/4 cup white sugar",
@@ -103,8 +109,15 @@
             "interactionType": {
                 "@type": "WatchAction"
             },
-            "userInteractionCount": 2347
+            "userInteractionCount": {
+                "$numberInt": "2347"
+            }
         },
         "expires": "2019-02-05T08:00:00+08:00"
+    },
+    "updatedAt": {
+        "$date": {
+            "$numberLong": "1683446676567"
+        }
     }
 }

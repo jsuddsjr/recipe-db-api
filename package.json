@@ -4,11 +4,10 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "start": "node ./bin/www",
-    "serve": "nodemon ./bin/www",
+    "start": "node ./src/bin/www",
+    "serve": "nodemon ./src/bin/www",
     "lint:fix": "npm run lint -- --fix",
-    "lint": "xo **/*.js",
-    "test": "xo"
+    "lint": "xo src/**/*.js"
   },
   "dependencies": {
     "@apollo/server": "^4.7.1",

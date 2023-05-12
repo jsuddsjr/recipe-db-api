@@ -1,0 +1,42 @@
+[
+  {
+    "_id": {
+      "$oid": "6456be3627f2d14364cfc08a"
+    },
+    "@type": "Person",
+    "name": "John Sudds",
+    "email": "jsuddsjr@byui.edu",
+    "givenName": "John",
+    "familyName": "Sudds",
+    "follows_ids": [
+      "645e638760c3b38ff277b420"
+    ],
+    "keywords": [
+      "vegetarian"
+    ],
+    "preferences": {
+      "darkMode": true
+    }
+  },
+  {
+    "_id": {
+      "$oid": "645e638760c3b38ff277b420"
+    },
+    "@type": "Person",
+    "name": "Mary Stone",
+    "email": "marys@example.com",
+    "givenName": "Mary",
+    "familyName": "Stone",
+    "image": {
+      "@type": "ImageObject",
+      "contentUrl": "https://example.com/users/marys.jpg",
+      "accessibilitySummary": "Profile photo.",
+      "height": "300",
+      "width": "400"
+    },
+    "follows_ids": [],
+    "keywords": [
+      "baking"
+    ]
+  }
+]

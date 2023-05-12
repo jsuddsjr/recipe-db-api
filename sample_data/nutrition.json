@@ -1,0 +1,56 @@
+[
+    {
+        "_id": {
+            "$oid": "645da4656bca5d09293d5a93"
+        },
+        "@type": "NutritionInformation",
+        "name": "white sugar",
+        "servingSize": "1 tbsp",
+        "calories": "49 calories"
+    },
+    {
+        "_id": {
+            "$oid": "645da4656bca5d09293d5a94"
+        },
+        "@type": "NutritionInformation",
+        "name": "flour",
+        "servingSize": "1 tbsp",
+        "calories": "28 calories"
+    },
+    {
+        "_id": {
+            "$oid": "645da4656bca5d09293d5a95"
+        },
+        "@type": "NutritionInformation",
+        "name": "baking powder",
+        "servingSize": "1 tbsp",
+        "calories": "7.3 calories"
+    },
+    {
+        "_id": {
+            "$oid": "645da4656bca5d09293d5a96"
+        },
+        "@type": "NutritionInformation",
+        "name": "butter",
+        "servingSize": "1 tbsp",
+        "calories": "102 calories"
+    },
+    {
+        "_id": {
+            "$oid": "645da4656bca5d09293d5a97"
+        },
+        "@type": "NutritionInformation",
+        "name": "egg",
+        "servingSize": "1 tbsp",
+        "calories": "22 calories"
+    },
+    {
+        "_id": {
+            "$oid": "645da4656bca5d09293d5a98"
+        },
+        "@type": "NutritionInformation",
+        "name": "milk",
+        "servingSize": "1 cup",
+        "calories": "122 calories"
+    }
+]
