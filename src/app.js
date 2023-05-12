@@ -4,9 +4,9 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const express = require('express')
 const logger = require('morgan')
-const indexRouter = require('./routes/index.js')
-const recipeRouter = require('./routes/recipe.js')
-const userRouter = require('./routes/user.js')
+const indexRouter = require('./routes/route-index.js')
+const recipeRouter = require('./routes/route-recipe.js')
+const userRouter = require('./routes/route-user.js')
 
 const app = express()
 

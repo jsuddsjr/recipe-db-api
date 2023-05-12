@@ -1,7 +1,7 @@
-const Recipe = require('../models/recipe.js')
+const Recipe = require('../models/model-recipe.js')
 
-/** @typedef {import('../../node_modules/@types/express-serve-static-core').Request} ExpressRequest */
-/** @typedef {import('../../node_modules/@types/express-serve-static-core').Response} ExpressResponse */
+/** @typedef {import('express-serve-static-core').Request} ExpressRequest */
+/** @typedef {import('express-serve-static-core').Response} ExpressResponse */
 
 // GET route for getting all contacts that returns a 200 status
 const getAll = async (request, response) => {
