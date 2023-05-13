@@ -1,0 +1,22 @@
+extends _bootstrap5
+
+append styles
+    link(href='/stylesheets/style.css' rel='stylesheet')
+
+block body
+    include mixins/navbar
+
+    -var active = active || {}
+
+    +navbar("Recipes")(style='dark' bp='md')
+        +nav_item("/recipe", active.recipe) Recipe
+        +nav_item("/nutrition", active.nutrition) Nutrition
+        +nav_item("/user", active.user) User
+    main.flex-shrink-0
+        .container
+            block content
+
+    footer.footer.mt-auto.py-3.bg-dark
+        .container
+            span.text-light= 'Footer content goes here.'
+

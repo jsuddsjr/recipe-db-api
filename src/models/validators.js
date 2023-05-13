@@ -1,11 +1,5 @@
-const mongoose = require('mongoose')
 const {pattern} = require('iso8601-duration')
 const {isValidISODateString} = require('iso-datestring-validator')
-
-const ImmutableObjectId = {
-	type: mongoose.Schema.Types.ObjectId,
-	immutable: true,
-}
 
 const ValidDuration = {
 	type: String,
@@ -65,7 +59,6 @@ const defaultString = (defaultValue) =>
 
 module.exports = {
 	defaultString,
-	ImmutableObjectId,
 	RequiredDate,
 	RequiredDuration,
 	RequiredString,

@@ -4,19 +4,22 @@ const {
 	defaultString,
 	RequiredString,
 	TrimmedString,
-	ImmutableObjectId,
 } = require('./validators.js')
 
 const userSchema = new mongoose.Schema({
 	'@type': defaultString('Person'),
-	_id: ImmutableObjectId,
 	name: RequiredString,
 	email: RequiredString,
 	givenName: TrimmedString,
 	familyName: TrimmedString,
 	image: imageSchema,
-	follows: [userSchema],
+	followsIds: ['ObjectId'],
 	keywords: [TrimmedString],
+})
+
+// Cannot add 'follows' until base schema is defined.
+userSchema.add({
+	follows: [userSchema],
 })
 
 const User = mongoose.model('users', userSchema)

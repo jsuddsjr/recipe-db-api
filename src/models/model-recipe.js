@@ -4,7 +4,6 @@ const Nutrition = require('./model-nutrition.js')
 const User = require('./model-user.js')
 const {
 	defaultString,
-	ImmutableObjectId,
 	RequiredDate,
 	RequiredDuration,
 	RequiredString,
@@ -38,20 +37,22 @@ const videoSchema = new mongoose.Schema({
 const recipeSchema = new mongoose.Schema(
 	{
 		'@type': defaultString('Recipe'),
-		_id: ImmutableObjectId,
 		cookTime: RequiredDuration,
 		datePublished: RequiredDate,
 		description: RequiredString,
 		keywords: [TrimmedString],
 		name: RequiredString,
 		nutrition: [Nutrition.schema],
+		nutritionIds: ['ObjectId'],
 		prepTime: ValidDuration,
 		recipeCategory: TrimmedString,
 		recipeCuisine: TrimmedString,
 		recipeYield: TrimmedString,
 		totalTime: ValidDuration,
 		author: User.schema,
+		authorId: 'ObjectId',
 		owner: User.schema,
+		ownerId: 'ObjectId',
 		image: [imageSchema],
 		ingredient: TrimmedString,
 		recipeInstructions: [documentSchema],

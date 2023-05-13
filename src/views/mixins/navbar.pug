@@ -1,0 +1,69 @@
+//- Navbar mixins by Kezz Bracey
+//- https://github.com/tutsplus/baking-bootstrap-snippets-with-jade
+//- Author:  http://tutsplus.com/authors/kezz-bracey
+mixin navbar(name)
+    - var id = 'navbarCollapse'
+    - var href = attributes.href || '/'
+    - var style = attributes.style || 'light'
+    - var bp = attributes.bp || 'lg'
+    nav( class=['navbar', 'navbar-expand-' + bp, 'navbar-' + style, 'bg-' + style, attributes.class] )
+        .container-fluid
+            a.navbar-brand(href=href)= name
+            button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#' + id, aria-controls=id, aria-expanded='false' aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            .collapse.navbar-collapse(id=id)
+                ul( class=['navbar-nav', 'me-auto', 'mb-2', 'mb-' + bp + '-0'])
+                    block
+
+mixin nav_item(href, active=false)
+    if !active
+        li.nav-item: a.nav-link( href=href ): block
+    else
+        li.nav-item: a.nav-link.active( href=href ): block
+
+//- mixin nav_item_dropdown(href, active)
+//-     li(class=ddstyle)
+//-         a.dropdown-toggle( href=href, data-bs-toggle='dropdown' role='button' aria-expanded='false' )= attributes.label
+//-             span.caret
+//-         ul.dropdown-menu( role='menu' )
+//-             block
+
+//- mixin nav_divider
+//-     li: hr.dropdown-divider
+
+//- TODO: Not converted to BS5 yet...
+
+//- mixin nav_header
+//-     li.dropdown-header
+//-         block
+
+//- mixin navbar-fixed(name,id,style,href)
+//-     - var style = (typeof style === 'undefined') ? 'default' : style
+//-     nav( role='navigation', class=['navbar','navbar-fixed-top','navbar-' + style] )
+//-         .container
+//-             .navbar-header
+//-                 button.navbar-toggle.collapsed(type='button' data-bs-toggle='collapse' data-target='#' + id, aria-expanded='false' aria-controls='navbar')
+//-                     span.sr-only Toggle navigation
+//-                     span.icon-bar
+//-                     span.icon-bar
+//-                     span.icon-bar
+//-                 a.navbar-brand(href=href)= name
+//-             .collapse.navbar-collapse( id=id )
+//-                 ul.nav.navbar-nav
+//-                     block
+
+//- mixin navbar-static(name,id,style,href)
+//-     - var style = (typeof style === 'undefined') ? 'default' : style
+//-     nav( role='navigation', class=['navbar','navbar-static-top','navbar-' + style] )
+//-         .container
+//-             .navbar-header
+//-                 button.navbar-toggle.collapsed(type='button' data-bs-toggle='collapse' data-target='#' + id, aria-expanded='false' aria-controls='navbar')
+//-                     span.sr-only Toggle navigation
+//-                     span.icon-bar
+//-                     span.icon-bar
+//-                     span.icon-bar
+//-                 a.navbar-brand(href=href)= name
+//-             .collapse.navbar-collapse( id=id )
+//-                 ul.nav.navbar-nav
+//-                     block
+//- End navbar mixins

@@ -14,6 +14,9 @@ router.get('/', async (request, response) => {
 	response.render('view-user', {
 		title: 'User',
 		userid: user.id,
+		active: {
+			user: true,
+		},
 	})
 })
 

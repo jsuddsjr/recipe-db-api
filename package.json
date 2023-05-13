@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "node ./src/bin/www",
-    "serve": "nodemon ./src/bin/www",
+    "serve": "set DEBUG=app:* && nodemon ./src/bin/www",
     "lint:fix": "npm run lint -- --fix",
     "lint": "xo src/**/*.js"
   },
@@ -19,13 +19,17 @@
     "express": "^4.18.2",
     "iso-datestring-validator": "^2.2.2",
     "iso8601-duration": "^2.1.1",
-    "mongodb": "^5.4.0",
-    "mongoose": "^7.1.0",
-    "morgan": "~1.9.1",
+    "mongodb": "^5.5.0",
+    "mongoose": "^7.1.1",
+    "morgan": "~1.10.0",
     "pug": "^3.0.2",
+    "pug-bootstrap": "^0.0.16",
     "realm-web": "^2.0.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.3"
+  },
+  "resolutions": {
+    "pug": "^3.0.2"
   },
   "devDependencies": {
     "@types/mongodb": "^4.0.7",
@@ -33,8 +37,17 @@
     "@types/pug": "^2.0.6",
     "@types/swagger-jsdoc": "^6.0.1",
     "@types/swagger-ui-express": "^4.1.3",
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.9.3",
     "nodemon": "^2.0.22",
     "xo": "^0.54.2"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src",
+      "../public/**/*"
+    ],
+    "ext": "*"
   },
   "xo": {
     "prettier": true,
