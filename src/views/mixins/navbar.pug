@@ -6,7 +6,7 @@ mixin navbar(brand)
     - var style = attributes.style || 'light'
     - var bp = attributes.bp || 'lg'
     nav.navbar( class=[`navbar-expand-${bp}`, `navbar-${style}`, `bg-${style}`, attributes.class] )
-        .container-fluid
+        .container
             a.navbar-brand(href=href)!= brand
             button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target=`#${id}`, aria-controls=id, aria-expanded='false' aria-label='Toggle navigation')
                 span.navbar-toggler-icon

@@ -7,7 +7,7 @@ const userRouter = require('./route-api-user.js')
 const router = Router()
 
 router.use((request, response, next) => {
-	console.log('api request', Date.now())
+	console.log('api request', Date.now().toLocaleString())
 	next()
 })
 

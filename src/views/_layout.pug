@@ -12,9 +12,11 @@ block body
 
     +navbar(brand)(style='dark' bp='sm')
         +nav_item("/api/recipe", active.recipe)
-            +icon_warning('card-list') Recipe
-        +nav_item("/nutrition", active.nutrition) Nutrition
-        +nav_item("/user", active.user) User
+            +icon_warning('card-heading') Recipe
+        +nav_item("/nutrition", active.nutrition)
+            +icon_warning('clipboard-heart') Nutrition
+        +nav_item("/user", active.user)
+            +icon_warning('person-circle') User
     main.flex-shrink-0
         .container
             block content
