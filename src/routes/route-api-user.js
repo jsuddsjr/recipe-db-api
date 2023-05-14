@@ -1,7 +1,8 @@
 const {Router} = require('express')
 const User = require('../models/model-user.js')
 
-const router = new Router()
+// eslint-disable-next-line new-cap
+const router = Router()
 
 // Get all users
 router.get('/', async (request, response) => {

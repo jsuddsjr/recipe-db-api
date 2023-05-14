@@ -8,7 +8,7 @@ block body
     include mixins/icons
 
     - var active = active || {}
-    - var brand = '<i class="bi bi-shop"></i> Recipe Shoppe'
+    - var brand = '<i class="bi bi-shop"></i>&nbsp;Recipe Shoppe'
 
     +navbar(brand)(style='dark' bp='sm')
         +nav_item("/api/recipe", active.recipe)

@@ -1,7 +1,8 @@
 const {Router} = require('express')
 const Nutrition = require('../models/model-nutrition.js')
 
-const router = new Router()
+// eslint-disable-next-line new-cap
+const router = Router()
 
 // Get all records
 router.get('/', async (request, response) => {

@@ -1,7 +1,8 @@
-const express = require('express')
+const {Router} = require('express')
 const recipeController = require('../controllers/controller-recipe.js')
 
-const router = new express.Router()
+// eslint-disable-next-line new-cap
+const router = Router()
 
 router.get('/', recipeController.getAll)
 router.get('/:id', recipeController.getSingle)
