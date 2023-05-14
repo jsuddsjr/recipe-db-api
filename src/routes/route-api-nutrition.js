@@ -5,16 +5,12 @@ const router = new Router()
 
 // Get all records
 router.get('/', async (request, response) => {
-	response.render('view-nutrition', {
-		title: 'Nutrition',
-		active: {nutrition: true},
-	})
-	// Try {
-	// 	const records = await Nutrition.find()
-	// 	response.send(records)
-	// } catch (error) {
-	// 	response.status(500).send(error.message)
-	// }
+	try {
+		const records = await Nutrition.find()
+		response.send(records)
+	} catch (error) {
+		response.status(500).send(error.message)
+	}
 })
 
 // Create a new record

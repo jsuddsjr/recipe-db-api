@@ -1,0 +1,19 @@
+//- Glyphicon
+mixin icon(name)
+	i.bi( class=['bi-'+ name, attributes.class], aria-hidden="true")
+
+mixin icon_primary(name)
+	+icon(name)(class='text-primary')
+
+mixin icon_info(name)
+	+icon(name)(class='text-info')
+
+mixin icon_warning(name)
+	+icon(name)(class='text-warning')
+
+mixin icon_danger(name)
+	+icon(name)(class='text-danger')
+
+mixin icon_success(name)
+	+icon(name)(class='text-success')
+

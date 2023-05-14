@@ -13,7 +13,7 @@
             ],
             "program": "${workspaceFolder}\\src\\bin\\www",
             "outFiles": [
-                "${workspaceFolder}/**/*.js"
+                "${workspaceFolder}/src/**/*.js"
             ],
             "env": {
                 "DEBUG": "express:*"

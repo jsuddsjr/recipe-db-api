@@ -16,7 +16,7 @@ mixin baseUnits
 
 block content
   h2= 'Add nutrition information'
-  form(action='/nutrition' method='POST')
+  form(action='/api/nutrition' method='POST')
     dl
       +textInput('name', 'Name')
       +textInput('servingSize', 'Serving Size')

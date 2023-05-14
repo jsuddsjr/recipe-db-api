@@ -5,11 +5,13 @@ append styles
 
 block body
     include mixins/navbar
+    include mixins/icons
 
-    -var active = active || {}
+    - var active = active || {}
+    - var brand = '<i class="bi bi-shop"></i> Recipe Shoppe'
 
-    +navbar("Recipes")(style='dark' bp='sm')
-        +nav_item("/recipe", active.recipe) Recipe
+    +navbar(brand)(style='dark' bp='sm')
+        +nav_item("/api/recipe", active.recipe) Recipe
         +nav_item("/nutrition", active.nutrition) Nutrition
         +nav_item("/user", active.user) User
     main.flex-shrink-0

@@ -1,19 +1,20 @@
 //- Navbar mixins converted to Bootstrap 5 by John Sudds
 
-mixin navbar(name)
+mixin navbar(brand)
     - var id = 'navbarCollapse'
     - var href = attributes.href || '/'
     - var style = attributes.style || 'light'
     - var bp = attributes.bp || 'lg'
-    nav( class=['navbar', 'navbar-expand-' + bp, 'navbar-' + style, 'bg-' + style, attributes.class] )
+    nav.navbar( class=[`navbar-expand-${bp}`, `navbar-${style}`, `bg-${style}`, attributes.class] )
         .container-fluid
-            a.navbar-brand(href=href)= name
-            button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#' + id, aria-controls=id, aria-expanded='false' aria-label='Toggle navigation')
+            a.navbar-brand(href=href)!= brand
+            button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target=`#${id}`, aria-controls=id, aria-expanded='false' aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             .collapse.navbar-collapse(id=id)
-                ul( class=['navbar-nav', 'me-auto', 'mb-2', 'mb-' + bp + '-0'])
+                ul.navbar-nav.me-auto.mb-2( class=[`mb-${bp}-0`] )
                     block
 
+//- Example: +nav_item("/user", active.user) User
 mixin nav_item(href, active=false)
     if !active
         li.nav-item: a.nav-link( href=href ): block
