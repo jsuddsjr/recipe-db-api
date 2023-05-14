@@ -1,19 +1,21 @@
 //- Glyphicon
 mixin icon(name)
 	i.bi( class=['bi-'+ name, attributes.class], aria-hidden="true")
+	| &nbsp;
+	block
 
 mixin icon_primary(name)
-	+icon(name)(class='text-primary')
+	+icon(name)(class='text-primary'): block
 
 mixin icon_info(name)
-	+icon(name)(class='text-info')
+	+icon(name)(class='text-info'): block
 
 mixin icon_warning(name)
-	+icon(name)(class='text-warning')
+	+icon(name)(class='text-warning'): block
 
 mixin icon_danger(name)
-	+icon(name)(class='text-danger')
+	+icon(name)(class='text-danger'): block
 
 mixin icon_success(name)
-	+icon(name)(class='text-success')
+	+icon(name)(class='text-success'): block
 

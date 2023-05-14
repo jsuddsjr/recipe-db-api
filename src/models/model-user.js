@@ -8,12 +8,14 @@ const {
 
 const userSchema = new mongoose.Schema({
 	'@type': defaultString('Person'),
+	_id: 'ObjectId',
 	name: RequiredString,
 	email: RequiredString,
 	givenName: TrimmedString,
 	familyName: TrimmedString,
 	image: imageSchema,
 	followsIds: ['ObjectId'],
+	favoriteIds: ['ObjectId'],
 	keywords: [TrimmedString],
 })
 

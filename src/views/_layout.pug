@@ -11,7 +11,8 @@ block body
     - var brand = '<i class="bi bi-shop"></i> Recipe Shoppe'
 
     +navbar(brand)(style='dark' bp='sm')
-        +nav_item("/api/recipe", active.recipe) Recipe
+        +nav_item("/api/recipe", active.recipe)
+            +icon_warning('card-list') Recipe
         +nav_item("/nutrition", active.nutrition) Nutrition
         +nav_item("/user", active.user) User
     main.flex-shrink-0

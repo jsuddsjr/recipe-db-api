@@ -6,16 +6,18 @@ const Recipe = require('../models/model-recipe.js')
 // GET route for getting all contacts that returns a 200 status
 const getAll = async (request, response) => {
 	try {
-		const results = await Recipe.aggregate([
-			{
-				$lookup: {
-					from: 'nutritionInformation',
-					localField: 'nutrition_ids',
-					foreignField: '_id',
-					as: 'nutrition',
-				},
-			},
-		]).exec()
+		const results = await Recipe.find().exec()
+
+		// Const results = await Recipe.aggregate([
+		// 	{
+		// 		$lookup: {
+		// 			from: 'nutritionInformation',
+		// 			localField: 'nutrition_ids',
+		// 			foreignField: '_id',
+		// 			as: 'nutrition',
+		// 		},
+		// 	},
+		// ]).exec()
 		response.status(200).json(results)
 	} catch (error) {
 		response.status(500).json({message: error.message})
