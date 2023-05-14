@@ -1,7 +1,10 @@
 //- Navbar mixins converted to Bootstrap 5 by John Sudds
 
+//- The brand string is interpolated as-is, so you can pass markup.
+//- The attributes collection can specify id, href, style, and bp (breakpoint) values.
+//- Use +nav_item mixin to specify additional menu items.
 mixin navbar(brand)
-    - var id = 'navbarCollapse'
+    - var id = attributes.id || 'navbarCollapse'
     - var href = attributes.href || '/'
     - var style = attributes.style || 'light'
     - var bp = attributes.bp || 'lg'
@@ -14,12 +17,16 @@ mixin navbar(brand)
                 ul.navbar-nav.me-auto.mb-2( class=[`mb-${bp}-0`] )
                     block
 
-//- Example: +nav_item("/user", active.user) User
+//- Example: +nav_item("/user", active.user)
+//-             +icon('person-circle') Profile
 mixin nav_item(href, active=false)
     if !active
         li.nav-item: a.nav-link( href=href ): block
     else
         li.nav-item: a.nav-link.active( href=href ): block
+
+mixin nav_divider
+    li: hr.dropdown-divider
 
 //- mixin nav_item_dropdown(href, active)
 //-     li(class=ddstyle)
@@ -28,6 +35,4 @@ mixin nav_item(href, active=false)
 //-         ul.dropdown-menu( role='menu' )
 //-             block
 
-//- mixin nav_divider
-//-     li: hr.dropdown-divider
 

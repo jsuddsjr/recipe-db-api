@@ -1,11 +1,5 @@
 extends _layout
 
-mixin textInput(name, label, type='text')
-  dd
-    label(for=name)= label
-  dt
-    input(type=type, name=name, id=name, required)&attributes(attributes)
-
 mixin baseUnits
   select(name='servingSizeUnits')
     option= Tbsp
@@ -15,10 +9,16 @@ mixin baseUnits
 
 
 block content
+  include ./mixins/forms
+
   h2= 'Add nutrition information'
   form(action='/api/nutrition' method='POST')
-    dl
-      +textInput('name', 'Name')
-      +textInput('servingSize', 'Serving Size')
-      +textInput('calories', 'Calories', 'number')(min='0' max='1000') calories
-    input(type='submit' value='Add')
+    +input_block('text', 'name') Name
+    +input_block('text', 'servingSize') Serving Size
+    +input_block('number', 'calories') Calories
+    //- dl
+    //-   +textInput('name', 'Name')
+    //-   +textInput('servingSize', 'Serving Size')
+    //-   +textInput('calories', 'Calories', 'number')(min='0' max='1000') calories
+    +submit()(class='me-3') Add
+    +button()(class='btn-outline-secondary') Cancel
