@@ -1,13 +1,17 @@
 const mongoose = require('mongoose')
 const {RequiredString, defaultString} = require('./validators.js')
 
-const nutritionSchema = new mongoose.Schema({
-	'@type': defaultString('NutritionInformation'),
-	_id: 'ObjectId',
-	name: RequiredString,
-	servingSize: RequiredString,
-	calories: RequiredString,
-})
+const nutritionSchema = new mongoose.Schema(
+	{
+		'@type': defaultString('NutritionInformation'),
+		name: RequiredString,
+		servingSize: RequiredString,
+		calories: RequiredString,
+	},
+	{
+		timestamps: true,
+	},
+)
 
 const Nutrition = mongoose.model('nutritionInformation', nutritionSchema)
 

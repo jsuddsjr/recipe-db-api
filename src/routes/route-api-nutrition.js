@@ -17,7 +17,7 @@ router.get('/', async (request, response) => {
 // Create a new record
 router.post('/', async (request, response) => {
 	try {
-		const record = await Nutrition.create(request.body, {
+		const record = await Nutrition.create([request.body], {
 			validateBeforeSave: true,
 		})
 		response.send(record)

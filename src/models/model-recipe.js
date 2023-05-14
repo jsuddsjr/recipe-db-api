@@ -37,7 +37,6 @@ const videoSchema = new mongoose.Schema({
 const recipeSchema = new mongoose.Schema(
 	{
 		'@type': defaultString('Recipe'),
-		_id: 'ObjectId',
 		cookTime: RequiredDuration,
 		datePublished: RequiredDate,
 		description: RequiredString,
