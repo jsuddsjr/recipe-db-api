@@ -7,7 +7,7 @@ const router = Router()
 // Get all records
 router.get('/', async (request, response) => {
 	try {
-		const records = await Nutrition.find()
+		const records = await Nutrition.find().exec()
 		response.send(records)
 	} catch (error) {
 		response.status(500).send(error.message)
@@ -17,9 +17,8 @@ router.get('/', async (request, response) => {
 // Create a new record
 router.post('/', async (request, response) => {
 	try {
-		const record = await Nutrition.create([request.body], {
-			validateBeforeSave: true,
-		})
+		const record = await Nutrition.create(request.body)
+		await record.save()
 		response.send(record)
 	} catch (error) {
 		response.status(500).send(error.message)

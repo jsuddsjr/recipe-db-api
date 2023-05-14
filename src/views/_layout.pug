@@ -11,11 +11,11 @@ block body
     - var brand = '<i class="bi bi-shop"></i>&nbsp;Recipe Shoppe'
 
     +navbar(brand)(style='dark' bp='sm')
-        +nav_item("/api/recipe", active.recipe)
+        +nav_item("/api/recipes", active.recipe)
             +icon_warning('card-heading') Recipe
         +nav_item("/nutrition", active.nutrition)
             +icon_warning('clipboard-heart') Nutrition
-        +nav_item("/user", active.user)
+        +nav_item("/profile", active.user)
             +icon_warning('person-circle') User
     main.flex-shrink-0
         .container

@@ -13,7 +13,7 @@ router.use((request, response, next) => {
 
 /* Pass ALL traffic to handlers. */
 router.use('/nutrition', nutritionRouter)
-router.use('/recipe', recipeRouter)
-router.use('/user', userRouter)
+router.use('/recipes', recipeRouter)
+router.use('/users', userRouter)
 
 module.exports = router

@@ -18,6 +18,6 @@ router.get('/nutrition', function (request, response) {
 })
 
 /* GET user page. */
-router.use('/user', userRouter)
+router.use('/profile', userRouter)
 
 module.exports = router

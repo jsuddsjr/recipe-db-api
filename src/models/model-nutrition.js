@@ -9,10 +9,11 @@ const nutritionSchema = new mongoose.Schema(
 		calories: RequiredString,
 	},
 	{
+		collection: 'nutrition',
 		timestamps: true,
 	},
 )
 
-const Nutrition = mongoose.model('nutritionInformation', nutritionSchema)
+const Nutrition = mongoose.model('nutrition', nutritionSchema)
 
 module.exports = Nutrition
