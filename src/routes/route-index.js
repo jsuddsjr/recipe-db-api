@@ -1,4 +1,5 @@
 const {Router} = require('express')
+const swaggerSchema = require('../models/swagger-gen.js')
 const userRouter = require('./route-user.js')
 
 // eslint-disable-next-line new-cap
@@ -19,5 +20,9 @@ router.get('/ingredients', function (request, response) {
 
 /* GET user page. */
 router.use('/profile', userRouter)
+
+router.use('/schema', function (request, response) {
+	response.send(swaggerSchema)
+})
 
 module.exports = router

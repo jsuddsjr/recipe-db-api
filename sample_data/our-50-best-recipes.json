@@ -1,0 +1,414 @@
+[
+    {
+        "@context": "http://schema.org",
+        "@type": [
+            "NewsArticle"
+        ],
+        "headline": "Our 50 Best Dinner Recipes of All Time",
+        "datePublished": "2021-12-14T19:24:33.000-05:00",
+        "dateModified": "2021-12-14T19:24:33.000-05:00",
+        "author": [
+            {
+                "@type": "Person",
+                "name": "Emily Boyette",
+                "url": "https://www.allrecipes.com/author/emily-boyette/"
+            },
+            {
+                "@type": "Person",
+                "name": "Sarra Sedghi",
+                "url": "https://www.allrecipes.com/author/sarra-sedghi/"
+            }
+        ],
+        "description": "Discover our best dinner recipes of all time including lasagna, chicken pot pie, grilled shrimp, enchiladas, and more.",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.allrecipes.com/thmb/CshBbwsJ3SCvS1oOVczYOe_TYww=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/image-4767bc96489540678b9f665e3da09ff1.jpg",
+            "height": 960,
+            "width": 960
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Allrecipes",
+            "url": "https://www.allrecipes.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.allrecipes.com/thmb/Z9lwz1y0B5aX-cemPiTgpn5YB0k=/112x112/filters:no_upscale():max_bytes(150000):strip_icc()/allrecipes_logo_schema-867c69d2999b439a9eba923a445ccfe3.png",
+                "width": 112,
+                "height": 112
+            },
+            "brand": "Allrecipes",
+            "publishingPrinciples": "https://www.allrecipes.com/about-us-6648102#toc-editorial-guidelines",
+            "sameAs": [
+                "https://www.facebook.com/allrecipes",
+                "https://www.instagram.com/allrecipes/",
+                "https://www.pinterest.com/allrecipes/",
+                "https://www.tiktok.com/@allrecipes",
+                "https://www.youtube.com/user/allrecipes/videos",
+                "https://twitter.com/Allrecipes",
+                "https://flipboard.com/@Allrecipes",
+                "https://en.wikipedia.org/wiki/Allrecipes.com",
+                "https://apps.apple.com/us/app/allrecipes-dinner-spinner/id299515267",
+                "https://play.google.com/store/apps/details?id=com.allrecipes.spinner.free&hl=en_US&gl=US",
+                "https://www.youtube.com/c/foodwishes",
+                "https://www.linkedin.com/company/19312/admin/"
+            ]
+        },
+        "articleSection": "Recipes",
+        "keywords": [
+            "Dinner"
+        ],
+        "mainEntityOfPage": {
+            "@type": [
+                "WebPage"
+            ],
+            "@id": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/",
+            "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@id": "https://www.allrecipes.com/recipes/",
+                            "name": "Recipes"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@id": "https://www.allrecipes.com/recipes/17562/dinner/",
+                            "name": "Dinner"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": {
+                            "@id": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/",
+                            "name": "Our 50 Best Dinner Recipes of All Time"
+                        }
+                    }
+                ]
+            }
+        },
+        "about": [
+            {
+                "@context": "http://schema.org",
+                "@type": "ItemList",
+                "name": "Our 50 Best Dinner Recipes of All Time",
+                "description": "Discover our best dinner recipes of all time including lasagna, chicken pot pie, grilled shrimp, enchiladas, and more.",
+                "itemListOrder": "http://schema.org/ItemListOrderAscending",
+                "numberOfItems": 51,
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Mom&#39;s Chicken Pot Pie",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#moms-chicken-pot-pie"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "World&#39;s Best Lasagna",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#worlds-best-lasagna"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Scott Hibb&#39;s Amazing Whisky Grilled Baby Back Ribs",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#scott-hibbs-amazing-whisky-grilled-baby-back-ribs"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 4,
+                        "name": "Cajun Seafood Pasta",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#cajun-seafood-pasta"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 5,
+                        "name": "Garlic-Brown Sugar Chicken Thighs",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#garlic-brown-sugar-chicken-thighs"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 6,
+                        "name": "Amazing Spicy Grilled Shrimp",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#amazing-spicy-grilled-shrimp"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 7,
+                        "name": "Creamy Herbed Pork Chops",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#creamy-herbed-pork-chops"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 8,
+                        "name": "Bacon-Ranch Chicken Enchiladas",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#bacon-ranch-chicken-enchiladas"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 9,
+                        "name": "Black Pepper Beef and Cabbage Stir Fry",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#black-pepper-beef-and-cabbage-stir-fry"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 10,
+                        "name": "My Chicken Parmesan",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#my-chicken-parmesan"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 11,
+                        "name": "Pistachio Crusted Rack of Lamb",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#pistachio-crusted-rack-of-lamb"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 12,
+                        "name": "Curry Stand Chicken Tikka Masala Sauce",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#curry-stand-chicken-tikka-masala-sauce"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 13,
+                        "name": "Grilled Beef Tenderloin with Herb-Garlic-Pepper Coating",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#grilled-beef-tenderloin-with-herb-garlic-pepper-coating"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 14,
+                        "name": "Chef John&#39;s Baked Mushroom Risotto",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#chef-johns-baked-mushroom-risotto"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 15,
+                        "name": "Veracruz-Style Red Snapper",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#veracruz-style-red-snapper"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 16,
+                        "name": "Chef John&#39;s Coq Au Vin",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#chef-johns-coq-au-vin"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 17,
+                        "name": "Pork Carnitas",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#pork-carnitas"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 18,
+                        "name": "Blackened Tuna Steaks with Mango Salsa",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#blackened-tuna-steaks-with-mango-salsa"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 19,
+                        "name": "Cedar Planked Salmon",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#cedar-planked-salmon"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 20,
+                        "name": "Quick and Easy Paella",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#quick-and-easy-paella"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 21,
+                        "name": "Four Cheese Margherita Pizza",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#four-cheese-margherita-pizza"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 22,
+                        "name": "How to Cook Trout",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#how-to-cook-trout"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 23,
+                        "name": "Turkish Chicken Kebabs",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#turkish-chicken-kebabs"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 24,
+                        "name": "Chef John&#39;s Brazilian Fish Stew",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#chef-johns-brazilian-fish-stew"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 25,
+                        "name": "Chef John&#39;s Stuffed Peppers",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#chef-johns-stuffed-peppers"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 26,
+                        "name": "Chicken Chimichangas with Sour Cream Sauce",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#chicken-chimichangas-with-sour-cream-sauce"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 27,
+                        "name": "Baked Ziti I",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#baked-ziti-i"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 28,
+                        "name": "Chef John&#39;s Italian Meatballs",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#chef-johns-italian-meatballs"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 29,
+                        "name": "Chef John&#39;s Beans and Greens",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#chef-johns-beans-and-greens"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 30,
+                        "name": "Quick Chicken Piccata",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#quick-chicken-piccata"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 31,
+                        "name": "Beef Bulgogi",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#beef-bulgogi"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 32,
+                        "name": "Bow Ties with Sausage, Tomatoes and Cream",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#bow-ties-with-sausage-tomatoes-and-cream"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 33,
+                        "name": "Chef John&#39;s Spaghetti with Red Clam Sauce",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#chef-johns-spaghetti-with-red-clam-sauce"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 34,
+                        "name": "Best Ever Meat Loaf",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#best-ever-meat-loaf"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 35,
+                        "name": "Baked Spaghetti",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#baked-spaghetti"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 36,
+                        "name": "General Tsao&#39;s Chicken II",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#general-tsaos-chicken-ii"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 37,
+                        "name": "Cindy&#39;s Jambalaya",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#cindys-jambalaya"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 38,
+                        "name": "Oven Pot Roast",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#oven-pot-roast"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 39,
+                        "name": "Simple Garlic Shrimp",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#simple-garlic-shrimp"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 40,
+                        "name": "Braised Corned Beef Brisket",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#braised-corned-beef-brisket"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 41,
+                        "name": "Millie Pasquinelli&#39;s Fried Chicken",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#millie-pasquinellis-fried-chicken"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 42,
+                        "name": "Chef John&#39;s Classic Beef Stroganoff",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#chef-johns-classic-beef-stroganoff"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 43,
+                        "name": "Chef John&#39;s Red Beans and Rice",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#chef-johns-red-beans-and-rice"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 44,
+                        "name": "Crispy Baked Chicken Thighs",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#crispy-baked-chicken-thighs"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 45,
+                        "name": "Spinach and Feta Pita Bake",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#spinach-and-feta-pita-bake"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 46,
+                        "name": "Pico de Gallo Chicken Quesadillas",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#pico-de-gallo-chicken-quesadillas"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 47,
+                        "name": "Spicy Thai Basil Chicken (Pad Krapow Gai)",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#spicy-thai-basil-chicken-pad-krapow-gai"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 48,
+                        "name": "Mississippi Roast - Slow Cooker Pepperoncini Pot Roast",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#mississippi-roast-slow-cooker-pepperoncini-pot-roast"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 49,
+                        "name": "A Scotsman&#39;s Shepherd Pie",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#a-scotsmans-shepherd-pie"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 50,
+                        "name": "Broiled Tilapia Parmesan",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#broiled-tilapia-parmesan"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 51,
+                        "name": "More Inspiration",
+                        "url": "https://www.allrecipes.com/gallery/best-dinner-recipes-of-all-time/#more-inspiration"
+                    }
+                ]
+            }
+        ]
+    }
+]

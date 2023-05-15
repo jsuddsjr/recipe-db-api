@@ -8,8 +8,10 @@ const passport = require('passport')
 const session = require('express-session')
 const {Strategy} = require('passport-github2')
 const connectLiveReload = require('connect-livereload')
+const swaggerUi = require('swagger-ui-express')
 const apiRouter = require('./routes/route-api.js')
 const indexRouter = require('./routes/route-index.js')
+const swaggerSchema = require('./models/swagger-schema.js')
 
 const app = express()
 
@@ -23,6 +25,15 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.use(bodyParser.json({strict: false}))
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
+
+app.use(
+	'/api-docs',
+	swaggerUi.serve,
+	swaggerUi.setup(swaggerSchema, {
+		customSiteTitle: 'Recipe DB API',
+		explorer: true,
+	}),
+)
 
 if (app.get('env') === 'development') {
 	app.use(connectLiveReload())

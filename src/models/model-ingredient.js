@@ -9,6 +9,7 @@ const {
 
 const ingredientSchema = new mongoose.Schema(
 	{
+		'@context': defaultString('http://schema.org'),
 		'@type': defaultString('NutritionInformation'),
 		name: RequiredString,
 		servingSize: {required: true, ...ValidServingSizeString},
@@ -28,6 +29,6 @@ const ingredientSchema = new mongoose.Schema(
 	},
 )
 
-const Ingredient = mongoose.model('ingredients', ingredientSchema)
+const Ingredient = mongoose.model('ingredient', ingredientSchema)
 
 module.exports = Ingredient

@@ -2,14 +2,13 @@ const mongoose = require('mongoose')
 const imageSchema = require('./schema-image.js')
 const nutritionSchema = require('./schema-nutrition.js')
 const personSchema = require('./schema-person.js')
+const videoSchema = require('./schema-video.js')
 const {
 	defaultString,
 	RequiredDate,
 	RequiredDuration,
 	RequiredString,
-	RequiredUrl,
 	TrimmedString,
-	ValidDate,
 	ValidDuration,
 	ValidUrl,
 } = require('./validators.js')
@@ -27,25 +26,9 @@ const documentSchema = new mongoose.Schema(
 	},
 )
 
-const videoSchema = new mongoose.Schema(
-	{
-		'@type': defaultString('VideoObject'),
-		name: RequiredString,
-		description: TrimmedString,
-		thumbnailUrl: ValidUrl,
-		contentUrl: RequiredUrl,
-		embedUrl: ValidUrl,
-		uploadDate: ValidDate,
-		duration: ValidDuration,
-		expires: ValidDate,
-	},
-	{
-		_id: false,
-	},
-)
-
 const recipeSchema = new mongoose.Schema(
 	{
+		'@context': defaultString('http://schema.org'),
 		'@type': defaultString('Recipe'),
 		cookTime: RequiredDuration,
 		datePublished: RequiredDate,
@@ -60,7 +43,7 @@ const recipeSchema = new mongoose.Schema(
 		recipeYield: [TrimmedString],
 		totalTime: ValidDuration,
 		author: [personSchema],
-		authorId: 'ObjectId',
+		authorIds: ['ObjectId'],
 		owner: personSchema,
 		ownerId: 'ObjectId',
 		image: [imageSchema],
@@ -73,6 +56,6 @@ const recipeSchema = new mongoose.Schema(
 	},
 )
 
-const Recipe = mongoose.model('recipes', recipeSchema)
+const Recipe = mongoose.model('recipe', recipeSchema)
 
 module.exports = Recipe

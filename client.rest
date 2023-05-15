@@ -1,4 +1,5 @@
-@host = localhost:3000
+// @host = localhost:3000
+@host = recipe-db-api.onrender.com
 
 ### Home page
 GET http://{{host}}/
@@ -8,6 +9,131 @@ GET http://{{host}}/api/recipes
 
 ### Get one recipe
 GET http://{{host}}/api/recipes/6456b1e5920fb2341245ce53
+
+### Add default recipe
+POST http://{{host}}/api/recipes
+Content-Type: application/json
+
+{
+    "_id": "6456b1e5920fb2341245ce53",
+    "@type": "Recipe",
+    "name": "Party Coffee Cake",
+    "image": [
+        {
+            "@type": "ImageObject",
+            "contentUrl": "https://example.com/photos/1x1/photo.jpg",
+            "description": "Best thing since sliced bread.",
+            "width": "400",
+            "height": "300",
+            "accessibilitySummary": "A slice of coffee cake with a steaming cup of tea."
+        }
+    ],
+    "authorIds": "645e638760c3b38ff277b420",
+    "ownerId": "6456be3627f2d14364cfc08a",
+    "datePublished": "2018-03-10T00:00:00-05:00",
+    "description": "This coffee cake is awesome and perfect for parties.",
+    "prepTime": "PT20M",
+    "cookTime": "PT30M",
+    "totalTime": "PT50M",
+    "keywords": [
+        "cake", "party", "coffee"
+    ],
+    "recipeYield": "10",
+    "recipeCategory": "Dessert",
+    "recipeCuisine": "American",
+    "nutritionIds": [
+        "645da4656bca5d09293d5a93",
+        "645da4656bca5d09293d5a94",
+        "645da4656bca5d09293d5a95",
+        "645da4656bca5d09293d5a96",
+        "645da4656bca5d09293d5a97",
+        "645da4656bca5d09293d5a98"
+    ],
+    "recipeIngredient": [
+        "2 cups of flour",
+        "3/4 cup white sugar",
+        "2 teaspoons baking powder",
+        "1/2 teaspoon salt",
+        "1/2 cup butter",
+        "2 eggs",
+        "3/4 cup milk"
+    ],
+    "recipeInstructions": [
+        {
+            "@type": "HowToStep",
+            "name": "Preheat",
+            "text": "Preheat the oven to 350 degrees F. Grease and flour a 9x9 inch pan.",
+            "url": "https://example.com/party-coffee-cake#step1",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://example.com/photos/party-coffee-cake/step1.jpg"
+            }
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Mix dry ingredients",
+            "text": "In a large bowl, combine flour, sugar, baking powder, and salt.",
+            "url": "https://example.com/party-coffee-cake#step2",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://example.com/photos/party-coffee-cake/step2.jpg"
+            }
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Add wet ingredients",
+            "text": "Mix in the butter, eggs, and milk.",
+            "url": "https://example.com/party-coffee-cake#step3",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://example.com/photos/party-coffee-cake/step3.jpg"
+            }
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Spread into pan",
+            "text": "Spread into the prepared pan.",
+            "url": "https://example.com/party-coffee-cake#step4",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://example.com/photos/party-coffee-cake/step4.jpg"
+            }
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Bake",
+            "text": "Bake for 30 to 35 minutes, or until firm.",
+            "url": "https://example.com/party-coffee-cake#step5",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://example.com/photos/party-coffee-cake/step5.jpg"
+            }
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Enjoy",
+            "text": "Allow to cool and enjoy.",
+            "url": "https://example.com/party-coffee-cake#step6",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://example.com/photos/party-coffee-cake/step6.jpg"
+            }
+        }
+    ],
+    "video": {
+        "@type": "VideoObject",
+        "name": "How to make a Party Coffee Cake",
+        "description": "This is how you make a Party Coffee Cake.",
+        "contentUrl": "https://www.example.com/video123.mp4",
+        "embedUrl": "https://www.example.com/videoplayer?video=123",
+        "uploadDate": "2018-02-05T08:00:00+08:00",
+        "duration": "PT1M33S",
+        "expires": "2019-02-05T08:00:00+08:00"
+    }
+}
+
+### Delete default recipe
+DELETE http://{{host}}/api/recipes/6456b1e5920fb2341245ce53
 
 ### Add a recipe
 # @name recipe
