@@ -56,7 +56,9 @@ const postSingle = async (request, response) => {
 		const result = await Recipe.create(request.body)
 		await result.save()
 		response.status(201).send(result)
-	} catch {}
+	} catch (error) {
+		response.status(500).json({message: error.message})
+	}
 }
 
 /** PUT route for updating a contact that returns a 204 status

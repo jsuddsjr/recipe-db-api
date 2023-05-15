@@ -1,9 +1,91 @@
 @host = localhost:3000
 
 ### Home page
-GET https://{{host}}/
+GET http://{{host}}/
+
+### Get recipes
+GET http://{{host}}/api/recipes
+
+### Get one recipe
+GET http://{{host}}/api/recipes/6456b1e5920fb2341245ce53
+
+### Add a recipe
+POST http://{{host}}/api/recipes
+Content-Type: application/json
+
+{
+    "datePublished": "2020-02-06T20:29:39.000-05:00",
+    "author": [
+        {
+            "@type": "Person",
+            "name": "Samantha Hamilton",
+            "url": "https://www.allrecipes.com/cook/7722043"
+        }
+    ],
+    "description": "This chicken pot pie with potatoes uses a prepared double-crust pastry to help achieve this easy, beginner-friendly recipe your family will love.",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.allrecipes.com/thmb/sv91ZuSJo57J9sBdqugJnnk5EW0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/1100114-cbb1df92c384480aa26f3bc05f03974e.jpg",
+        "height": 960,
+        "width": 960
+    },
+    "name": "Mom&#39;s Chicken Pot Pie",
+    "cookTime": "PT45M",
+    "prepTime": "PT10M",
+    "recipeCategory": [
+        "Lunch",
+        "Dinner"
+    ],
+    "recipeCuisine": [
+        "U.S.",
+        "American"
+    ],
+    "recipeIngredient": [
+        "0.33333334326744 cup butter",
+        "0.33333334326744 cup chopped onion",
+        "0.33333334326744 cup all-purpose flour",
+        "0.5 teaspoon salt",
+        "0.25 teaspoon ground black pepper",
+        "1.75 cups chicken broth",
+        "0.66666668653488 cup milk",
+        "2 cups chopped cooked chicken",
+        "1 (14.5 ounce) can peas and carrots",
+        "0.5 (15 ounce) can whole new potatoes, drained",
+        "1 (15 ounce) package prepared double-crust pie pastry"
+    ],
+    "recipeInstructions": [
+        {
+            "@type": "HowToStep",
+            "text": "Preheat the oven to 425 degrees F (220 degrees C)."
+        },
+        {
+            "@type": "HowToStep",
+            "text": "Melt butter in a large skillet over medium heat. Cook and stir onion, flour, salt, and pepper in hot butter until onion is translucent, about 5 minutes."
+        },
+        {
+            "@type": "HowToStep",
+            "text": "Pour in broth and milk; bring to a boil and cook until slightly thickened, about 1 minute. Remove the skillet from heat and stir in chicken, peas and carrots, and potatoes."
+        },
+        {
+            "@type": "HowToStep",
+            "text": "Press 1 pie pastry into the bottom of a 9-inch, deep-dish pie pan. Pour chicken mixture into pie pastry. Top with remaining pastry and press edges together to seal. Cut several slits in top pastry. Place pie on a baking sheet."
+        },
+        {
+            "@type": "HowToStep",
+            "image": [
+                {
+                    "@type": "ImageObject",
+                    "url": "https://www.allrecipes.com/thmb/sv91ZuSJo57J9sBdqugJnnk5EW0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/1100114-cbb1df92c384480aa26f3bc05f03974e.jpg"
+                }
+            ],
+            "text": "Bake in the preheated oven until crust is golden brown, about 30 minutes. Let pie cool and filling thicken at room temperature for 15 to 20 minutes before cutting."
+        }
+    ],
+    "recipeYield": [
+        "8"
+    ],
+    "totalTime": "PT70M"
+}
 
 ###
-GET https://{{host}}/recipes
-
-###
+DELETE http://{{host}}/api/recipes/6461b66163e62478a5665ac4

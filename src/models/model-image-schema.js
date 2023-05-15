@@ -1,16 +1,16 @@
 const mongoose = require('mongoose')
 const {
 	defaultString,
-	RequiredUrl,
 	TrimmedString,
-	RequiredDate,
+	ValidDate,
+	ValidUrl,
 } = require('./validators.js')
 
 const imageSchema = new mongoose.Schema({
 	'@type': defaultString('ImageObject'),
-	contentUrl: RequiredUrl,
+	contentUrl: ValidUrl,
 	accessibilitySummary: TrimmedString,
-	published: RequiredDate,
+	published: ValidDate,
 	height: Number,
 	width: Number,
 })

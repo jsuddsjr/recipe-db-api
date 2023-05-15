@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const imageSchema = require('./model-image-schema.js')
 const Nutrition = require('./model-nutrition.js')
-const User = require('./model-user.js')
+const personSchema = require('./model-person-schema.js')
 const {
 	defaultString,
 	RequiredDate,
@@ -16,8 +16,8 @@ const {
 
 const documentSchema = new mongoose.Schema({
 	'@type': defaultString('HowToStep'),
-	image: imageSchema,
-	name: RequiredString,
+	image: [imageSchema],
+	name: TrimmedString,
 	text: RequiredString,
 	url: ValidUrl,
 })
@@ -45,16 +45,16 @@ const recipeSchema = new mongoose.Schema(
 		nutrition: [Nutrition.schema],
 		nutritionIds: ['ObjectId'],
 		prepTime: ValidDuration,
-		recipeCategory: TrimmedString,
-		recipeCuisine: TrimmedString,
-		recipeYield: TrimmedString,
+		recipeCategory: [TrimmedString],
+		recipeCuisine: [TrimmedString],
+		recipeYield: [TrimmedString],
 		totalTime: ValidDuration,
-		author: User.schema,
+		author: [personSchema],
 		authorId: 'ObjectId',
-		owner: User.schema,
+		owner: personSchema,
 		ownerId: 'ObjectId',
 		image: [imageSchema],
-		ingredient: TrimmedString,
+		recipeIngredient: [TrimmedString],
 		recipeInstructions: [documentSchema],
 		video: videoSchema,
 	},
