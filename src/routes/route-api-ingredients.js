@@ -1,5 +1,5 @@
 const {Router} = require('express')
-const Nutrition = require('../models/model-nutrition.js')
+const Ingredient = require('../models/model-ingredient.js')
 
 // eslint-disable-next-line new-cap
 const router = Router()
@@ -7,7 +7,7 @@ const router = Router()
 // Get all records
 router.get('/', async (request, response) => {
 	try {
-		const records = await Nutrition.find().exec()
+		const records = await Ingredient.find().exec()
 		response.send(records)
 	} catch (error) {
 		response.status(500).send(error.message)
@@ -17,7 +17,7 @@ router.get('/', async (request, response) => {
 // Create a new record
 router.post('/', async (request, response) => {
 	try {
-		const record = await Nutrition.create(request.body)
+		const record = await Ingredient.create(request.body)
 		await record.save()
 		response.send(record)
 	} catch (error) {
@@ -32,7 +32,7 @@ router.get('/:id', async (request, response) => {
 	}
 
 	try {
-		const record = await Nutrition.findById(request.params.id)
+		const record = await Ingredient.findById(request.params.id)
 		response.send(record)
 	} catch (error) {
 		response.status(500).send(error.message)
@@ -46,7 +46,7 @@ router.put('/:id', async (request, response) => {
 	}
 
 	try {
-		const record = await Nutrition.findByIdAndUpdate(
+		const record = await Ingredient.findByIdAndUpdate(
 			request.params.id,
 			request.body,
 			{new: true, runValidators: true},

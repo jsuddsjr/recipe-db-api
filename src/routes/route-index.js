@@ -10,10 +10,10 @@ router.get('/', function (request, response) {
 })
 
 /* GET nutrition page. */
-router.get('/nutrition', function (request, response) {
-	response.render('view-nutrition', {
-		title: 'Nutrition',
-		active: {nutrition: true},
+router.get('/ingredients', function (request, response) {
+	response.render('view-ingredient', {
+		title: 'Ingredients',
+		active: {ingredient: true},
 	})
 })
 

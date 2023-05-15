@@ -1,5 +1,5 @@
 const {Router} = require('express')
-const nutritionRouter = require('./route-api-nutrition.js')
+const ingredientRouter = require('./route-api-ingredients.js')
 const recipeRouter = require('./route-api-recipes.js')
 const userRouter = require('./route-api-users.js')
 
@@ -12,7 +12,7 @@ router.use((request, response, next) => {
 })
 
 /* Pass ALL traffic to handlers. */
-router.use('/nutrition', nutritionRouter)
+router.use('/ingredients', ingredientRouter)
 router.use('/recipes', recipeRouter)
 router.use('/users', userRouter)
 

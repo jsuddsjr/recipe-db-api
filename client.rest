@@ -41,6 +41,19 @@ Content-Type: application/json
         "U.S.",
         "American"
     ],
+    "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "701 kcal",
+        "carbohydrateContent": "66 g",
+        "cholesterolContent": "55 mg",
+        "fiberContent": "4 g",
+        "proteinContent": "17 g",
+        "saturatedFatContent": "16 g",
+        "sodiumContent": "900 mg",
+        "sugarContent": "7 g",
+        "fatContent": "41 g",
+        "unsaturatedFatContent": "0 g"
+    },
     "recipeIngredient": [
         "0.33333334326744 cup butter",
         "0.33333334326744 cup chopped onion",
@@ -91,5 +104,19 @@ Content-Type: application/json
 ####  Variable response
 @recipeId = {{recipe.response.body._id}}
 
-###
+### Update the record
+PUT http://{{host}}/api/recipes/{{recipeId}}
+Content-Type: application/json
+
+{
+    "name": "Grandma&#39;s Chicken Pot Pie",
+    "author": {
+        "name": "Betsy Ross"
+    }
+}
+
+### Verify updated
+GET http://{{host}}/api/recipes/{{recipeId}}
+
+### Delete this record
 DELETE http://{{host}}/api/recipes/{{recipeId}}

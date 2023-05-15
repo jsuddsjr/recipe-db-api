@@ -25,9 +25,23 @@ block content
           option Grams
       .invalid-feedback
         | How big is one serving?
-    +input_block('number', 'calories', 'Calories')(min=0, max=200, required)
+    +input_block('text', 'calories', 'Calories')(required)
       .invalid-feedback
         | How many calories for this serving?
+    h3 Fat
+    +input_block('text', 'fatContent', 'Total Fat')
+    +input_block('text', 'saturatedFatContent', 'Saturated Fat')
+    +input_block('text', 'unsaturatedFatContent', 'Unsaturated Fat')
+    h3 Cholesterol
+    +input_block('text', 'cholesterolContent', 'Cholesterol')
+    h3 Sodium
+    +input_block('text', 'sodiumContent', 'Sodium')
+    h3 Carbohydrate
+    +input_block('text', 'carbohydrateContent', 'Carbohydrate')
+    +input_block('text', 'fiberContent', 'Fiber')
+    +input_block('text', 'sugarContent', 'Added Sugars')
+    h3 Protein
+    +input_block('text', 'proteinContent', 'Protein')
     .btn-group(role="group")
       +submit() Add
       +button()(class='btn-outline-secondary' type='reset') Reset

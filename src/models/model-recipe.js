@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
-const imageSchema = require('./model-image-schema.js')
-const Nutrition = require('./model-nutrition.js')
-const personSchema = require('./model-person-schema.js')
+const imageSchema = require('./schema-image.js')
+const nutritionSchema = require('./schema-nutrition.js')
+const personSchema = require('./schema-person.js')
 const {
 	defaultString,
 	RequiredDate,
@@ -52,7 +52,7 @@ const recipeSchema = new mongoose.Schema(
 		description: RequiredString,
 		keywords: [TrimmedString],
 		name: RequiredString,
-		nutrition: [Nutrition.schema],
+		nutrition: nutritionSchema,
 		nutritionIds: ['ObjectId'],
 		prepTime: ValidDuration,
 		recipeCategory: [TrimmedString],

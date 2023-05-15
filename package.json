@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "type": "commonjs",
+  "engines": {
+    "node": "^16.20.0"
+  },
   "scripts": {
     "lint:fix": "npm run lint -- --fix",
     "lint": "xo src/**/*.js",
@@ -38,8 +41,6 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "@types/mongodb": "^4.0.7",
-    "@types/mongoose": "^5.11.97",
     "@types/pug": "^2.0.6",
     "@types/swagger-jsdoc": "^6.0.1",
     "@types/swagger-ui-express": "^4.1.3",
