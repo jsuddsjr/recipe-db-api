@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const {
 	defaultString,
 	RequiredString,
-	RequiredUrl,
 	TrimmedString,
 	ValidDate,
 	ValidDuration,
@@ -13,9 +12,10 @@ const videoSchema = new mongoose.Schema(
 	{
 		'@type': defaultString('VideoObject'),
 		name: RequiredString,
+		url: ValidUrl,
 		description: TrimmedString,
 		thumbnailUrl: ValidUrl,
-		contentUrl: RequiredUrl,
+		contentUrl: ValidUrl,
 		embedUrl: ValidUrl,
 		uploadDate: ValidDate,
 		duration: ValidDuration,

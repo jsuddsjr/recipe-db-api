@@ -6,7 +6,7 @@ const Recipe = require('../models/model-recipe.js')
 // GET route for getting all contacts that returns a 200 status
 const getAll = async (request, response) => {
 	try {
-		const results = await Recipe.find().exec()
+		const results = await Recipe.find().limit(50).exec()
 
 		// Const results = await Recipe.aggregate([
 		// 	{
@@ -54,7 +54,6 @@ const getSingle = async (request, response) => {
 const postSingle = async (request, response) => {
 	try {
 		const result = await Recipe.create(request.body)
-		await result.save()
 		response.status(201).send(result)
 	} catch (error) {
 		response.status(500).json({message: error.message})
