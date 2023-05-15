@@ -1,24 +1,36 @@
 extends _layout
 
-mixin baseUnits
-  select(name='servingSizeUnits')
-    option= Tbsp
-    option= Cup
-    option= Ounce
-    option= Grams
-
+//- What happens with multiple dropdowns on the same page?
+mixin select(name, title)
+  select.form-select(name=name title=title)&attributes(attributes)
+    block
 
 block content
   include ./mixins/forms
 
   h2= 'Add nutrition information'
-  form(action='/api/nutrition' method='POST')
-    +input_block('text', 'name') Name
-    +input_block('text', 'servingSize') Serving Size
-    +input_block('number', 'calories') Calories
-    //- dl
-    //-   +textInput('name', 'Name')
-    //-   +textInput('servingSize', 'Serving Size')
-    //-   +textInput('calories', 'Calories', 'number')(min='0' max='1000') calories
-    +submit()(class='me-3') Add
-    +button()(class='btn-outline-secondary') Cancel
+  p Here's where you can add nutrition information about ingredients in your recipes.
+  form.row.g-3.needs-validation(action='/api/nutrition' method='POST' novalidate)
+    +input_block('text', 'name', 'Name')(placeholder = "Ingredient name", required)
+      .invalid-feedback
+        | Name is required.
+    .mb-3
+      +label('servingSize') Serving Size
+      .input-group
+        +input('number', 'servingSize')(value="1" required)
+        +select('servingSizeUnits', 'Serving size units')(class="col-4")
+          option Tbsp
+          option Cup
+          option Ounce
+          option Grams
+      .invalid-feedback
+        | How big is one serving?
+    +input_block('number', 'calories', 'Calories')(min=0, max=200, required)
+      .invalid-feedback
+        | How many calories for this serving?
+    .btn-group(role="group")
+      +submit() Add
+      +button()(class='btn-outline-secondary' type='reset') Reset
+
+append scripts
+  script(src='/javascripts/form-validation.js')

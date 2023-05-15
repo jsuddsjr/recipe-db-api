@@ -1,10 +1,11 @@
 include icons
 
 //- Input control with form-group wrapper
-mixin input_block(type,id)
+mixin input_block(type,id,label)
     .mb-3
-        +label(id): block
-        +input(type,id)(attributes)
+        +label(id)= label
+        +input(type,id)&attributes(attributes)
+        block
 
 mixin label(id)
     label.form-label(for=id): block
@@ -52,7 +53,7 @@ mixin radio-inline(text,name,id)
         = text
 
 //- Input group - both prepend and append attributes available, and block is passed
-mixin input-group(prepend,append)
+mixin input_group(prepend,append)
     .mb-3
         .input-group
             unless !prepend
