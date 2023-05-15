@@ -14,25 +14,35 @@ const {
 	ValidUrl,
 } = require('./validators.js')
 
-const documentSchema = new mongoose.Schema({
-	'@type': defaultString('HowToStep'),
-	image: [imageSchema],
-	name: TrimmedString,
-	text: RequiredString,
-	url: ValidUrl,
-})
+const documentSchema = new mongoose.Schema(
+	{
+		'@type': defaultString('HowToStep'),
+		image: [imageSchema],
+		name: TrimmedString,
+		text: RequiredString,
+		url: ValidUrl,
+	},
+	{
+		_id: false,
+	},
+)
 
-const videoSchema = new mongoose.Schema({
-	'@type': defaultString('VideoObject'),
-	name: RequiredString,
-	description: TrimmedString,
-	thumbnailUrl: ValidUrl,
-	contentUrl: RequiredUrl,
-	embedUrl: ValidUrl,
-	uploadDate: ValidDate,
-	duration: ValidDuration,
-	expires: ValidDate,
-})
+const videoSchema = new mongoose.Schema(
+	{
+		'@type': defaultString('VideoObject'),
+		name: RequiredString,
+		description: TrimmedString,
+		thumbnailUrl: ValidUrl,
+		contentUrl: RequiredUrl,
+		embedUrl: ValidUrl,
+		uploadDate: ValidDate,
+		duration: ValidDuration,
+		expires: ValidDate,
+	},
+	{
+		_id: false,
+	},
+)
 
 const recipeSchema = new mongoose.Schema(
 	{

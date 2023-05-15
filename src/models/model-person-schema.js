@@ -7,12 +7,17 @@ const {
 	ValidUrl,
 } = require('./validators.js')
 
-const personSchema = new mongoose.Schema({
-	'@type': defaultString('Person'),
-	name: RequiredString,
-	email: TrimmedString,
-	url: ValidUrl,
-	image: imageSchema,
-})
+const personSchema = new mongoose.Schema(
+	{
+		'@type': defaultString('Person'),
+		name: RequiredString,
+		email: TrimmedString,
+		url: ValidUrl,
+		image: imageSchema,
+	},
+	{
+		_id: false,
+	},
+)
 
 module.exports = personSchema

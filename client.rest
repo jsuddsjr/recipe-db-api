@@ -10,6 +10,7 @@ GET http://{{host}}/api/recipes
 GET http://{{host}}/api/recipes/6456b1e5920fb2341245ce53
 
 ### Add a recipe
+# @name recipe
 POST http://{{host}}/api/recipes
 Content-Type: application/json
 
@@ -87,5 +88,8 @@ Content-Type: application/json
     "totalTime": "PT70M"
 }
 
+####  Variable response
+@recipeId = {{recipe.response.body._id}}
+
 ###
-DELETE http://{{host}}/api/recipes/6461b66163e62478a5665ac4
+DELETE http://{{host}}/api/recipes/{{recipeId}}
