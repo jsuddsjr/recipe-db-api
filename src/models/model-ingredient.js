@@ -1,25 +1,27 @@
 const mongoose = require('mongoose')
 const {
-	RequiredString,
-	TrimmedString,
 	defaultString,
+	RequiredString,
+	ValidCalorieString,
+	ValidMetricWeightString,
+	ValidServingSizeString,
 } = require('./validators.js')
 
 const ingredientSchema = new mongoose.Schema(
 	{
 		'@type': defaultString('NutritionInformation'),
 		name: RequiredString,
-		servingSize: RequiredString,
-		calories: RequiredString,
-		carbohydrateContent: TrimmedString,
-		cholesterolContent: TrimmedString,
-		fiberContent: TrimmedString,
-		proteinContent: TrimmedString,
-		saturatedFatContent: TrimmedString,
-		sodiumContent: TrimmedString,
-		sugarContent: TrimmedString,
-		fatContent: TrimmedString,
-		unsaturatedFatContent: TrimmedString,
+		servingSize: {required: true, ...ValidServingSizeString},
+		calories: {required: true, ...ValidCalorieString},
+		carbohydrateContent: ValidMetricWeightString,
+		cholesterolContent: ValidMetricWeightString,
+		fiberContent: ValidMetricWeightString,
+		proteinContent: ValidMetricWeightString,
+		saturatedFatContent: ValidMetricWeightString,
+		sodiumContent: ValidMetricWeightString,
+		sugarContent: ValidMetricWeightString,
+		fatContent: ValidMetricWeightString,
+		unsaturatedFatContent: ValidMetricWeightString,
 	},
 	{
 		timestamps: true,

@@ -11,37 +11,38 @@ block content
   h2= 'Add nutrition information'
   p Here's where you can add nutrition information about ingredients in your recipes.
   form.row.g-3.needs-validation(action='/api/nutrition' method='POST' novalidate)
-    +input_block('text', 'name', 'Name')(placeholder = "Ingredient name", required)
+    +input_block('text', 'name', 'Name')(required, placeholder = "white sugar")
       .invalid-feedback
         | Name is required.
-    .mb-3
-      +label('servingSize') Serving Size
-      .input-group
-        +input('number', 'servingSize')(value="1" required)
-        +select('servingSizeUnits', 'Serving size units')(class="col-4")
-          option Tbsp
-          option Cup
-          option Ounce
-          option Grams
+    //- .mb-3
+    //-   +label('servingSize') Serving Size
+    //- .input-group
+    //-   +input('number', 'servingSize')(value="1" required)
+    //-   +select('servingSizeUnits', 'Serving size units')(class="col-4")
+    //-     option Tbsp
+    //-     option Cup
+    //-     option Ounce
+    //-     option Grams
+    +input_block('text', 'servingSize', 'Serving Size')(required, placeholder="1 tbsp")
       .invalid-feedback
-        | How big is one serving?
-    +input_block('text', 'calories', 'Calories')(required)
+        | How much is this serving (tbsp, tsp, cup, oz, or g)?
+    +input_block('text', 'calories', 'Calories')(required, placeholder="45 kcal")
       .invalid-feedback
-        | How many calories for this serving?
+        | How many calories (kcal) for this serving?
     h3 Fat
-    +input_block('text', 'fatContent', 'Total Fat')
-    +input_block('text', 'saturatedFatContent', 'Saturated Fat')
-    +input_block('text', 'unsaturatedFatContent', 'Unsaturated Fat')
+    +input_block('text', 'fatContent', 'Total Fat')(placeholder="0 g")
+    +input_block('text', 'saturatedFatContent', 'Saturated Fat')(placeholder="0 g")
+    +input_block('text', 'unsaturatedFatContent', 'Unsaturated Fat')(placeholder="0 g")
     h3 Cholesterol
-    +input_block('text', 'cholesterolContent', 'Cholesterol')
+    +input_block('text', 'cholesterolContent', 'Cholesterol')(placeholder="0 mg")
     h3 Sodium
-    +input_block('text', 'sodiumContent', 'Sodium')
+    +input_block('text', 'sodiumContent', 'Sodium')(placeholder="0 mg")
     h3 Carbohydrate
-    +input_block('text', 'carbohydrateContent', 'Carbohydrate')
-    +input_block('text', 'fiberContent', 'Fiber')
-    +input_block('text', 'sugarContent', 'Added Sugars')
+    +input_block('text', 'carbohydrateContent', 'Carbohydrate')(placeholder="12 g")
+    +input_block('text', 'fiberContent', 'Fiber')(placeholder="0 g")
+    +input_block('text', 'sugarContent', 'Added Sugars')(placeholder="12 g")
     h3 Protein
-    +input_block('text', 'proteinContent', 'Protein')
+    +input_block('text', 'proteinContent', 'Protein')(placeholder="0 g")
     .btn-group(role="group")
       +submit() Add
       +button()(class='btn-outline-secondary' type='reset') Reset

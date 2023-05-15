@@ -110,9 +110,9 @@ Content-Type: application/json
 
 {
     "name": "Grandma&#39;s Chicken Pot Pie",
-    "author": {
-        "name": "Betsy Ross"
-    }
+    "keywords": [
+        "family recipe"
+    ]
 }
 
 ### Verify updated

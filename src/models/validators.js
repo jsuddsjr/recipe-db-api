@@ -12,7 +12,7 @@ const ValidDuration = {
 	},
 }
 
-const RequiredDuration = Object.assign({required: true}, ValidDuration)
+const RequiredDuration = {required: true, ...ValidDuration}
 
 const ValidDate = {
 	type: String,
@@ -25,7 +25,7 @@ const ValidDate = {
 	},
 }
 
-const RequiredDate = Object.assign({required: true}, ValidDate)
+const RequiredDate = {required: true, ...ValidDate}
 
 const ValidUrl = {
 	type: String,
@@ -42,20 +42,57 @@ const ValidUrl = {
 	},
 }
 
-const RequiredUrl = Object.assign({required: true}, ValidUrl)
+const RequiredUrl = {required: true, ...ValidUrl}
 
 const TrimmedString = {
 	type: String,
 	trim: true,
 }
 
-const RequiredString = Object.assign({required: true}, TrimmedString)
+const RequiredString = {required: true, ...TrimmedString}
+
+const ValidMetricWeightString = {
+	type: String,
+	trim: true,
+	validate: {
+		validator(value) {
+			return /^\d+ m?g$/.test(value)
+		},
+		message: (props) => `${props.value} should match "[0-9]+ m?g" pattern`,
+	},
+}
+
+const ValidCalorieString = {
+	type: String,
+	trim: true,
+	validate: {
+		validator(value) {
+			return /^\d+ (kcal|calorie)s?$/.test(value)
+		},
+		message: (props) =>
+			`${props.value} should match "[0-9]+ (kcal|calorie)s?" pattern`,
+	},
+}
+
+const ValidServingSizeString = {
+	type: String,
+	trim: true,
+	validate: {
+		validator(value) {
+			return /^\d+ (tbsp|tsp|cup|oz|g|mg)s?$/.test(value)
+		},
+		message: (props) =>
+			`${props.value} should match "[0-9]+ (tbsp|tsp|cup|oz|g|mg)s?" pattern`,
+	},
+}
 
 /**
  * @param {string|function():string} defaultValue
  */
-const defaultString = (defaultValue) =>
-	Object.assign({default: defaultValue}, RequiredString)
+const defaultString = (defaultValue) => ({
+	default: defaultValue,
+	...RequiredString,
+})
 
 module.exports = {
 	defaultString,
@@ -66,5 +103,8 @@ module.exports = {
 	TrimmedString,
 	ValidDate,
 	ValidDuration,
+	ValidCalorieString,
+	ValidMetricWeightString,
+	ValidServingSizeString,
 	ValidUrl,
 }
