@@ -67,10 +67,10 @@ const ValidCalorieString = {
 	trim: true,
 	validate: {
 		validator(value) {
-			return /^\d+ (kcal|calorie)s?$/.test(value)
+			return /^\d+ (?:kcal|calories)$/.test(value)
 		},
 		message: (props) =>
-			`${props.value} should match "[0-9]+ (kcal|calorie)s?" pattern`,
+			`${props.value} should match "[0-9]+ (kcal|calories)" pattern`,
 	},
 }
 
@@ -79,10 +79,10 @@ const ValidServingSizeString = {
 	trim: true,
 	validate: {
 		validator(value) {
-			return /^\d+ (tbsp|tsp|cup|oz|g|mg)s?$/.test(value)
+			return /^\d+ (?:tbsp|tsp|cup|oz|g|mg)$/.test(value)
 		},
 		message: (props) =>
-			`${props.value} should match "[0-9]+ (tbsp|tsp|cup|oz|g|mg)s?" pattern`,
+			`${props.value} should match "[0-9]+ (tbsp|tsp|cup|oz|g|mg)" pattern`,
 	},
 }
 
