@@ -20,42 +20,6 @@ const swaggerDefinition = {
 		},
 	],
 	definitions: swaggerSchemas,
-	// Paths: {
-	// 	'/api/recipes': {
-	// 		get: {
-	// 			description: 'Get all recipes.',
-	// 			produces: ['application/json'],
-	// 			responses: {
-	// 				200: {
-	// 					description: 'OK',
-	// 					schema: {
-	// 						type: 'array',
-	// 						items: {
-	// 							$ref: '#/definitions/Recipe',
-	// 						},
-	// 					},
-	// 				},
-	// 			},
-	// 		},
-	// 	},
-	// 	'/api/recipes/{id}': {
-	// 		get: {
-	// 			description: 'Get recipe by id.',
-	// 			produces: ['application/json'],
-	// 			responses: {
-	// 				200: {
-	// 					description: 'OK',
-	// 					schema: {
-	// 						type: 'array',
-	// 						items: {
-	// 							$ref: '#/definitions/Recipe',
-	// 						},
-	// 					},
-	// 				},
-	// 			},
-	// 		},
-	// 	},
-	// },
 }
 
 const swaggerSpec = swaggerJsdoc({
