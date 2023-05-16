@@ -11,10 +11,11 @@ const router = Router()
  *     description: Get all recipes.
  *     responses:
  *       200:
- *         description: Success
+ *         description: OK
  *         type: array
  *         items:
- *           $ref: '#/definitions/Recipe'
+ *           schema:
+ *             $ref: '#/definitions/Recipe'
  *       500:
  *         description: Internal Server Error
  *         type: object
@@ -38,7 +39,7 @@ router.get('/', recipeController.getAll)
  *         $ref: '#/definitions/Id'
  *     responses:
  *       200:
- *         description: Success
+ *         description: OK
  *         type: object
  *         schema:
  *           $ref: '#/definitions/Recipe'
@@ -55,9 +56,12 @@ router.get('/:id', recipeController.getSingle)
  * /api/recipes:
  *   post:
  *     description: Create a new recipe.
+ *     consumes:
+ *     - application/json
+ *     - application/x-www-form-urlencoded
  *     parameters:
  *     - name: recipe
- *       description: Recipe object
+ *       description: Recipe object or array of recipe objects
  *       in: body
  *       required: true
  *       schema:
@@ -83,6 +87,9 @@ router.post('/', recipeController.postSingle)
  * /api/recipes/{id}:
  *   put:
  *    description: Update specified recipe.
+ *    consumes:
+ *     - application/json
+ *     - application/x-www-form-urlencoded
  *    parameters:
  *    - name: id
  *      description: Record id
@@ -90,7 +97,7 @@ router.post('/', recipeController.postSingle)
  *      required: true
  *      schema:
  *        $ref: '#/definitions/Id'
- *    - name: contact
+ *    - name: recipe
  *      description: Recipe object
  *      in: body
  *      required: true
@@ -125,7 +132,7 @@ router.put('/:id', recipeController.putSingle)
  *         $ref: '#/definitions/Id'
  *     responses:
  *       200:
- *         description: Success
+ *         description: OK
  *         type: object
  *         schema:
  *           $ref: '#/definitions/ErrorMessage'

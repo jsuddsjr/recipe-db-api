@@ -18,7 +18,6 @@ router.get('/', async (request, response) => {
 router.post('/', async (request, response) => {
 	try {
 		const record = await Ingredient.create(request.body)
-		await record.save()
 		response.send(record)
 	} catch (error) {
 		response.status(500).send(error.message)
