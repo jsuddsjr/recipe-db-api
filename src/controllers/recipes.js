@@ -1,4 +1,4 @@
-const Recipe = require('../models/model-recipe.js')
+const Recipe = require('../models/recipe.js')
 
 /** @typedef {import('express-serve-static-core').Request} ExpressRequest */
 /** @typedef {import('express-serve-static-core').Response} ExpressResponse */

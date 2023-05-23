@@ -1,5 +1,5 @@
 const {Router} = require('express')
-const recipeController = require('../controllers/controller-recipes.js')
+const recipeController = require('../controllers/recipes.js')
 
 // eslint-disable-next-line new-cap
 const router = Router()

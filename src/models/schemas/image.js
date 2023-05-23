@@ -4,7 +4,7 @@ const {
 	TrimmedString,
 	ValidDate,
 	ValidUrl,
-} = require('./validators.js')
+} = require('../validators.js')
 
 const imageSchema = new mongoose.Schema(
 	{

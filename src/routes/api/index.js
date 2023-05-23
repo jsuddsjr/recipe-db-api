@@ -1,7 +1,7 @@
 const {Router} = require('express')
-const ingredientRouter = require('./route-api-ingredients.js')
-const recipeRouter = require('./route-api-recipes.js')
-const userRouter = require('./route-api-users.js')
+const ingredientRouter = require('./ingredients.js')
+const recipeRouter = require('./recipes.js')
+const userRouter = require('./users.js')
 
 // eslint-disable-next-line new-cap
 const router = Router()

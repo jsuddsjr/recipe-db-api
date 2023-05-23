@@ -1,5 +1,5 @@
 const {Router} = require('express')
-const User = require('../models/model-user.js')
+const User = require('../models/user.js')
 
 // eslint-disable-next-line new-cap
 const router = Router()

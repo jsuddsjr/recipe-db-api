@@ -1,7 +1,7 @@
 const m2s = require('mongoose-to-swagger')
-const Recipe = require('./model-recipe.js')
-const Ingredient = require('./model-ingredient.js')
-const User = require('./model-user.js')
+const Recipe = require('./recipe.js')
+const Ingredient = require('./ingredient.js')
+const User = require('./user.js')
 
 // Generate JSON from Mongoose Models.
 const recipeJson = m2s(Recipe)

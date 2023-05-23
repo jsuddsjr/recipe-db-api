@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const imageSchema = require('./schema-image.js')
+const imageSchema = require('./schemas/image.js')
 const {
 	defaultString,
 	RequiredString,

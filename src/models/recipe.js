@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const imageSchema = require('./schema-image.js')
-const nutritionSchema = require('./schema-nutrition.js')
-const personSchema = require('./schema-person.js')
-const videoSchema = require('./schema-video.js')
+const imageSchema = require('./schemas/image.js')
+const nutritionSchema = require('./schemas/nutrition.js')
+const personSchema = require('./schemas/person.js')
+const videoSchema = require('./schemas/video.js')
 const {
 	defaultString,
 	RequiredDate,
