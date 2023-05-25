@@ -1,5 +1,6 @@
 const {Router} = require('express')
-const recipeController = require('../../controllers/recipes.js')
+const crud = require('../../controllers/crud.js')
+const Recipe = require('../../models/recipe.js')
 
 // eslint-disable-next-line new-cap
 const router = Router()
@@ -23,7 +24,7 @@ const router = Router()
  *           $ref: '#/definitions/ErrorMessage'
  */
 
-router.get('/', recipeController.getAll)
+router.get('/', crud.getAll(Recipe))
 
 /**
  * @swagger
@@ -49,7 +50,7 @@ router.get('/', recipeController.getAll)
  *         schema:
  *           $ref: '#/definitions/ErrorMessage'
  */
-router.get('/:id', recipeController.getSingle)
+router.get('/:id', crud.checkObjectId(), crud.getSingle(Recipe))
 
 /**
  * @swagger
@@ -80,7 +81,7 @@ router.get('/:id', recipeController.getSingle)
  *         schema:
  *           $ref: '#/definitions/ErrorMessage'
  */
-router.post('/', recipeController.postSingle)
+router.post('/', crud.checkObjectId(), crud.postSingle(Recipe))
 
 /**
  * @swagger
@@ -116,7 +117,7 @@ router.post('/', recipeController.postSingle)
  *        schema:
  *          $ref: '#/definitions/ErrorMessage'
  */
-router.put('/:id', recipeController.putSingle)
+router.put('/:id', crud.checkObjectId(), crud.putSingle(Recipe))
 
 /**
  * @swagger
@@ -141,6 +142,6 @@ router.put('/:id', recipeController.putSingle)
  *       404:
  *         description: Not found
  */
-router.delete('/:id', recipeController.deleteSingle)
+router.delete('/:id', crud.checkObjectId(), crud.deleteSingle(Recipe))
 
 module.exports = router
