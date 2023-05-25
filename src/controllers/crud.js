@@ -18,7 +18,7 @@ const {ObjectId} = require('mongodb')
 const checkObjectId =
 	(id = 'id') =>
 	(request, response, next) => {
-		if (ObjectId.isValid(request.params[id])) next()
+		if (ObjectId.isValid(request.params[id])) return next()
 		response.status(400).send('Valid objectId required.')
 	}
 
