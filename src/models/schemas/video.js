@@ -6,7 +6,7 @@ const {
 	ValidDate,
 	ValidDuration,
 	ValidUrl,
-} = require('./validators.js')
+} = require('../validators.js')
 
 const videoSchema = new mongoose.Schema(
 	{

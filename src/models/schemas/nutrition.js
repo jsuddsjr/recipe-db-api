@@ -3,7 +3,7 @@ const {
 	defaultString,
 	ValidCalorieString,
 	ValidMetricWeightString,
-} = require('./validators.js')
+} = require('../validators.js')
 
 const nutritionSchema = new mongoose.Schema(
 	{

@@ -1,60 +1,23 @@
 const {Router} = require('express')
-const User = require('../models/user.js')
+const crud = require('../../controllers/crud.js')
+const User = require('../../models/user.js')
 
 // eslint-disable-next-line new-cap
 const router = Router()
 
 // Get all users
-router.get('/', async (request, response) => {
-	try {
-		const users = await User.find()
-		response.send(users)
-	} catch (error) {
-		response.status(500).send(error.message)
-	}
-})
+router.get('/', crud.getAll(User))
 
 // Create a new user
-router.post('/', async (request, response) => {
-	try {
-		const user = User.create(request.body, {runValidators: true})
-		response.send(user)
-	} catch (error) {
-		response.status(500).send(error.message)
-	}
-})
+router.post('/', crud.postSingle(User))
 
 // Get user By ID
-router.get('/:id', async (request, response) => {
-	try {
-		const user = await User.findById(request.params.id)
-		response.send(user)
-	} catch (error) {
-		response.status(500).send(error.message)
-	}
-})
+router.get('/:id', crud.checkObjectId(), crud.getSingle(User))
 
 // Update user By ID
-router.put('/:id', async (request, response) => {
-	try {
-		const user = await User.findByIdAndUpdate(request.params.id, request.body, {
-			new: true,
-			runValidators: true,
-		})
-		response.send(user)
-	} catch (error) {
-		response.status(500).send(error.message)
-	}
-})
+router.put('/:id', crud.checkObjectId(), crud.putSingle(User))
 
 // Delete user By ID
-router.delete('/:id', async (request, response) => {
-	try {
-		const user = await User.findByIdAndDelete(request.params.id)
-		response.send(user)
-	} catch (error) {
-		response.status(500).send(error.message)
-	}
-})
+router.delete('/:id', crud.checkObjectId(), crud.deleteSingle(User))
 
 module.exports = router

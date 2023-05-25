@@ -80,7 +80,6 @@ const putSingle = (model) => async (request, response) => {
 				new: true,
 				runValidators: true,
 			})
-			.exec()
 
 		if (result.$isValid()) {
 			response.status(204).json(result)
@@ -98,7 +97,7 @@ const putSingle = (model) => async (request, response) => {
  */
 const deleteSingle = (model) => async (request, response) => {
 	try {
-		const result = await model.findByIdAndDelete(request.params.id).exec()
+		const result = await model.findByIdAndDelete(request.params.id)
 		if (result) {
 			response.status(200).json({message: `${request.params.id} deleted`})
 		} else {
