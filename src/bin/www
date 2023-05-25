@@ -3,7 +3,6 @@
 /**
  * Module dependencies.
  */
-
 const http = require('node:http')
 const process = require('node:process')
 const debug = require('debug')('recipe-db-api:server')
@@ -13,20 +12,17 @@ const app = require('../app.js')
 /**
  * Get port from environment and store in Express.
  */
-
 const port = normalizePort(process.env.PORT || '3000')
 app.set('port', port)
 
 /**
  * Create HTTP server.
  */
-
 const server = http.createServer(app)
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-
 server.listen(port)
 server.on('error', onError)
 server.on('listening', onListening)
@@ -34,7 +30,6 @@ server.on('listening', onListening)
 /**
  * Normalize a port into a number, string, or false.
  */
-
 function normalizePort(value) {
 	const port = Number.parseInt(value, 10)
 
@@ -54,7 +49,6 @@ function normalizePort(value) {
 /**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
 	if (error.syscall !== 'listen') {
 		throw error
@@ -85,7 +79,6 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
 async function onListening() {
 	const addr = server.address()
 	const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port
@@ -95,8 +88,8 @@ async function onListening() {
 		if (error) {
 			throw error
 		} else {
-			console.log('Database connected.')
-			db.connection.on('error', console.log)
+			debug('Database connected.')
+			db.connection.on('error', debug)
 		}
 	})
 }
