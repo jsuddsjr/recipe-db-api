@@ -13,6 +13,8 @@ const userJson = m2s(User, {
 const idJson = {
 	type: 'string',
 	length: 24,
+	example: '5e4a1d5b5e5e5e5e5e5e5e5e',
+	description: 'The unique identifier.',
 }
 
 const errorMessageJson = {
@@ -20,6 +22,8 @@ const errorMessageJson = {
 	properties: {
 		message: {
 			type: 'string',
+			example: 'The error message.',
+			description: 'The error message.',
 		},
 	},
 }

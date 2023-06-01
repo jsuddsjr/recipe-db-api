@@ -15,11 +15,29 @@ const {
 
 const documentSchema = new mongoose.Schema(
 	{
-		'@type': defaultString('HowToStep'),
-		image: [imageSchema],
-		name: TrimmedString,
-		text: RequiredString,
-		url: ValidUrl,
+		'@type': {...defaultString('HowToStep'), description: 'The schema type.'},
+		image: [
+			{
+				...imageSchema,
+				example: 'https://example.com/image.jpg',
+				description: 'The image.',
+			},
+		],
+		name: {
+			...TrimmedString,
+			example: 'Step 1',
+			description: 'The name of the step.',
+		},
+		text: {
+			...RequiredString,
+			example: 'Do this.',
+			description: 'The text of the step.',
+		},
+		url: {
+			...ValidUrl,
+			example: 'https://example.com#step',
+			description: 'The page anchor of the step.',
+		},
 	},
 	{
 		_id: false,

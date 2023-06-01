@@ -10,5 +10,8 @@
         "Production": {
             "host": "https://team7project.onrender.com"
         }
-    }
+    },
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true
 }

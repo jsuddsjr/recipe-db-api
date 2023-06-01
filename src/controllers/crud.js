@@ -75,11 +75,14 @@ const postSingle = (model) => async (request, response) => {
  */
 const putSingle = (model) => async (request, response) => {
 	try {
-		const result = await model
-			.findByIdAndUpdate(request.params.id, request.body, {
+		const result = await model.findByIdAndUpdate(
+			request.params.id,
+			request.body,
+			{
 				new: true,
 				runValidators: true,
-			})
+			},
+		)
 
 		if (result.$isValid()) {
 			response.status(204).json(result)

@@ -9,7 +9,10 @@ const {
 
 const userSchema = new mongoose.Schema(
 	{
-		'@context': defaultString('http://schema.org'),
+		'@context': {
+			...defaultString('http://schema.org'),
+			description: 'The schema context.',
+		},
 		'@type': defaultString('Person'),
 		name: RequiredString,
 		email: RequiredString,

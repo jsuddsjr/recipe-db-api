@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
-const imageSchema = require('./image.js')
 const {
 	defaultString,
 	RequiredString,
 	TrimmedString,
 	ValidUrl,
 } = require('../validators.js')
+const imageSchema = require('./image.js')
 
 const personSchema = new mongoose.Schema(
 	{
