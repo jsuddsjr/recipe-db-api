@@ -17,18 +17,18 @@ let _db
  * @returns {void}
  * @throws {Error}
  */
-const initDb = (callback) => {
+const initDb = callback => {
 	if (_db) {
 		console.log('Db is already initialized!')
 		return callback(null, _db)
 	}
 
 	mongoose.connect(config.MONGO_DB_URL).then(
-		(value) => {
+		value => {
 			_db = value
 			callback(null, _db)
 		},
-		(error) => {
+		error => {
 			callback(error)
 		},
 	)

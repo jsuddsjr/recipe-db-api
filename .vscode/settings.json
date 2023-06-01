@@ -1,6 +1,8 @@
 {
-    "editor.formatOnSaveMode": "file",
-    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
     "workbench.editor.labelFormat": "short",
     "rest-client.environmentVariables": {
         "$shared": {
@@ -13,5 +15,10 @@
     },
     "files.eol": "\n",
     "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true
+    "files.trimFinalNewlines": true,
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "cSpell.words": [
+        "datestring",
+        "middlewares"
+    ]
 }

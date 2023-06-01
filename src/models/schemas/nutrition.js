@@ -1,14 +1,36 @@
 const mongoose = require('mongoose')
 const {
 	defaultString,
+	RequiredString,
 	ValidCalorieString,
 	ValidMetricWeightString,
-} = require('../validators.js')
+	ValidServingSizeString,
+} = require('../validators.js');
 
 const nutritionSchema = new mongoose.Schema(
 	{
-		'@type': defaultString('NutritionInformation'),
-		calories: {requred: true, ...ValidCalorieString},
+		'@context': {
+			...defaultString('http://schema.org'),
+			description: 'The schema context.',
+		},
+		'@type': {
+			...defaultString('NutritionInformation'),
+			description: 'The schema type.',
+		},
+		name: {
+			...RequiredString,
+			example: 'Apple',
+			description: 'The name of the food.',
+		},
+		servingSize: {
+			required: true,
+			...ValidServingSizeString,
+			description: 'The serving size of the food.',
+		},
+		calories: {
+			required: true,
+			...ValidCalorieString,
+		},
 		carbohydrateContent: ValidMetricWeightString,
 		cholesterolContent: ValidMetricWeightString,
 		fiberContent: ValidMetricWeightString,
@@ -22,6 +44,6 @@ const nutritionSchema = new mongoose.Schema(
 	{
 		_id: false,
 	},
-)
+);
 
 module.exports = nutritionSchema

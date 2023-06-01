@@ -27,7 +27,7 @@ const checkObjectId =
  * @param {MongooseModel} model A Mongoose model
  * @returns {ExpressRouteHandler}
  */
-const getAll = (model) => async (request, response) => {
+const getAll = model => async (request, response) => {
 	try {
 		const results = await model.find()
 		response.status(200).json(results)
@@ -41,7 +41,7 @@ const getAll = (model) => async (request, response) => {
  * @param {MongooseModel} model A Mongoose model
  * @returns {ExpressRouteHandler}
  */
-const getSingle = (model) => async (request, response) => {
+const getSingle = model => async (request, response) => {
 	try {
 		const results = await model.findById(request.params.id)
 		if (results) {
@@ -59,7 +59,7 @@ const getSingle = (model) => async (request, response) => {
  * @param {MongooseModel} model A Mongoose model
  * @returns {ExpressRouteHandler}
  */
-const postSingle = (model) => async (request, response) => {
+const postSingle = model => async (request, response) => {
 	try {
 		const result = await model.create(request.body)
 		response.status(201).send(result)
@@ -73,7 +73,7 @@ const postSingle = (model) => async (request, response) => {
  * @param {MongooseModel} model A Mongoose model
  * @param {ExpressResponse} response The HTTP response
  */
-const putSingle = (model) => async (request, response) => {
+const putSingle = model => async (request, response) => {
 	try {
 		const result = await model.findByIdAndUpdate(
 			request.params.id,
@@ -98,7 +98,7 @@ const putSingle = (model) => async (request, response) => {
  * @param {MongooseModel} model A Mongoose model
  * @returns {ExpressRouteHandler}
  */
-const deleteSingle = (model) => async (request, response) => {
+const deleteSingle = model => async (request, response) => {
 	try {
 		const result = await model.findByIdAndDelete(request.params.id)
 		if (result) {

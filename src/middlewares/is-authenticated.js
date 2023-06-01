@@ -4,6 +4,8 @@ module.exports = {
 			return next()
 		}
 
-		response.status(401).send('Access denied.')
+		response
+			.status(401)
+			.send('You cannot access this resource without being logged in.')
 	},
 }
