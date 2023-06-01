@@ -1,0 +1,14 @@
+{
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnSave": true,
+    "workbench.editor.labelFormat": "short",
+    "rest-client.environmentVariables": {
+        "$shared": {
+            "host": "http://localhost:5012"
+        },
+        "Development": {},
+        "Production": {
+            "host": "https://team7project.onrender.com"
+        }
+    }
+}

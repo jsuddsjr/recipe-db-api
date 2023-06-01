@@ -8,13 +8,12 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Server",
+            "smartStep": false,
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\src\\bin\\www",
-            "outFiles": [
-                "${workspaceFolder}/src/**/*.js"
-            ],
+            "localRoot": "${workspaceFolder}\\src",
             "env": {
                 "DEBUG": "express:*"
             }
