@@ -6,16 +6,15 @@ let _db
 
 /**
  * @callback InitDbCallback
- * @param {Error} err
- * @param {MongoClient} db
+ * @param {Error} err Error object
+ * @param {mongoose.Mongoose} db The database connection
  * @returns {void}
  */
 
 /**
  * Initializes the database connection
- * @param {InitDbCallback} callback
+ * @param {InitDbCallback} callback The callback function
  * @returns {void}
- * @throws {Error}
  */
 const initDb = callback => {
 	if (_db) {

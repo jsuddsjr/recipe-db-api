@@ -3,7 +3,6 @@ const Ingredient = require('../../models/ingredient.js')
 const crud = require('../../controllers/crud.js')
 const isAuthenticated = require('../../middlewares/is-authenticated.js')
 
-// eslint-disable-next-line new-cap
 const router = Router()
 
 // Get all records

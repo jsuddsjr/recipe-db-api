@@ -2,7 +2,6 @@ const Realm = require('realm-web')
 const {Router} = require('express')
 const config = require('../config/config.js')
 
-// eslint-disable-next-line new-cap
 const router = Router()
 
 router.get('/', async (request, response) => {

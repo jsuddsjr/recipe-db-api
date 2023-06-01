@@ -6,7 +6,7 @@ const {
 	RequiredString,
 	TrimmedString,
 	ValidUrl,
-} = require('./validators.js');
+} = require('./validators.js')
 
 const userSchema = new mongoose.Schema(
 	{
@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema(
 	{
 		timestamps: true,
 	},
-);
+)
 
 const User = mongoose.model('user', userSchema)
 

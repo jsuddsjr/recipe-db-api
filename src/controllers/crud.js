@@ -12,8 +12,8 @@ const {ObjectId} = require('mongodb')
  */
 
 /**
- * @param {String} id Name of the id parameter. Default: "id"
- * @returns {ExpressRouteHandler}
+ * @param {string} id Name of the id parameter. Default: "id"
+ * @returns {ExpressRouteHandler} Express middleware
  */
 const checkObjectId =
 	(id = 'id') =>
@@ -25,7 +25,7 @@ const checkObjectId =
 /**
  * GET route for getting all records that returns a 200 status
  * @param {MongooseModel} model A Mongoose model
- * @returns {ExpressRouteHandler}
+ * @returns {ExpressRouteHandler} Express middleware
  */
 const getAll = model => async (request, response) => {
 	try {
@@ -39,7 +39,7 @@ const getAll = model => async (request, response) => {
 /**
  * GET route for getting a single record that returns a 200 status
  * @param {MongooseModel} model A Mongoose model
- * @returns {ExpressRouteHandler}
+ * @returns {ExpressRouteHandler} Express middleware
  */
 const getSingle = model => async (request, response) => {
 	try {
@@ -57,7 +57,7 @@ const getSingle = model => async (request, response) => {
 /**
  * POST route for creating new records that returns the ID of the new record and a 201 status
  * @param {MongooseModel} model A Mongoose model
- * @returns {ExpressRouteHandler}
+ * @returns {ExpressRouteHandler} Express middleware
  */
 const postSingle = model => async (request, response) => {
 	try {
@@ -71,7 +71,7 @@ const postSingle = model => async (request, response) => {
 /**
  * PUT route for updating a record that returns a 204 status
  * @param {MongooseModel} model A Mongoose model
- * @param {ExpressResponse} response The HTTP response
+ * @returns {ExpressRouteHandler} Express middleware
  */
 const putSingle = model => async (request, response) => {
 	try {
@@ -94,9 +94,10 @@ const putSingle = model => async (request, response) => {
 	}
 }
 
-/** DELETE route for deleting a record that returns a 200 status
+/**
+ * DELETE route for deleting a record that returns a 200 status
  * @param {MongooseModel} model A Mongoose model
- * @returns {ExpressRouteHandler}
+ * @returns {ExpressRouteHandler} Express middleware
  */
 const deleteSingle = model => async (request, response) => {
 	try {

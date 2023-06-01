@@ -4,7 +4,7 @@ const {
 	RequiredString,
 	ValidEmail,
 	ValidUrl,
-} = require('../validators.js');
+} = require('../validators.js')
 const imageSchema = require('./image.js')
 
 const personSchema = new mongoose.Schema(
@@ -18,6 +18,6 @@ const personSchema = new mongoose.Schema(
 	{
 		_id: false,
 	},
-);
+)
 
 module.exports = personSchema

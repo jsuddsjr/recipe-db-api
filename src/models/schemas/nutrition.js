@@ -5,7 +5,7 @@ const {
 	ValidCalorieString,
 	ValidMetricWeightString,
 	ValidServingSizeString,
-} = require('../validators.js');
+} = require('../validators.js')
 
 const nutritionSchema = new mongoose.Schema(
 	{
@@ -44,6 +44,6 @@ const nutritionSchema = new mongoose.Schema(
 	{
 		_id: false,
 	},
-);
+)
 
 module.exports = nutritionSchema

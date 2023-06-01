@@ -1,6 +1,7 @@
 {
   "name": "recipe-db-api",
   "version": "0.0.1",
+  "author": "John Sudds <jsuddsjr@noreply.github.com>",
   "private": true,
   "type": "commonjs",
   "engines": {
@@ -35,7 +36,7 @@
     "pug": "^3.0.2",
     "pug-bootstrap": "^0.0.16",
     "realm-web": "^2.0.0",
-    "swagger-jsdoc": "^6.2.8",
+    "swagger-autogen": "^2.23.1",
     "swagger-ui-express": "^4.6.3"
   },
   "resolutions": {
@@ -48,6 +49,7 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.5",
     "bootstrap-pug": "^1.0.0",
+    "eslint-plugin-jsdoc": "^46.1.0",
     "is-email-validation": "^0.0.5",
     "livereload": "^0.9.3",
     "mongoose-to-swagger": "^1.4.0",
@@ -67,14 +69,26 @@
   "xo": {
     "prettier": true,
     "semicolon": false,
+    "esnext": true,
     "envs": [
       "commonjs",
       "mongo",
       "node"
     ],
+    "plugins": [
+      "jsdoc"
+    ],
+    "extends": [
+      "plugin:jsdoc/recommended"
+    ],
     "rules": {
+      "semi": [
+        "error",
+        "never"
+      ],
       "strict": "error",
-      "unicorn/prefer-module": "off"
+      "unicorn/prefer-module": "off",
+      "new-cap": "off"
     }
   }
 }

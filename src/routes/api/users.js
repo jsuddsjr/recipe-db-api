@@ -2,7 +2,6 @@ const {Router} = require('express')
 const crud = require('../../controllers/crud.js')
 const User = require('../../models/user.js')
 
-// eslint-disable-next-line new-cap
 const router = Router()
 
 // Get all users

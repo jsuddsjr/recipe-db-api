@@ -3,7 +3,6 @@ const ingredientRouter = require('./ingredients.js')
 const recipeRouter = require('./recipes.js')
 const userRouter = require('./users.js')
 
-// eslint-disable-next-line new-cap
 const router = Router()
 
 router.use((request, response, next) => {
@@ -12,8 +11,11 @@ router.use((request, response, next) => {
 })
 
 /* Pass ALL traffic to handlers. */
-router.use('/ingredients', ingredientRouter)
-router.use('/recipes', recipeRouter)
-router.use('/users', userRouter)
+router.use(
+	'/ingredients',
+	/* #swagger.tags = ['Ingredient'] */ ingredientRouter,
+)
+router.use('/recipes', /* #swagger.tags = ['Recipe'] */ recipeRouter)
+router.use('/users', /* #swagger.tags = ['User'] */ userRouter)
 
 module.exports = router

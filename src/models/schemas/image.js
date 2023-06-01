@@ -39,6 +39,6 @@ const imageSchema = new mongoose.Schema(
 	{
 		_id: false,
 	},
-);
+)
 
 module.exports = imageSchema

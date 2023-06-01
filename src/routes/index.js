@@ -1,8 +1,7 @@
 const {Router} = require('express')
-const swaggerSchema = require('../models/swagger-gen.js')
+const swaggerSchema = require('../swagger/swagger-gen.js')
 const userRouter = require('./user.js')
 
-// eslint-disable-next-line new-cap
 const router = Router()
 
 /* GET home page. */

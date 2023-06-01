@@ -12,9 +12,9 @@ const {
 	TrimmedString,
 	ValidDuration,
 	ValidUrl,
-} = require('./validators.js');
-const User = require('./user.js');
-const Ingredient = require('./ingredient.js');
+} = require('./validators.js')
+const User = require('./user.js')
+const Ingredient = require('./ingredient.js')
 
 const documentSchema = new mongoose.Schema(
 	{
@@ -45,7 +45,7 @@ const documentSchema = new mongoose.Schema(
 	{
 		_id: false,
 	},
-);
+)
 
 const recipeSchema = new mongoose.Schema(
 	{
@@ -115,13 +115,13 @@ const recipeSchema = new mongoose.Schema(
 	{
 		timestamps: true,
 	},
-);
+)
 
 recipeSchema.add({
 	authorIds: [foreignKey(User, 'Author ids.')],
 	ownerId: foreignKey(User, 'Owner id.'),
 	nutritionIds: [foreignKey(Ingredient, 'Ingredient ids.')],
-});
+})
 
 const Recipe = mongoose.model('recipe', recipeSchema)
 

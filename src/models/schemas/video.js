@@ -7,7 +7,7 @@ const {
 	ValidDuration,
 	ValidUrl,
 	RequiredUrl,
-} = require('../validators.js');
+} = require('../validators.js')
 
 const videoSchema = new mongoose.Schema(
 	{
@@ -24,6 +24,6 @@ const videoSchema = new mongoose.Schema(
 	{
 		_id: false,
 	},
-);
+)
 
 module.exports = videoSchema
