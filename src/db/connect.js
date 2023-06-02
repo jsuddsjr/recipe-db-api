@@ -22,7 +22,9 @@ const initDatabase = callback => {
 		return callback(false, _database)
 	}
 
-	mongoose.connect(config.MONGO_DB_URL).then(
+	mongoose.connect(config.MONGO_DB_URL, {
+		dbName: 'recipes'
+	}).then(
 		value => {
 			_database = value
 			callback(false, _database)

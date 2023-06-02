@@ -1,21 +1,28 @@
 {
-	"cSpell.words": ["autogen", "datestring", "middlewares", "onrender"],
-	"editor.formatOnSaveMode": "modificationsIfAvailable",
-	"files.eol": "\n",
-	"files.insertFinalNewline": true,
-	"files.trimFinalNewlines": true,
-	"workbench.editor.labelFormat": "short",
-	"[javascript]": {
-		"editor.defaultFormatter": "dbaeumer.vscode-eslint",
-		"editor.formatOnSave": true
-	},
-	"rest-client.environmentVariables": {
-		"$shared": {
-			"host": "http://localhost:5012"
-		},
-		"Development": {},
-		"Production": {
-			"host": "https://team7project.onrender.com"
-		}
-	}
+  "cSpell.words": [
+    "apidocs",
+    "autogen",
+    "datestring",
+    "middlewares",
+    "onrender",
+    "resave"
+  ],
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "workbench.editor.labelFormat": "short",
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSave": true
+  },
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "host": "http://localhost:5012"
+    },
+    "Development": {},
+    "Production": {
+      "host": "https://team7project.onrender.com"
+    }
+  }
 }

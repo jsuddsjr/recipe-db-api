@@ -3,15 +3,23 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const express = require('express')
-const passport = require('passport')
 const session = require('express-session')
-const {Strategy} = require('passport-github2')
+const passport = require('./middlewares/passport-strategies')
 const swaggerUi = require('swagger-ui-express')
-const apiRouter = require('./routes/api/index.js')
-const indexRouter = require('./routes/index.js')
 const swaggerSchema = require('./swagger.json')
 
 const app = express()
+
+// Passport Config
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+//! See passport-strategies.js for more config
 
 // Views
 app.set('views', path.join(__dirname, 'views'))
@@ -39,7 +47,6 @@ if (app.get('env') === 'development') {
 }
 
 // Routes
-app.use('/', indexRouter)
-app.use('/api', apiRouter)
+app.use('/', require('./routes'))
 
 module.exports = app

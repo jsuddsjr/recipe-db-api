@@ -10,7 +10,6 @@
   "scripts": {
     "lint:fix": "npm run lint -- --fix",
     "lint": "eslint src/**/*.js",
-    "preserve": "npm-run-all --parallel lint swagger",
     "serve:reload": "livereload --debug -ee 'pug' src/",
     "serve:watch": "set DEBUG=express:* && nodemon ./src/bin/www",
     "serve": "npm-run-all --parallel serve:watch serve:reload",

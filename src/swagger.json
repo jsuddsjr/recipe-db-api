@@ -10,22 +10,7 @@
   "schemes": [
     "https"
   ],
-  "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/ingredients": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    }
-  },
+  "paths": {},
   "definitions": {
     "InsertedDocument": {
       "properties": {
@@ -47,7 +32,7 @@
         }
       }
     },
-    "ingredient": {
+    "Ingredient": {
       "title": "ingredient",
       "required": [
         "@context",
@@ -127,14 +112,14 @@
         }
       }
     },
-    "ingredientArray": {
+    "IngredientArray": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ingredient",
-        "description": "An array of ingredient objects."
+        "$ref": "#/definitions/Ingredient",
+        "description": "An array of Ingredient objects."
       }
     },
-    "recipe": {
+    "Recipe": {
       "title": "recipe",
       "required": [
         "@context",
@@ -528,14 +513,14 @@
         }
       }
     },
-    "recipeArray": {
+    "RecipeArray": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/recipe",
-        "description": "An array of recipe objects."
+        "$ref": "#/definitions/Recipe",
+        "description": "An array of Recipe objects."
       }
     },
-    "user": {
+    "User": {
       "title": "user",
       "required": [
         "@context",
@@ -617,14 +602,18 @@
             "type": "string",
             "description": "A collection of keywords."
           }
+        },
+        "password": {
+          "type": "string",
+          "description": "Local password (not visible to default view)"
         }
       }
     },
-    "userArray": {
+    "UserArray": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/user",
-        "description": "An array of user objects."
+        "$ref": "#/definitions/User",
+        "description": "An array of User objects."
       }
     }
   }

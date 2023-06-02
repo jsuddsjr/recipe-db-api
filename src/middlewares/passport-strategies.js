@@ -2,13 +2,14 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy
 const LocalStrategy = require('passport-local').Strategy
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy
 const GitHubStrategy = require('passport-github2').Strategy
+const config = require('../config/config')
 
 const passport = require('passport')
 const {User} = require('../models')
 
 passport.use(new GoogleStrategy({
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  clientID: config.GOOGLE_CLIENT_ID,
+  clientSecret: config.GOOGLE_CLIENT_SECRET,
   callbackURL: '/auth/google/callback'
 },
 /**
