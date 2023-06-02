@@ -1,5 +1,5 @@
 const {Router} = require('express')
-const swaggerSchema = require('../swagger/swagger-gen.js')
+const swaggerSchema = require('../swagger.js')
 const userRouter = require('./user.js')
 
 const router = Router()

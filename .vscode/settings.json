@@ -4,10 +4,9 @@
 	"files.eol": "\n",
 	"files.insertFinalNewline": true,
 	"files.trimFinalNewlines": true,
-	"typescript.tsdk": "node_modules\\typescript\\lib",
 	"workbench.editor.labelFormat": "short",
 	"[javascript]": {
-		"editor.defaultFormatter": "samverschueren.linter-xo",
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint",
 		"editor.formatOnSave": true
 	},
 	"rest-client.environmentVariables": {

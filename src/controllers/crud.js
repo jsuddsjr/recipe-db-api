@@ -1,19 +1,8 @@
 const {ObjectId} = require('mongodb')
 
 /**
- * @typedef {import('express').Request} ExpressRequest
- * @typedef {import('express').Response} ExpressResponse
- * @typedef {import('express').NextFunction} ExpressNextFunction
- * @typedef {import('mongoose').Model} MongooseModel
- * @callback ExpressRouteHandler
- * @param {ExpressRequest} req The HTTP request
- * @param {ExpressResponse} res The HTTP response
- * @param {ExpressNextFunction} next The next function in route
- */
-
-/**
  * @param {string} id Name of the id parameter. Default: "id"
- * @returns {ExpressRouteHandler} Express middleware
+ * @returns {import('express').RequestHandler} Express middleware
  */
 const checkObjectId =
 	(id = 'id') =>
@@ -24,10 +13,10 @@ const checkObjectId =
 
 /**
  * GET route for getting all records that returns a 200 status
- * @param {MongooseModel} model A Mongoose model
- * @returns {ExpressRouteHandler} Express middleware
+ * @param {import('mongoose').Model} model A Mongoose model
+ * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const getAll = model => async (request, response) => {
+const getAll = (model) => async (request, response, next) => {
 	try {
 		const results = await model.find()
 		response.status(200).json(results)
@@ -38,10 +27,10 @@ const getAll = model => async (request, response) => {
 
 /**
  * GET route for getting a single record that returns a 200 status
- * @param {MongooseModel} model A Mongoose model
- * @returns {ExpressRouteHandler} Express middleware
+ * @param {import('mongoose').Model} model A Mongoose model
+ * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const getSingle = model => async (request, response) => {
+const getSingle = (model) => async (request, response, next) => {
 	try {
 		const results = await model.findById(request.params.id)
 		if (results) {
@@ -56,12 +45,13 @@ const getSingle = model => async (request, response) => {
 
 /**
  * POST route for creating new records that returns the ID of the new record and a 201 status
- * @param {MongooseModel} model A Mongoose model
- * @returns {ExpressRouteHandler} Express middleware
+ * @param {import('mongoose').Model} model A Mongoose model
+ * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const postSingle = model => async (request, response) => {
+const postSingle = (model) => async (request, response, next) => {
 	try {
 		const result = await model.create(request.body)
+		response.header('Location', `/api/${model.collection.collectionName}/${result._id}`)
 		response.status(201).send(result)
 	} catch (error) {
 		response.status(500).json({message: error.message})
@@ -70,10 +60,10 @@ const postSingle = model => async (request, response) => {
 
 /**
  * PUT route for updating a record that returns a 204 status
- * @param {MongooseModel} model A Mongoose model
- * @returns {ExpressRouteHandler} Express middleware
+ * @param {import('mongoose').Model} model A Mongoose model
+ * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const putSingle = model => async (request, response) => {
+const putSingle = (model) => async (request, response, next) => {
 	try {
 		const result = await model.findByIdAndUpdate(
 			request.params.id,
@@ -96,10 +86,10 @@ const putSingle = model => async (request, response) => {
 
 /**
  * DELETE route for deleting a record that returns a 200 status
- * @param {MongooseModel} model A Mongoose model
- * @returns {ExpressRouteHandler} Express middleware
+ * @param {import('mongoose').Model} model A Mongoose model
+ * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const deleteSingle = model => async (request, response) => {
+const deleteSingle = (model) => async (request, response, next) => {
 	try {
 		const result = await model.findByIdAndDelete(request.params.id)
 		if (result) {

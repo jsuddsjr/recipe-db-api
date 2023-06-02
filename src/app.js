@@ -3,11 +3,9 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const express = require('express')
-const logger = require('morgan')
 const passport = require('passport')
 const session = require('express-session')
 const {Strategy} = require('passport-github2')
-const connectLiveReload = require('connect-livereload')
 const swaggerUi = require('swagger-ui-express')
 const apiRouter = require('./routes/api/index.js')
 const indexRouter = require('./routes/index.js')
@@ -36,8 +34,8 @@ app.use(
 )
 
 if (app.get('env') === 'development') {
-	app.use(connectLiveReload())
-	app.use(logger('dev'))
+	app.use(require('connect-livereload')())
+	app.use(require('morgan')('dev'))
 }
 
 // Routes

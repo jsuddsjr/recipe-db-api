@@ -1,6 +1,7 @@
 const {Router} = require('express')
 const crud = require('../../controllers/crud.js')
 const Recipe = require('../../models/recipe.js')
+const {isAuthenticated} = require('../../middlewares/is-authenticated.js')
 
 const router = Router()
 
@@ -31,7 +32,7 @@ router.get(
 )
 
 router.post(
-	'/',
+    '/',
 	/*
         #swagger.description = 'Create a new recipe.'
         #swagger.parameters['body'] = {
@@ -45,6 +46,7 @@ router.post(
             schema: { $ref: "#/definitions/InsertedDocument" }
         }
     */
+    isAuthenticated,
 	crud.postSingle(Recipe),
 )
 
@@ -64,6 +66,7 @@ router.put(
             schema: { $ref: "#/definitions/InsertedDocument" }
         }
     */
+    isAuthenticated,
 	crud.checkObjectId(),
 	crud.putSingle(Recipe),
 )
@@ -74,6 +77,7 @@ router.delete(
         #swagger.description = 'Delete specified recipe.'
         #swagger.parameters['id'] = { description: 'Record id' }
     */
+    isAuthenticated,
 	crud.checkObjectId(),
 	crud.deleteSingle(Recipe),
 )
