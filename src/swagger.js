@@ -1,3 +1,4 @@
+const path = require('node:path')
 const swaggerAutogen = require('swagger-autogen')
 const m2s = require('mongoose-to-swagger')
 const Recipe = require('./models/recipe.js')
@@ -46,21 +47,22 @@ This API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [S
 	host: 'recipe-db-api.onrender.com',
 	schemes: ['https'],
 
+	//! The @definitions property is copied as-is to the output.
 	// eslint-disable-next-line unicorn/no-array-reduce
 	'@definitions': [Ingredient, Recipe, User].reduce(
-		(acc, model) => {
-			acc[model.modelName] = m2s(model, {
+		(accumulator, model) => {
+			accumulator[model.modelName] = m2s(model, {
 				props: ['example', 'description'],
 				omitFields: ['_id', 'createdAt', 'updatedAt'],
 			})
-			acc[`${model.modelName}Array`] = {
+			accumulator[`${model.modelName}Array`] = {
 				type: 'array',
 				items: {
 					$ref: `#/definitions/${model.modelName}`,
 					description: 'An array of ' + model.modelName + ' objects.',
 				},
 			}
-			return acc
+			return accumulator
 		},
 		{
 			InsertedDocument,
@@ -70,14 +72,14 @@ This API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [S
 }
 
 const buildSwagger = async () => {
-	const outputFile = './swagger.json';
-	const endpointsFiles = ['./routes/index.js'];
+	const outputFile = path.join(__dirname, './swagger.json')
+	const endpointsFiles = [path.join(__dirname, './routes/index.js')]
 
 	await swaggerAutogen(outputFile, endpointsFiles, swaggerDefinition).then((result) => {
 		if (result.success) {
 			console.log('Swagger JSON file was created.')
 		} else {
-			process.exit(1)
+			throw new Error("Unable to create Swagger JSON file")
 		}
 	})
 }

@@ -9,7 +9,7 @@
   },
   "scripts": {
     "lint:fix": "npm run lint -- --fix",
-    "lint": "eslint --debug src/**/*.js",
+    "lint": "eslint src/**/*.js",
     "preserve": "npm-run-all --parallel lint swagger",
     "serve:reload": "livereload --debug -ee 'pug' src/",
     "serve:watch": "set DEBUG=express:* && nodemon ./src/bin/www",
@@ -94,6 +94,7 @@
       ],
       "strict": "error",
       "unicorn/prefer-module": "off",
+      "unicorn/prefer-top-level-await": "off",
       "new-cap": "off"
     }
   }

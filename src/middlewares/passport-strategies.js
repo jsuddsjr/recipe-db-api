@@ -1,10 +1,10 @@
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const LocalStrategy = require('passport-local').Strategy;
-const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-const GitHubStrategy = require('passport-github2').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy
+const LocalStrategy = require('passport-local').Strategy
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy
+const GitHubStrategy = require('passport-github2').Strategy
 
-const passport = require('passport');
-const {User} = require('../models');
+const passport = require('passport')
+const {User} = require('../models')
 
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
@@ -19,9 +19,9 @@ passport.use(new GoogleStrategy({
  */
 async (accessToken, refreshToken, profile, done) => {
   try {
-    let user = await User.findOne({ googleId: profile.id });
+    let user = await User.findOne({ googleId: profile.id })
     if (user) {
-      done(null, user);
+      done(false, user)
     } else {
       const newUser = {
         googleId: profile.id,
@@ -29,58 +29,58 @@ async (accessToken, refreshToken, profile, done) => {
         displayName: profile.displayName,
         firstName: profile.name.givenName,
         lastName: profile.name.familyName,
-        email: profile.emails?.find(e => e.verified)?.value,
+        email: profile.emails?.find(email => email.verified)?.value,
         image: profile.photos[0].value
-      };
-      user = await User.create(newUser);
-      done(null, user);
+      }
+      user = await User.create(newUser)
+      done(false, user)
     }
-  } catch (err) {
-    console.error(err);
-    done(err, null); // Pass the error to done
+  } catch (error) {
+    console.error(error)
+    done(error) // Pass the error to done
   }
-}));
+}))
 
 passport.use(new LocalStrategy({
   usernameField: 'username',
   passwordField: 'password',
 },
 /** @type {import('passport-local').VerifyFunction} */
-async function(username, password, cb) {
+async function(username, password, callback) {
     try {
-      const bcrypt = require('bcrypt');
+      const bcrypt = require('bcrypt')
 
-    const model = await User.findOne({username},{password:1});
+    const model = await User.findOne({username},{password:1})
 
     if (!model) {
       // TODO: We just go ahead and add this user now.
-      const hashedPassword = await bcrypt.hash(password, 10);
-      const user = {username, password: hashedPassword};
-      const result = await User.create(user);
-      return cb(null, result);
+      const hashedPassword = await bcrypt.hash(password, 10)
+      const user = {username, password: hashedPassword}
+      const result = await User.create(user)
+      return callback(false, result)
     }
 
-    const validPassword = await bcrypt.compare(password, model.password);
+    const validPassword = await bcrypt.compare(password, model.password)
     if (validPassword === false)
-      return cb('Wrong password.', false);
+      return callback('Wrong password.', false)
 
-    return cb(null, model);
+    return callback(false, model)
   } catch(error) {
-    if (error) { return cb(error); }
+    if (error) { return callback(error) }
   }
-}));
+}))
 
 passport.serializeUser((user, done) => {
-  done(null, user);
-});
+  done(false, user)
+})
 
 passport.deserializeUser(async function (id, done) {
   try {
-    const user = await User.findById(id);
-    done(null, user);
-  } catch (err) {
-    done(err, null);
+    const user = await User.findById(id)
+    done(false, user)
+  } catch (error) {
+    done(error)
   }
-});
+})
 
-module.exports = passport;
+module.exports = passport

@@ -9,7 +9,7 @@ const {Strategy} = require('passport-github2')
 const swaggerUi = require('swagger-ui-express')
 const apiRouter = require('./routes/api/index.js')
 const indexRouter = require('./routes/index.js')
-const swaggerSchema = require('./models/swagger-schema.js')
+const swaggerSchema = require('./swagger.json')
 
 const app = express()
 

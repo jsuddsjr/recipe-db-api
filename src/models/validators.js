@@ -9,7 +9,7 @@ const ValidDuration = {
 		validator(value) {
 			return pattern.test(value)
 		},
-		message: props => `${props.value} not a valid ISO8601 duration`,
+		message: properties => `${properties.value} not a valid ISO8601 duration`,
 	},
 	example: 'PT1H',
 	description: 'The duration in ISO8601 format.',
@@ -24,7 +24,7 @@ const ValidDate = {
 		validator(value) {
 			return isValidISODateString(value)
 		},
-		message: props => `${props.value} is not a valid ISO8601 date`,
+		message: properties => `${properties.value} is not a valid ISO8601 date`,
 	},
 	example: '2020-01-01T00:00:00.000Z',
 	description: 'The date in ISO8601 format.',
@@ -43,7 +43,7 @@ const ValidUrl = {
 				return false
 			}
 		},
-		message: props => `${props.value} not a valid URL format`,
+		message: properties => `${properties.value} not a valid URL format`,
 	},
 	example: 'https://example.com',
 	description: 'The URL.',
@@ -57,7 +57,7 @@ const ValidEmail = {
 	lowercase: true,
 	validate: {
 		validator: isEmail,
-		message: props => `${props.value} not a valid email format`,
+		message: properties => `${properties.value} not a valid email format`,
 	},
 	example: 'john.doe@example.com',
 	description: 'The email.',
@@ -79,7 +79,7 @@ const ValidMetricWeightString = {
 		validator(value) {
 			return /^\d+ m?g$/.test(value)
 		},
-		message: props => `${props.value} should match "[0-9]+ m?g" pattern`,
+		message: properties => `${properties.value} should match "[0-9]+ m?g" pattern`,
 	},
 	example: '100 mg',
 	description: 'The weight in grams or milligrams.',
@@ -92,8 +92,8 @@ const ValidCalorieString = {
 		validator(value) {
 			return /^\d+ (?:kcal|calories)$/.test(value)
 		},
-		message: props =>
-			`${props.value} should match "[0-9]+ (kcal|calories)" pattern`,
+		message: properties =>
+			`${properties.value} should match "[0-9]+ (kcal|calories)" pattern`,
 	},
 	example: '100 kcal',
 	description: 'The number of calories.',
@@ -106,8 +106,8 @@ const ValidServingSizeString = {
 		validator(value) {
 			return /^\d+ (?:tbsp|tsp|cup|oz|g|mg)$/.test(value)
 		},
-		message: props =>
-			`${props.value} should match "[0-9]+ (tbsp|tsp|cup|oz|g|mg)" pattern`,
+		message: properties =>
+			`${properties.value} should match "[0-9]+ (tbsp|tsp|cup|oz|g|mg)" pattern`,
 	},
 	example: '1 cup',
 	description: 'The serving size (tsp, tbsp, cup, oz, g, or mg).',

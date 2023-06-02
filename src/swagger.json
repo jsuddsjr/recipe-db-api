@@ -1,0 +1,631 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Recipe DB API",
+    "version": "0.0.1",
+    "description": "\nA simple recipe database built with MongoDb and Express.js.\n\n### 401 Unauthorized\nTo use routes that modify data, you need to be authenticated. [Click here to log in with your Google account](/auth/google).\n\n### Credits\nThis API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [Source code is available on GitHub](https://github.com/jsuddsjr/recipe-db-api).\n\n**This api not intended for regular use.**\n"
+  },
+  "host": "recipe-db-api.onrender.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/ingredients": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  },
+  "definitions": {
+    "InsertedDocument": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "length": 24,
+          "example": "5e4a1d5b5e5e5e5e5e5e5e5e",
+          "description": "A unique identifier."
+        }
+      }
+    },
+    "ErrorMessage": {
+      "description": "Error object.",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "The error message.",
+          "description": "The error message."
+        }
+      }
+    },
+    "ingredient": {
+      "title": "ingredient",
+      "required": [
+        "@context",
+        "@type",
+        "name",
+        "servingSize",
+        "calories"
+      ],
+      "properties": {
+        "@context": {
+          "type": "string",
+          "description": "The schema context."
+        },
+        "@type": {
+          "type": "string",
+          "description": "The schema type."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the food.",
+          "example": "Apple"
+        },
+        "servingSize": {
+          "type": "string",
+          "description": "The serving size of the food.",
+          "example": "1 cup"
+        },
+        "calories": {
+          "type": "string",
+          "description": "The number of calories.",
+          "example": "100 kcal"
+        },
+        "carbohydrateContent": {
+          "type": "string",
+          "description": "The weight in grams or milligrams.",
+          "example": "100 mg"
+        },
+        "cholesterolContent": {
+          "type": "string",
+          "description": "The weight in grams or milligrams.",
+          "example": "100 mg"
+        },
+        "fiberContent": {
+          "type": "string",
+          "description": "The weight in grams or milligrams.",
+          "example": "100 mg"
+        },
+        "proteinContent": {
+          "type": "string",
+          "description": "The weight in grams or milligrams.",
+          "example": "100 mg"
+        },
+        "saturatedFatContent": {
+          "type": "string",
+          "description": "The weight in grams or milligrams.",
+          "example": "100 mg"
+        },
+        "sodiumContent": {
+          "type": "string",
+          "description": "The weight in grams or milligrams.",
+          "example": "100 mg"
+        },
+        "sugarContent": {
+          "type": "string",
+          "description": "The weight in grams or milligrams.",
+          "example": "100 mg"
+        },
+        "fatContent": {
+          "type": "string",
+          "description": "The weight in grams or milligrams.",
+          "example": "100 mg"
+        },
+        "unsaturatedFatContent": {
+          "type": "string",
+          "description": "The weight in grams or milligrams.",
+          "example": "100 mg"
+        }
+      }
+    },
+    "ingredientArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ingredient",
+        "description": "An array of ingredient objects."
+      }
+    },
+    "recipe": {
+      "title": "recipe",
+      "required": [
+        "@context",
+        "@type",
+        "cookTime",
+        "datePublished",
+        "description",
+        "name"
+      ],
+      "properties": {
+        "@context": {
+          "type": "string",
+          "description": "The schema context."
+        },
+        "@type": {
+          "type": "string",
+          "description": "The schema type."
+        },
+        "cookTime": {
+          "type": "string",
+          "description": "The time it takes to actually cook the dish.",
+          "example": "PT1H"
+        },
+        "datePublished": {
+          "type": "string",
+          "description": "The publish date.",
+          "example": "2020-01-01T00:00:00.000Z"
+        },
+        "description": {
+          "type": "string",
+          "description": "The recipe description."
+        },
+        "image": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string",
+                "description": "The schema type."
+              },
+              "url": {
+                "type": "string",
+                "description": "The image URL.",
+                "example": "https://example.com/image.jpg"
+              },
+              "accessibilitySummary": {
+                "type": "string",
+                "description": "The image alt text"
+              },
+              "published": {
+                "type": "string",
+                "description": "The image publish date.",
+                "example": "2020-01-01T00:00:00.000Z"
+              },
+              "height": {
+                "type": "number",
+                "description": "The image height in pixels.",
+                "example": 300
+              },
+              "width": {
+                "type": "number",
+                "description": "The image width in pixels.",
+                "example": 400
+              }
+            },
+            "required": [
+              "@type",
+              "height",
+              "width"
+            ]
+          }
+        },
+        "name": {
+          "type": "string",
+          "description": "Recipe title.",
+          "example": "Amazingly Easy Irish Soda Bread"
+        },
+        "nutrition": {
+          "type": "object",
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "The schema context."
+            },
+            "@type": {
+              "type": "string",
+              "description": "The schema type."
+            },
+            "name": {
+              "type": "string",
+              "description": "The name of the food.",
+              "example": "Apple"
+            },
+            "servingSize": {
+              "type": "string",
+              "description": "The serving size of the food.",
+              "example": "1 cup"
+            },
+            "calories": {
+              "type": "string",
+              "description": "The number of calories.",
+              "example": "100 kcal"
+            },
+            "carbohydrateContent": {
+              "type": "string",
+              "description": "The weight in grams or milligrams.",
+              "example": "100 mg"
+            },
+            "cholesterolContent": {
+              "type": "string",
+              "description": "The weight in grams or milligrams.",
+              "example": "100 mg"
+            },
+            "fiberContent": {
+              "type": "string",
+              "description": "The weight in grams or milligrams.",
+              "example": "100 mg"
+            },
+            "proteinContent": {
+              "type": "string",
+              "description": "The weight in grams or milligrams.",
+              "example": "100 mg"
+            },
+            "saturatedFatContent": {
+              "type": "string",
+              "description": "The weight in grams or milligrams.",
+              "example": "100 mg"
+            },
+            "sodiumContent": {
+              "type": "string",
+              "description": "The weight in grams or milligrams.",
+              "example": "100 mg"
+            },
+            "sugarContent": {
+              "type": "string",
+              "description": "The weight in grams or milligrams.",
+              "example": "100 mg"
+            },
+            "fatContent": {
+              "type": "string",
+              "description": "The weight in grams or milligrams.",
+              "example": "100 mg"
+            },
+            "unsaturatedFatContent": {
+              "type": "string",
+              "description": "The weight in grams or milligrams.",
+              "example": "100 mg"
+            }
+          }
+        },
+        "owner": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "description": "The schema type."
+            },
+            "name": {
+              "type": "string",
+              "description": "The person name."
+            },
+            "email": {
+              "type": "string",
+              "description": "An optional email.",
+              "example": "john.doe@example.com"
+            },
+            "url": {
+              "type": "string",
+              "description": "An optional URL.",
+              "example": "https://example.com"
+            },
+            "image": {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "type": "string",
+                  "description": "The schema type."
+                },
+                "url": {
+                  "type": "string",
+                  "description": "The image URL.",
+                  "example": "https://example.com/image.jpg"
+                },
+                "accessibilitySummary": {
+                  "type": "string",
+                  "description": "The image alt text"
+                },
+                "published": {
+                  "type": "string",
+                  "description": "The image publish date.",
+                  "example": "2020-01-01T00:00:00.000Z"
+                },
+                "height": {
+                  "type": "number",
+                  "description": "The image height in pixels.",
+                  "example": 300
+                },
+                "width": {
+                  "type": "number",
+                  "description": "The image width in pixels.",
+                  "example": 400
+                }
+              }
+            }
+          }
+        },
+        "prepTime": {
+          "type": "string",
+          "description": "The prep time.",
+          "example": "PT1H"
+        },
+        "recipeCategory": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "The category of the recipe—for example, appetizer, entree.",
+            "example": "breads"
+          }
+        },
+        "recipeCuisine": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "The cuisine of the recipe (for example, French or Ethiopian).",
+            "example": "Irish"
+          }
+        },
+        "recipeIngredient": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "A single ingredient used in the recipe, e.g. sugar, flour or garlic.",
+            "example": "1 tsp Baking Soda"
+          }
+        },
+        "recipeInstructions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string",
+                "description": "The schema type."
+              },
+              "image": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "@type": {
+                      "type": "string",
+                      "description": "The schema type."
+                    },
+                    "url": {
+                      "type": "string",
+                      "description": "The image URL.",
+                      "example": "https://example.com/image.jpg"
+                    },
+                    "accessibilitySummary": {
+                      "type": "string",
+                      "description": "The image alt text"
+                    },
+                    "published": {
+                      "type": "string",
+                      "description": "The image publish date.",
+                      "example": "2020-01-01T00:00:00.000Z"
+                    },
+                    "height": {
+                      "type": "number",
+                      "description": "The image height in pixels.",
+                      "example": 300
+                    },
+                    "width": {
+                      "type": "number",
+                      "description": "The image width in pixels.",
+                      "example": 400
+                    }
+                  },
+                  "required": [
+                    "@type",
+                    "height",
+                    "width"
+                  ]
+                }
+              },
+              "name": {
+                "type": "string",
+                "description": "The optional name of the step.",
+                "example": "Start Your Ovens!"
+              },
+              "text": {
+                "type": "string",
+                "description": "The text of the step.",
+                "example": "Preheat the oven to 375°."
+              },
+              "url": {
+                "type": "string",
+                "description": "The page anchor of the step.",
+                "example": "https://example.com#step"
+              }
+            },
+            "required": [
+              "@type",
+              "text"
+            ]
+          }
+        },
+        "recipeYield": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "The quantity produced by the recipe.",
+            "example": "1 loaf"
+          }
+        },
+        "totalTime": {
+          "type": "string",
+          "description": "The total time it takes to prepare and cook the recipe.",
+          "example": "PT1H"
+        },
+        "video": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "description": "The schema type."
+            },
+            "name": {
+              "type": "string",
+              "description": "The video name."
+            },
+            "url": {
+              "type": "string",
+              "description": "The video URL.",
+              "example": "https://example.com"
+            },
+            "contentUrl": {
+              "type": "string",
+              "description": "The video URL.",
+              "example": "https://example.com"
+            },
+            "description": {
+              "type": "string",
+              "description": "The video description."
+            },
+            "thumbnailUrl": {
+              "type": "string",
+              "description": "An optional thumbnail URL.",
+              "example": "https://example.com"
+            },
+            "embedUrl": {
+              "type": "string",
+              "description": "An optional embed URL.",
+              "example": "https://example.com"
+            },
+            "uploadDate": {
+              "type": "string",
+              "description": "An optional upload date.",
+              "example": "2020-01-01T00:00:00.000Z"
+            },
+            "duration": {
+              "type": "string",
+              "description": "An optional duration.",
+              "example": "PT1H"
+            },
+            "expires": {
+              "type": "string",
+              "description": "An optional expiration date.",
+              "example": "2020-01-01T00:00:00.000Z"
+            }
+          }
+        },
+        "authorIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Author ids."
+          }
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "Owner id."
+        },
+        "nutritionIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Ingredient ids."
+          }
+        }
+      }
+    },
+    "recipeArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/recipe",
+        "description": "An array of recipe objects."
+      }
+    },
+    "user": {
+      "title": "user",
+      "required": [
+        "@context",
+        "@type",
+        "name",
+        "email"
+      ],
+      "properties": {
+        "@context": {
+          "type": "string",
+          "description": "The schema context."
+        },
+        "@type": {
+          "type": "string",
+          "description": "The schema type."
+        },
+        "name": {
+          "type": "string",
+          "description": "The user name.",
+          "example": "John Doe"
+        },
+        "email": {
+          "type": "string",
+          "description": "The user email.",
+          "example": "john.doe@example.com"
+        },
+        "url": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "The user URL.",
+            "example": "https://example.com"
+          }
+        },
+        "image": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string",
+                "description": "The schema type."
+              },
+              "url": {
+                "type": "string",
+                "description": "The image URL.",
+                "example": "https://example.com/image.jpg"
+              },
+              "accessibilitySummary": {
+                "type": "string",
+                "description": "The image alt text"
+              },
+              "published": {
+                "type": "string",
+                "description": "The image publish date.",
+                "example": "2020-01-01T00:00:00.000Z"
+              },
+              "height": {
+                "type": "number",
+                "description": "The image height in pixels.",
+                "example": 300
+              },
+              "width": {
+                "type": "number",
+                "description": "The image width in pixels.",
+                "example": 400
+              }
+            },
+            "required": [
+              "@type",
+              "height",
+              "width"
+            ]
+          }
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "A collection of keywords."
+          }
+        }
+      }
+    },
+    "userArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/user",
+        "description": "An array of user objects."
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const config = require('../config/config.js')
 
 /** @type {mongoose.Mongoose} */
-let _db
+let _database
 
 /**
  * @callback InitDbCallback
@@ -16,16 +16,16 @@ let _db
  * @param {InitDbCallback} callback The callback function
  * @returns {void}
  */
-const initDb = callback => {
-	if (_db) {
+const initDatabase = callback => {
+	if (_database) {
 		console.log('Db is already initialized!')
-		return callback(null, _db)
+		return callback(false, _database)
 	}
 
 	mongoose.connect(config.MONGO_DB_URL).then(
 		value => {
-			_db = value
-			callback(null, _db)
+			_database = value
+			callback(false, _database)
 		},
 		error => {
 			callback(error)
@@ -33,4 +33,4 @@ const initDb = callback => {
 	)
 }
 
-module.exports = {initDb}
+module.exports = {initDb: initDatabase}

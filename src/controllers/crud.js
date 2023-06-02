@@ -16,7 +16,7 @@ const checkObjectId =
  * @param {import('mongoose').Model} model A Mongoose model
  * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const getAll = (model) => async (request, response, next) => {
+const getAll = (model) => async (request, response) => {
 	try {
 		const results = await model.find()
 		response.status(200).json(results)
@@ -30,7 +30,7 @@ const getAll = (model) => async (request, response, next) => {
  * @param {import('mongoose').Model} model A Mongoose model
  * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const getSingle = (model) => async (request, response, next) => {
+const getSingle = (model) => async (request, response) => {
 	try {
 		const results = await model.findById(request.params.id)
 		if (results) {
@@ -48,7 +48,7 @@ const getSingle = (model) => async (request, response, next) => {
  * @param {import('mongoose').Model} model A Mongoose model
  * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const postSingle = (model) => async (request, response, next) => {
+const postSingle = (model) => async (request, response) => {
 	try {
 		const result = await model.create(request.body)
 		response.header('Location', `/api/${model.collection.collectionName}/${result._id}`)
@@ -63,7 +63,7 @@ const postSingle = (model) => async (request, response, next) => {
  * @param {import('mongoose').Model} model A Mongoose model
  * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const putSingle = (model) => async (request, response, next) => {
+const putSingle = (model) => async (request, response) => {
 	try {
 		const result = await model.findByIdAndUpdate(
 			request.params.id,
@@ -89,7 +89,7 @@ const putSingle = (model) => async (request, response, next) => {
  * @param {import('mongoose').Model} model A Mongoose model
  * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const deleteSingle = (model) => async (request, response, next) => {
+const deleteSingle = (model) => async (request, response) => {
 	try {
 		const result = await model.findByIdAndDelete(request.params.id)
 		if (result) {
