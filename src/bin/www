@@ -12,7 +12,7 @@ const app = require('../app.js')
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.PORT || '3000')
+const port = normalizePort(process.env.PORT || '4567')
 app.set('port', port)
 
 /**
@@ -29,6 +29,8 @@ server.on('listening', onListening)
 
 /**
  * Normalize a port into a number, string, or false.
+ * @param {string} value The port value
+ * @returns {number|string|boolean} The normalized port
  */
 function normalizePort(value) {
 	const port = Number.parseInt(value, 10)
@@ -48,6 +50,8 @@ function normalizePort(value) {
 
 /**
  * Event listener for HTTP server "error" event.
+ * @param {object} error The error
+ * @returns {void}
  */
 function onError(error) {
 	if (error.syscall !== 'listen') {
@@ -84,12 +88,12 @@ async function onListening() {
 	const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port
 	debug('Listening on ' + bind)
 
-	initDb((error, db) => {
+	initDb((error, database) => {
 		if (error) {
 			throw error
 		} else {
 			debug('Database connected.')
-			db.connection.on('error', debug)
+			database.connection.on('error', debug)
 		}
 	})
 }
