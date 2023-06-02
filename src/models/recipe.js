@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const {Schema, model} = require('mongoose')
 const imageSchema = require('./schemas/image.js')
 const nutritionSchema = require('./schemas/nutrition.js')
 const personSchema = require('./schemas/person.js')
@@ -16,16 +16,10 @@ const {
 const User = require('./user.js')
 const Ingredient = require('./ingredient.js')
 
-const documentSchema = new mongoose.Schema(
+const documentSchema = new Schema(
 	{
 		'@type': {...defaultString('HowToStep'), description: 'The schema type.'},
-		image: [
-			{
-				...imageSchema,
-				example: 'https://example.com/image.jpg',
-				description: 'The image.',
-			},
-		],
+		image: [imageSchema],
 		name: {
 			...TrimmedString,
 			example: 'Start Your Ovens!',
@@ -47,7 +41,7 @@ const documentSchema = new mongoose.Schema(
 	},
 )
 
-const recipeSchema = new mongoose.Schema(
+const recipeSchema = new Schema(
 	{
 		'@context': {
 			...defaultString('http://schema.org'),
@@ -60,17 +54,14 @@ const recipeSchema = new mongoose.Schema(
 		},
 		datePublished: {...RequiredDate, description: 'The publish date.'},
 		description: {...RequiredString, description: 'The recipe description.'},
-		image: [{...imageSchema, description: 'Recipe images.'}],
+		image: [imageSchema],
 		name: {
 			...RequiredString,
 			example: 'Amazingly Easy Irish Soda Bread',
 			description: 'Recipe title.',
 		},
-		nutrition: {
-			...nutritionSchema,
-			description: 'Aggregated nutrition information about the recipe.',
-		},
-		owner: {...personSchema, description: 'Recipe owner.'},
+		nutrition: nutritionSchema,
+		owner: personSchema,
 		prepTime: {...ValidDuration, description: 'The prep time.'},
 		recipeCategory: [
 			{
@@ -96,9 +87,7 @@ const recipeSchema = new mongoose.Schema(
 					'A single ingredient used in the recipe, e.g. sugar, flour or garlic.',
 			},
 		],
-		recipeInstructions: [
-			{...documentSchema, description: 'A step in making the recipe.'},
-		],
+		recipeInstructions: [documentSchema],
 		recipeYield: [
 			{
 				...TrimmedString,
@@ -110,7 +99,7 @@ const recipeSchema = new mongoose.Schema(
 			...ValidDuration,
 			description: 'The total time it takes to prepare and cook the recipe.',
 		},
-		video: {...videoSchema, description: 'An optional instructional video.'},
+		video: videoSchema,
 	},
 	{
 		timestamps: true,
@@ -123,6 +112,6 @@ recipeSchema.add({
 	nutritionIds: [foreignKey(Ingredient, 'Ingredient ids.')],
 })
 
-const Recipe = mongoose.model('recipe', recipeSchema)
+const Recipe = model('recipe', recipeSchema)
 
 module.exports = Recipe

@@ -38,7 +38,7 @@ const ValidUrl = {
 	validate: {
 		validator(value) {
 			try {
-				return Boolean(new URL(value))
+				return Boolean(URL(value))
 			} catch {
 				return false
 			}

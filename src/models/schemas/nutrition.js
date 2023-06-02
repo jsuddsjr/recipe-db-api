@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const {Schema} = require('mongoose')
 const {
 	defaultString,
 	RequiredString,
@@ -7,7 +7,7 @@ const {
 	ValidServingSizeString,
 } = require('../validators.js')
 
-const nutritionSchema = new mongoose.Schema(
+const nutritionSchema = new Schema(
 	{
 		'@context': {
 			...defaultString('http://schema.org'),

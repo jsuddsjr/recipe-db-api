@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const {Schema} = require('mongoose')
 const {
 	defaultString,
 	TrimmedString,
@@ -6,14 +6,13 @@ const {
 	ValidUrl,
 } = require('../validators.js')
 
-const imageSchema = new mongoose.Schema(
+const imageSchema = new Schema(
 	{
 		'@type': {...defaultString('ImageObject'), description: 'The schema type.'},
 		url: {
 			...ValidUrl,
 			example: 'https://example.com/image.jpg',
 			description: 'The image URL.',
-			alias: 'contentUrl',
 		},
 		accessibilitySummary: {
 			...TrimmedString,

@@ -8,7 +8,7 @@ const {
 	ValidUrl,
 } = require('./validators.js')
 
-const userSchema = new mongoose.Schema(
+const userSchema = mongoose.Schema(
 	{
 		'@context': {
 			...defaultString('http://schema.org'),
@@ -32,15 +32,19 @@ const userSchema = new mongoose.Schema(
 				description: 'The user URL.',
 			},
 		],
-		image: [{...imageSchema, description: 'A collection of user images.'}],
-		followsIds: [{type: 'ObjectId', description: 'Favorite user ids.'}],
-		favoriteIds: [{type: 'ObjectId', description: 'Favorite recipe ids.'}],
-		keywords: [{...TrimmedString, description: 'A collection of keywords.'}],
+		image: [imageSchema],
+		keywords: [{ ...TrimmedString, description: 'A collection of keywords.' }],
 	},
 	{
 		timestamps: true,
 	},
 )
+
+userSchema.add({
+	// TODO: Add following and favorite recipes.
+	// followsIds: [{type: 'ObjectId', description: 'Favorite user ids.'}],
+	// favoriteIds: [{type: 'ObjectId', description: 'Favorite recipe ids.'}],
+})
 
 const User = mongoose.model('user', userSchema)
 

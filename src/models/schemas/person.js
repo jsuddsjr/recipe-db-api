@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const {Schema} = require('mongoose')
 const {
 	defaultString,
 	RequiredString,
@@ -7,13 +7,13 @@ const {
 } = require('../validators.js')
 const imageSchema = require('./image.js')
 
-const personSchema = new mongoose.Schema(
+const personSchema = new Schema(
 	{
 		'@type': {...defaultString('Person'), description: 'The schema type.'},
 		name: {...RequiredString, description: 'The person name.'},
 		email: {...ValidEmail, description: 'An optional email.'},
 		url: {...ValidUrl, description: 'An optional URL.'},
-		image: {...imageSchema, description: 'An optional image.'},
+		image: imageSchema,
 	},
 	{
 		_id: false,
