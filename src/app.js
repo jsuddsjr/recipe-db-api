@@ -28,13 +28,13 @@ app.set('view engine', 'pug')
 // Middleware Connections
 app.use(cors())
 app.use(express.static(path.join(__dirname, '../public')))
-app.use(bodyParser.json({strict: false}))
+app.use(bodyParser.json({ type: 'application/json', strict: false }))
+app.use(bodyParser.urlencoded({ type: 'application/x-www-form-urlencoded', extended: true }))
 app.use(cookieParser())
-app.use(express.urlencoded({extended: false}))
 
 app.use(
 	'/api-docs',
-	swaggerUi.serveWithOptions({redirect: false}),
+	swaggerUi.serve,
 	swaggerUi.setup(swaggerSchema, {explorer: true}),
 )
 

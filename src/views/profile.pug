@@ -1,0 +1,31 @@
+extends _layout
+
+block content
+  include ./mixins/forms
+  include ./mixins/icons
+
+  if messages
+    each message in messages
+      .alert.alert-warning(role='alert')
+        = message.message || message.msg || message
+
+  if user
+    h2= 'Welcome, #{user.displayName}!'
+  else
+    h2= 'Login'
+    form.row.center.my-4.needs-validation(action='/auth/login' method='POST' novalidate)
+      +input_block('text', 'email', 'Email')(required, placeholder='email@example.com', autocomplete='email')
+        .invalid-feedback
+          | Email is required.
+      +input_block('password', 'password', 'Password')(required, placeholder='passW0rd!' autocomplete='current-password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-#!$@£%^&*()_+|~=`{}\[\]:\";'<>?,.\/ ]).{8,}")
+        .invalid-feedback
+          | Password is required and must contain at least 8 characters, including at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 symbol.
+      +submit() Login
+
+      a(class='btn btn-outline-secondary' href='/auth/google')
+        +icon('google') Login with Google
+      a(class='btn btn-outline-secondary' href='/auth/github')
+        +icon('github') Login with GitHub
+
+    append scripts
+      script(src='/scripts/form-validation.js')

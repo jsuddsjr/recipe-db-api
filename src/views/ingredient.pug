@@ -10,7 +10,7 @@ block content
 
   h2= 'Add nutrition information'
   p Here's where you can add nutrition information about ingredients in your recipes.
-  form.row.g-3.needs-validation(action='/api/nutrition' method='POST' novalidate)
+  form.row.g-3.needs-validation(action='/api/ingredients' method='POST' novalidate)
     +input_block('text', 'name', 'Name')(required, placeholder = "white sugar")
       .invalid-feedback
         | Name is required.

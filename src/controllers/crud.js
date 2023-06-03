@@ -52,7 +52,7 @@ const getSingle = (model) => async (request, response) => {
 const postSingle = (model) => async (request, response) => {
 	try {
 		const result = await model.create(request.body)
-		response.header('Location', `/api/${model.collection.collectionName}/${result._id}`)
+		response.set('Location', `/api/${model.collection.collectionName}/${result._id}`)
 		response.status(201).send(result)
 	} catch (error) {
 		response.status(500).json({message: error.message})

@@ -14,7 +14,7 @@ GET {{host}}/api/recipes/{{firstId}}
 
 ### Log in
 #! Validation errors
-GET {{host}}/auth/login
+POST {{host}}/auth/login
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 ### Log in
 #* Good credentials
-GET {{host}}/auth/login
+POST {{host}}/auth/login
 Content-Type: application/json
 
 {
@@ -313,4 +313,40 @@ Content-Type: application/json
     "name": "",
     "servingSize": "1 gal",
     "calories": "122"
+}
+
+
+### Get some users
+#! This only works because the current user is an admin.
+# @name allUsers
+GET {{host}}/api/users
+
+@userId = {{allUsers.response.body.$[0]._id}}
+
+### Get a user
+GET {{host}}/api/users/{{userId}}
+
+### Update to admin
+PUT {{host}}/api/users/{{userId}}
+Content-Type: application/json
+
+{
+    "role": "admin"
+}
+
+### Update to user
+PUT {{host}}/api/users/{{userId}}
+Content-Type: application/json
+
+{
+    "role": "user"
+}
+
+### Update a user
+#! Validation errors
+PUT {{host}}/api/users/{{userId}}
+Content-Type: application/json
+
+{
+    "role": "unknown"
 }

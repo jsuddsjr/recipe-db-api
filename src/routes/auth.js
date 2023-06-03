@@ -6,25 +6,28 @@ const router = express.Router()
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
 
 router.get('/google/callback', passport.authenticate('google', {
-  failureRedirect: '/',
-  successRedirect:'/api-docs'
+  successRedirect: '/api-docs',
+  failureRedirect: '/profile',
+  failureMessage: 'Authentication failed.',
 }))
 
 router.get('/github', passport.authenticate('github', { scope: ['profile', 'email'] }))
 
 router.get('/github/callback', passport.authenticate('github', {
-  failureRedirect: '/',
-  successRedirect:'/api-docs'
+  successRedirect: '/api-docs',
+  failureRedirect: '/profile',
+  failureMessage: 'Authentication failed.',
 }))
 
 router.get('/linkedin', passport.authenticate('linkedin', { scope: ['profile', 'email'] }))
 
 router.get('/linkedin/callback', passport.authenticate('linkedin', {
-  failureRedirect: '/',
-  successRedirect:'/api-docs'
+  successRedirect: '/api-docs',
+  failureRedirect: '/profile',
+  failureMessage: 'Authentication failed.',
 }))
 
-router.get('/login',
+router.post('/login',
   body('email')
     .isEmail().withMessage('Email must be a valid email address.')
     .normalizeEmail(),
@@ -38,12 +41,18 @@ router.get('/login',
       next()
     }
     else {
-      response.status(400).json({ errors: errors.array() })
+      if (request.get('referer').endsWith('/profile')) {
+        request.session.messages = errors.array()
+        response.redirect('/profile')
+      } else {
+        response.status(400).json({ errors: errors.array() })
+      }
     }
   },
   passport.authenticate('local', {
-    failureRedirect: '/',
-    successRedirect: '/api-docs'
+    successRedirect: '/api-docs',
+    failureRedirect: '/profile',
+    failureMessage: 'Authentication failed.',
   }))
 
 router.get('/logout', (request, response) =>
@@ -52,7 +61,7 @@ router.get('/logout', (request, response) =>
       if (error instanceof Error) throw error
       throw new Error(error)
     }
-    response.redirect('/')
+    response.redirect('/profile')
   }))
 
 router.get('/me', (request, response) => {

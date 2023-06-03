@@ -19,6 +19,15 @@ block body
             +icon_warning('person-circle') User
         +nav_item("/api-docs")
             +icon_warning('braces') API
+        if user
+            +nav_item("/auth/logout")
+                if user.image
+                    img(src=user.image.url, alt=user.displayName, class='rounded-circle' style='height: 2rem; width: 2rem;')
+                else
+                    +icon_warning('person-circle')
+                | &nbsp;Logout
+
+        +nav_item("/logout")
     main.flex-shrink-0
         .container
             block content
