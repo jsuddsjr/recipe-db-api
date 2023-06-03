@@ -1,5 +1,5 @@
 const { body, validationResult } = require("express-validator")
-const { hostUrl } = require("../config/config").HOST_URL
+const config = require("../config/config")
 
 /**
  * Options for passport.authenticate middleware.
@@ -9,7 +9,7 @@ const { hostUrl } = require("../config/config").HOST_URL
  * @see {@link http://www.passportjs.org/docs/authenticate/}
  */
 const redirectOptions = (request, defaultRedirect = "/api-docs") => ({
-  successRedirect: new URL(request.query.redirect || defaultRedirect, hostUrl).toString(),
+  successRedirect: new URL(request.query.redirect || defaultRedirect, config.HOST_URL).toString(),
   failureMessage: true,
 })
 

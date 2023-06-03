@@ -7,14 +7,16 @@ const session = require("express-session")
 const passport = require("./middlewares/passport-strategies")
 const swaggerUi = require("swagger-ui-express")
 const swaggerSchema = require("./swagger.json")
+const { randomUUID } = require("node:crypto")
 
 const app = express()
 
 // Passport Config
 app.use(session({
-  secret: "secret",
-  resave: true,
-  saveUninitialized: true
+	secret: randomUUID(),
+	resave: false,
+	saveUninitialized: false,
+	cookie: { secure: true },
 }))
 
 app.use(passport.initialize())

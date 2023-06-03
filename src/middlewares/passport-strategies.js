@@ -15,6 +15,7 @@ const { User } = require("../models")
  * @param {import('passport').VerifyFunction} done Callback function
  * @returns {Promise<void>}
  */
+// eslint-disable-next-line no-unused-vars
 const standardVerify = async (accessToken, refreshToken, profile, done) => {
   try {
     let user = await User.findOne({ identifier: profile.id })
@@ -39,18 +40,18 @@ const standardVerify = async (accessToken, refreshToken, profile, done) => {
   }
 }
 
-passport.use(new GoogleStrategy({
+passport. use(new GoogleStrategy({
   clientID: config.GOOGLE_CLIENT_ID,
   clientSecret: config.GOOGLE_CLIENT_SECRET,
   callbackURL: config.HOST_URL + "/auth/google/callback",
-  scope: ["profile", "email"]
+  scope: ["profile", "email"],
 }, standardVerify))
 
 passport.use(new GitHubStrategy({
   clientID: config.GITHUB_CLIENT_ID,
   clientSecret: config.GITHUB_CLIENT_SECRET,
   callbackURL: config.HOST_URL + "/auth/github/callback",
-  scope: ["profile", "email"]
+  scope: ["profile", "email"],
 }, standardVerify))
 
 passport.use(new LinkedInStrategy({
