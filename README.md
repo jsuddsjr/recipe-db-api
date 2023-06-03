@@ -36,7 +36,7 @@ The site is currently hosted on Render, but not forever.
 
 * The `express-validator` package provides route validation in Express with a fluent API that *almost* covered all my crazy edge-cases. Although I didn't use it much in this project, I pushed it to the max in [Team7 Final Project](https://github.com/team7byui/team7_final_project).
 
-* Standardized schema (`application/ld+json`) can raise your search results in the Google rankings.
+* Standardized schema (`application/ld+json`) can raise your search results in the Google rankings. Although I don't return my schema to the client in this format, it *should be* easy to get it working. ~~ Famous Last Words
 
 ## Requirements
 
