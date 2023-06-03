@@ -89,9 +89,10 @@ const buildSwagger = async () => {
 	const endpointsFiles = [path.join(__dirname, './routes/api/*.js')]
 
 	const result = await swaggerAutogen(outputFile, endpointsFiles, swaggerDefinition)
-	if (result.success) {
-		console.log(`Swagger JSON file was created.`)
+	if (result.success && result.data) {
+		console.log(`Swagger JSON file was created on ${result.data.host || '(missing HOST_URL)'}.`)
 		if (arguments_.has('--serve')) {
+			console.log('Starting server...')
 			require('./bin/www')	// Start the server.
 		}
 	} else {
