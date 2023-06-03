@@ -12,6 +12,8 @@ GET {{host}}/api/recipes
 ### Get one recipe
 GET {{host}}/api/recipes/{{firstId}}
 
+@recipeName = {{allRecipes.response.body.$[0].name}}
+
 ### Log in
 #! Validation errors
 POST {{host}}/auth/login
@@ -352,4 +354,23 @@ Content-Type: application/json
 
 {
     "role": "unknown"
+}
+
+
+#* Advanced queries *#
+
+### Get recipes by name
+GET {{host}}/api/recipes
+Content-Type: application/json
+
+{
+    "name": "{{recipeName}}"
+}
+
+### Get recipes by name and cuisine
+GET {{host}}/api/recipes
+Content-Type: application/json
+
+{
+    "recipeCuisine": "Irish"
 }

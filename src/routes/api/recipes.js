@@ -11,7 +11,7 @@ router.get("/",
         schema: { $ref: "#/definitions/RecipeArray" }
     }
 */
-    crud.getAll(Recipe, ["owner"]),
+    crud.getAll(Recipe),
 )
 
 router.get("/:id", /*

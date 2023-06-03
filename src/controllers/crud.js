@@ -13,7 +13,6 @@ const queryFromRequest = async (model, request) => {
 	}
 
 	// Body as object is for find queries
-	const query = Object.keys(request.body).length > 0 ? new model(request.body) : {}
 	const projection = request.query.fields?.split(",")
 		.map(s => s.trim())
 		// eslint-disable-next-line unicorn/no-array-reduce
@@ -22,7 +21,7 @@ const queryFromRequest = async (model, request) => {
 		}, {})
 
 	// eslint-disable-next-line unicorn/no-array-method-this-argument
-	return await model.find(query, projection)
+	return await model.find(request.body, projection)
 }
 
 /**
@@ -39,12 +38,11 @@ const checkObjectId =
 /**
  * GET route for getting all records that returns a 200 status
  * @param {import('mongoose').Model} model A Mongoose model
- * @param {object[]} [populate] Array of child documents to include with results
  * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const getAll = (model, populate=[]) => async (request, response) => {
+const getAll = (model) => async (request, response) => {
 	try {
-		const results = await queryFromRequest(model, request).populate(populate)
+		const results = await queryFromRequest(model, request)
 		response.status(200).json(results)
 	} catch (error) {
 		response.status(500).json({message: error.message})
