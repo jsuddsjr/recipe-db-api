@@ -14,9 +14,8 @@ const app = express()
 // Passport Config
 app.use(session({
 	secret: randomUUID(),
-	resave: false,
-	saveUninitialized: false,
-	cookie: { secure: true },
+	resave: true,
+	saveUninitialized: true
 }))
 
 app.use(passport.initialize())
