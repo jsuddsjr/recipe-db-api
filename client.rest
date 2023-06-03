@@ -32,6 +32,9 @@ Content-Type: application/json
     "password": "awesomeSauce123!"
 }
 
+### Who am I?
+GET {{host}}/auth/me
+
 ### Log out
 GET {{host}}/auth/logout
 

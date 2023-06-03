@@ -8,23 +8,23 @@ router.get('/google', passport.authenticate('google', { scope: ['profile', 'emai
 router.get('/google/callback', passport.authenticate('google', {
   successRedirect: '/api-docs',
   failureRedirect: '/profile',
-  failureMessage: 'Authentication failed.',
+  failureMessage: true,
 }))
 
-router.get('/github', passport.authenticate('github', { scope: ['profile', 'email'] }))
+router.get('/github', passport.authenticate('github'))
 
 router.get('/github/callback', passport.authenticate('github', {
   successRedirect: '/api-docs',
   failureRedirect: '/profile',
-  failureMessage: 'Authentication failed.',
+  failureMessage: true,
 }))
 
-router.get('/linkedin', passport.authenticate('linkedin', { scope: ['profile', 'email'] }))
+router.get('/linkedin', passport.authenticate('linkedin'))
 
 router.get('/linkedin/callback', passport.authenticate('linkedin', {
   successRedirect: '/api-docs',
   failureRedirect: '/profile',
-  failureMessage: 'Authentication failed.',
+  failureMessage: true,
 }))
 
 router.post('/login',
@@ -41,7 +41,7 @@ router.post('/login',
       next()
     }
     else {
-      if (request.get('referer').endsWith('/profile')) {
+      if (request.get('Content-Type') === 'application/x-www-form-urlencoded') {
         request.session.messages = errors.array()
         response.redirect('/profile')
       } else {
@@ -52,7 +52,7 @@ router.post('/login',
   passport.authenticate('local', {
     successRedirect: '/api-docs',
     failureRedirect: '/profile',
-    failureMessage: 'Authentication failed.',
+    failureMessage: true,
   }))
 
 router.get('/logout', (request, response) =>

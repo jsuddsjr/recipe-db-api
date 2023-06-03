@@ -3,7 +3,7 @@
   "info": {
     "title": "Recipe DB API",
     "version": "0.0.1",
-    "description": "\nA simple recipe database built with MongoDb and Express.js.\n\n### 401 Unauthorized\nTo use routes that modify data, you need to be authenticated. To authenticate, you can use one of the following methods:\n\n- [Click here to log in with your Google account](/auth/google).\n- [Click here to log in with your GitHub account](/auth/github).\n- [Click here to verify your user account](/auth/me).\n- [Click here to log out](/auth/logout).\n\n### Credits\nThis API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [Source code is available on GitHub](https://github.com/jsuddsjr/recipe-db-api).\n\n**This api not intended for serious use.**\n"
+    "description": "\nA simple recipe database built with MongoDb and Express.js.\n\n### 401 Unauthorized\nTo use routes that modify data, you need to be authenticated. To authenticate, you can use one of the following methods:\n\n- <a href='/auth/google' target='_self'>Click here to log in with your Google account</a>.\n- <a href='/auth/github' target='_self'>Click here to log in with your GitHub account</a>.\n- [Click here to verify your user account](/auth/me).\n- <a href='/auth/logout' target='_self'>Click here to log out</a>.\n\n### Credits\nThis API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [Source code is available on GitHub](https://github.com/jsuddsjr/recipe-db-api).\n\n**This api not intended for serious use.**\n"
   },
   "host": "localhost:4567",
   "basePath": "/api",

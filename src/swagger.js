@@ -40,10 +40,10 @@ A simple recipe database built with MongoDb and Express.js.
 ### 401 Unauthorized
 To use routes that modify data, you need to be authenticated. To authenticate, you can use one of the following methods:
 
-- [Click here to log in with your Google account](/auth/google).
-- [Click here to log in with your GitHub account](/auth/github).
+- <a href='/auth/google' target='_self'>Click here to log in with your Google account</a>.
+- <a href='/auth/github' target='_self'>Click here to log in with your GitHub account</a>.
 - [Click here to verify your user account](/auth/me).
-- [Click here to log out](/auth/logout).
+- <a href='/auth/logout' target='_self'>Click here to log out</a>.
 
 ### Credits
 This API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [Source code is available on GitHub](https://github.com/jsuddsjr/recipe-db-api).
