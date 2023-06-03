@@ -1,3 +1,4 @@
+const hostname = require('node:os').hostname()
 const path = require('node:path')
 const swaggerAutogen = require('swagger-autogen')
 const m2s = require('mongoose-to-swagger')
@@ -34,7 +35,11 @@ const swaggerDefinition = {
 A simple recipe database built with MongoDb and Express.js.
 
 ### 401 Unauthorized
-To use routes that modify data, you need to be authenticated. [Click here to log in with your Google account](/auth/google).
+To use routes that modify data, you need to be authenticated. 
+
+- [Click here to log in with your Google account](/auth/google).
+- [Click here to log in with your GitHub account](/auth/github).
+- [Click here to log in with your LinkedIn account](/auth/linkedin).
 
 ### Credits
 This API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [Source code is available on GitHub](https://github.com/jsuddsjr/recipe-db-api).
@@ -42,8 +47,14 @@ This API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [S
 **This api not intended for regular use.**
 `,
 	},
-	host: 'recipe-db-api.onrender.com',
+	contact: {
+		name: 'John Sudds',
+		url: 'https://github.com/jsuddsjr',
+		email: 'jsuddsjr@noreply.github.com'
+	},
 	schemes: ['https'],
+	host: hostname,
+	basePath: '/api',
 
 	//! The @definitions property is copied as-is to the output.
 	// eslint-disable-next-line unicorn/no-array-reduce
@@ -71,15 +82,15 @@ This API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [S
 
 const buildSwagger = async () => {
 	const outputFile = path.join(__dirname, './swagger.json')
-	const endpointsFiles = [path.join(__dirname, './routes/api/index.js')]
+	const endpointsFiles = [path.join(__dirname, './routes/api/*.js')]
 
-	await swaggerAutogen(outputFile, endpointsFiles, swaggerDefinition).then((result) => {
-		if (result.success) {
-			console.log('Swagger JSON file was created.')
-		} else {
-			throw new Error("Unable to create Swagger JSON file")
-		}
-	})
+	const result = await swaggerAutogen(outputFile, endpointsFiles, swaggerDefinition)
+	if (result.success) {
+		console.log('Swagger JSON file was created.')
+		return result.data
+	} else {
+		throw new Error("Unable to create Swagger JSON file")
+	}
 }
 
-buildSwagger()
+module.exports = buildSwagger()

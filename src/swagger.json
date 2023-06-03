@@ -5,12 +5,678 @@
     "version": "0.0.1",
     "description": "\nA simple recipe database built with MongoDb and Express.js.\n\n### 401 Unauthorized\nTo use routes that modify data, you need to be authenticated. [Click here to log in with your Google account](/auth/google).\n\n### Credits\nThis API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [Source code is available on GitHub](https://github.com/jsuddsjr/recipe-db-api).\n\n**This api not intended for regular use.**\n"
   },
-  "host": "recipe-db-api.onrender.com",
-  "basePath": "/",
+  "host": "localhost:4567",
+  "basePath": "/api",
   "schemes": [
     "https"
   ],
-  "paths": {},
+  "paths": {
+    "/ingredients/": {
+      "get": {
+        "tags": [
+          "Ingredient"
+        ],
+        "description": "Get all recipes.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/IngredientArray"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Ingredient"
+        ],
+        "description": "Create a new recipe.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Ingredient object.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Ingredient"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/InsertedDocument"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ingredients/{id}": {
+      "get": {
+        "tags": [
+          "Ingredient"
+        ],
+        "description": "Get specified recipe.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Ingredient"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Ingredient"
+        ],
+        "description": "Update specified recipe.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Ingredient object.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Ingredient"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/InsertedDocument"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Ingredient"
+        ],
+        "description": "Delete specified recipe.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/recipes/": {
+      "get": {
+        "tags": [
+          "Recipe"
+        ],
+        "description": "Get all recipes.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RecipeArray"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Recipe"
+        ],
+        "description": "Create a new recipe.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Recipe object.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Recipe"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/InsertedDocument"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/recipes/{id}": {
+      "get": {
+        "tags": [
+          "Recipe"
+        ],
+        "description": "Get specified recipe.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Recipe"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Recipe"
+        ],
+        "description": "Update specified recipe.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Recipe object.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Recipe"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/InsertedDocument"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Recipe"
+        ],
+        "description": "Delete specified recipe.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Get all users.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserArray"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Create a new user.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User object.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/InsertedDocument"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Get specified user.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Update specified user.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User object.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/InsertedDocument"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "description": "Delete specified user.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "description": "Get all users.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserArray"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new user.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User object.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/InsertedDocument"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "get": {
+        "description": "Get specified user.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "Update specified user.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User object.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/InsertedDocument"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete specified user.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Record id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
   "definitions": {
     "InsertedDocument": {
       "properties": {
@@ -33,7 +699,7 @@
       }
     },
     "Ingredient": {
-      "title": "ingredient",
+      "title": "Ingredient",
       "required": [
         "@context",
         "@type",
@@ -120,7 +786,7 @@
       }
     },
     "Recipe": {
-      "title": "recipe",
+      "title": "Recipe",
       "required": [
         "@context",
         "@type",
@@ -156,6 +822,7 @@
           "type": "array",
           "items": {
             "type": "object",
+            "description": "A gallery of recipe images.",
             "properties": {
               "@type": {
                 "type": "string",
@@ -200,6 +867,7 @@
         },
         "nutrition": {
           "type": "object",
+          "description": "The aggregated nutrition info.",
           "properties": {
             "@context": {
               "type": "string",
@@ -273,6 +941,7 @@
         },
         "owner": {
           "type": "object",
+          "description": "The owner of this recipe.",
           "properties": {
             "@type": {
               "type": "string",
@@ -360,6 +1029,7 @@
           "type": "array",
           "items": {
             "type": "object",
+            "description": "A list of recipe steps.",
             "properties": {
               "@type": {
                 "type": "string",
@@ -369,6 +1039,7 @@
                 "type": "array",
                 "items": {
                   "type": "object",
+                  "description": "Gallery of images.",
                   "properties": {
                     "@type": {
                       "type": "string",
@@ -443,6 +1114,7 @@
         },
         "video": {
           "type": "object",
+          "description": "An optional video.",
           "properties": {
             "@type": {
               "type": "string",
@@ -521,12 +1193,11 @@
       }
     },
     "User": {
-      "title": "user",
+      "title": "User",
       "required": [
         "@context",
         "@type",
-        "name",
-        "email"
+        "displayName"
       ],
       "properties": {
         "@context": {
@@ -537,7 +1208,11 @@
           "type": "string",
           "description": "The schema type."
         },
-        "name": {
+        "identifier": {
+          "type": "string",
+          "description": "Service identifier for Google, LinkedIn, etc"
+        },
+        "displayName": {
           "type": "string",
           "description": "The user name.",
           "example": "John Doe"
@@ -548,52 +1223,42 @@
           "example": "john.doe@example.com"
         },
         "url": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "The user URL.",
-            "example": "https://example.com"
-          }
+          "type": "string",
+          "description": "The user URL.",
+          "example": "https://example.com"
         },
         "image": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "@type": {
-                "type": "string",
-                "description": "The schema type."
-              },
-              "url": {
-                "type": "string",
-                "description": "The image URL.",
-                "example": "https://example.com/image.jpg"
-              },
-              "accessibilitySummary": {
-                "type": "string",
-                "description": "The image alt text"
-              },
-              "published": {
-                "type": "string",
-                "description": "The image publish date.",
-                "example": "2020-01-01T00:00:00.000Z"
-              },
-              "height": {
-                "type": "number",
-                "description": "The image height in pixels.",
-                "example": 300
-              },
-              "width": {
-                "type": "number",
-                "description": "The image width in pixels.",
-                "example": 400
-              }
+          "type": "object",
+          "description": "An optional user image.",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "description": "The schema type."
             },
-            "required": [
-              "@type",
-              "height",
-              "width"
-            ]
+            "url": {
+              "type": "string",
+              "description": "The image URL.",
+              "example": "https://example.com/image.jpg"
+            },
+            "accessibilitySummary": {
+              "type": "string",
+              "description": "The image alt text"
+            },
+            "published": {
+              "type": "string",
+              "description": "The image publish date.",
+              "example": "2020-01-01T00:00:00.000Z"
+            },
+            "height": {
+              "type": "number",
+              "description": "The image height in pixels.",
+              "example": 300
+            },
+            "width": {
+              "type": "number",
+              "description": "The image width in pixels.",
+              "example": 400
+            }
           }
         },
         "keywords": {
@@ -606,6 +1271,14 @@
         "password": {
           "type": "string",
           "description": "Local password (not visible to default view)"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "user",
+            "admin"
+          ],
+          "description": "The user role."
         }
       }
     },
@@ -616,5 +1289,10 @@
         "description": "An array of User objects."
       }
     }
+  },
+  "contact": {
+    "name": "John Sudds",
+    "url": "https://github.com/jsuddsjr",
+    "email": "jsuddsjr@noreply.github.com"
   }
 }

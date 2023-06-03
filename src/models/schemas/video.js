@@ -7,7 +7,7 @@ const {
 	ValidDuration,
 	ValidUrl,
 	RequiredUrl,
-} = require('../validators.js')
+} = require('../validators')
 
 const videoSchema = new Schema(
 	{

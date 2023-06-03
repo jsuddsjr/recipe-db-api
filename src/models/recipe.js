@@ -1,8 +1,8 @@
 const {Schema, model} = require('mongoose')
-const imageSchema = require('./schemas/image.js')
-const nutritionSchema = require('./schemas/nutrition.js')
-const personSchema = require('./schemas/person.js')
-const videoSchema = require('./schemas/video.js')
+const imageSchema = require('./schemas/image')
+const nutritionSchema = require('./schemas/nutrition')
+const personSchema = require('./schemas/person')
+const videoSchema = require('./schemas/video')
 const {
 	defaultString,
 	foreignKey,
@@ -12,14 +12,14 @@ const {
 	TrimmedString,
 	ValidDuration,
 	ValidUrl,
-} = require('./validators.js')
-const User = require('./user.js')
-const Ingredient = require('./ingredient.js')
+} = require('./validators')
+const User = require('./user')
+const Ingredient = require('./ingredient')
 
 const documentSchema = new Schema(
 	{
 		'@type': {...defaultString('HowToStep'), description: 'The schema type.'},
-		image: [imageSchema],
+		image: [{ type: imageSchema, require: false, description: 'Gallery of images.' }],
 		name: {
 			...TrimmedString,
 			example: 'Start Your Ovens!',
@@ -54,14 +54,14 @@ const recipeSchema = new Schema(
 		},
 		datePublished: {...RequiredDate, description: 'The publish date.'},
 		description: {...RequiredString, description: 'The recipe description.'},
-		image: [imageSchema],
+		image: [{ type: imageSchema, description: 'A gallery of recipe images.'}],
 		name: {
 			...RequiredString,
 			example: 'Amazingly Easy Irish Soda Bread',
 			description: 'Recipe title.',
 		},
-		nutrition: nutritionSchema,
-		owner: personSchema,
+		nutrition: { type: nutritionSchema, description: 'The aggregated nutrition info.' },
+		owner: { type: personSchema, description: 'The owner of this recipe.' },
 		prepTime: {...ValidDuration, description: 'The prep time.'},
 		recipeCategory: [
 			{
@@ -87,7 +87,7 @@ const recipeSchema = new Schema(
 					'A single ingredient used in the recipe, e.g. sugar, flour or garlic.',
 			},
 		],
-		recipeInstructions: [documentSchema],
+		recipeInstructions: [{ type: documentSchema, description: 'A list of recipe steps.' }],
 		recipeYield: [
 			{
 				...TrimmedString,
@@ -99,7 +99,7 @@ const recipeSchema = new Schema(
 			...ValidDuration,
 			description: 'The total time it takes to prepare and cook the recipe.',
 		},
-		video: videoSchema,
+		video: { type: videoSchema, description: 'An optional video.' }
 	},
 	{
 		timestamps: true,
@@ -112,6 +112,6 @@ recipeSchema.add({
 	nutritionIds: [foreignKey(Ingredient, 'Ingredient ids.')],
 })
 
-const Recipe = model('recipe', recipeSchema)
+const Recipe = model('Recipe', recipeSchema)
 
 module.exports = Recipe

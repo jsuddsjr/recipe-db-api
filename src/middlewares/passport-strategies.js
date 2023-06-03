@@ -5,69 +5,79 @@ const GitHubStrategy = require('passport-github2').Strategy
 const config = require('../config/config')
 
 const passport = require('passport')
-const {User} = require('../models')
+const { User } = require('../models')
 
-passport.use(new GoogleStrategy({
-  clientID: config.GOOGLE_CLIENT_ID,
-  clientSecret: config.GOOGLE_CLIENT_SECRET,
-  callbackURL: '/auth/google/callback'
-},
 /**
- * @param {string} accessToken The access token
- * @param {string} [refreshToken] The refresh token
- * @param {import('passport-google-oauth20').Profile} profile The user profile
- * @param {import('passport-google-oauth20').VerifyCallback} done The verify callback
+ * A general verify function for passport strategies.
+ * @param {string} accessToken API access token from the provider
+ * @param {string} refreshToken Refresh token from the provider
+ * @param {import('passport').Profile} profile The user's profile
+ * @param {import('passport').VerifyFunction} done Callback function
+ * @returns {Promise<void>}
  */
-async (accessToken, refreshToken, profile, done) => {
+const standardVerify = async (accessToken, refreshToken, profile, done) => {
   try {
-    let user = await User.findOne({ googleId: profile.id })
-    if (user) {
-      done(false, user)
-    } else {
+    let user = await User.findOne({ identifier: profile.id })
+    if (!user) {
       const newUser = {
-        googleId: profile.id,
-        username: profile.displayName,
+        identifier: profile.id,
         displayName: profile.displayName,
-        firstName: profile.name.givenName,
-        lastName: profile.name.familyName,
-        email: profile.emails?.find(email => email.verified)?.value,
-        image: profile.photos[0].value
+        email: profile.emails[0].value,
+        image: {
+          url: profile.photos[0].value,
+          width: 96,
+          height: 96
+        }
       }
       user = await User.create(newUser)
-      done(false, user)
     }
+    done(false, user)
   } catch (error) {
     console.error(error)
     done(error) // Pass the error to done
   }
-}))
+}
+
+passport.use(new GoogleStrategy({
+  clientID: config.GOOGLE_CLIENT_ID,
+  clientSecret: config.GOOGLE_CLIENT_SECRET,
+  callbackURL: '/auth/google/callback',
+  scope: ['profile', 'email']
+}, standardVerify))
+
+passport.use(new GitHubStrategy({
+  clientID: config.GITHUB_CLIENT_ID,
+  clientSecret: config.GITHUB_CLIENT_SECRET,
+  callbackURL: '/auth/github/callback',
+  scope: ['profile', 'email']
+}, standardVerify))
+
+passport.use(new LinkedInStrategy({
+  clientID: config.LINKEDIN_CLIENT_ID,
+  clientSecret: config.LINKEDIN_CLIENT_SECRET,
+  callbackURL: '/auth/linkedin/callback',
+  scope: ['r_liteprofile', 'r_emailaddress']
+}, standardVerify))
 
 passport.use(new LocalStrategy({
-  usernameField: 'username',
+  usernameField: 'email',
   passwordField: 'password',
 },
 /** @type {import('passport-local').VerifyFunction} */
-async function(username, password, callback) {
-    try {
-      const bcrypt = require('bcrypt')
-
-    const model = await User.findOne({username},{password:1})
-
+async function(email, password, done) {
+  try {
+    const model = await User.findOne({ email }, { password: 1 })
     if (!model) {
-      // TODO: We just go ahead and add this user now.
-      const hashedPassword = await bcrypt.hash(password, 10)
-      const user = {username, password: hashedPassword}
-      const result = await User.create(user)
-      return callback(false, result)
+      const result = await User.create({ email, password })
+      return done(false, result)
+    } else if (model.verifyPassword(password)) {
+      return done(false, model)
     }
-
-    const validPassword = await bcrypt.compare(password, model.password)
-    if (validPassword === false)
-      return callback('Wrong password.', false)
-
-    return callback(false, model)
+    else {
+      return done('Wrong password.')
+    }
   } catch(error) {
-    if (error) { return callback(error) }
+    done(error)
   }
 }))
 

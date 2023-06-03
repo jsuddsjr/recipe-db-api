@@ -4,19 +4,26 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Server",
-            "smartStep": false,
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}\\src\\bin\\www",
-            "localRoot": "${workspaceFolder}\\src",
-            "env": {
-                "DEBUG": "express:*"
-            }
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Current File",
+        "smartStep": false,
+        "skipFiles": ["<node_internals>/**"],
+        "program": "${file}"
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Launch Server",
+        "smartStep": false,
+        "skipFiles": ["<node_internals>/**"],
+        "program": "${workspaceFolder}\\src\\bin\\www",
+        "localRoot": "${workspaceFolder}\\src",
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "DEBUG": "express:*"
         }
+      }
     ]
 }

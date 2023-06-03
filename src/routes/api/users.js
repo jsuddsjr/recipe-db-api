@@ -1,22 +1,79 @@
-const {Router} = require('express')
-const crud = require('../../controllers/crud.js')
-const User = require('../../models/user.js')
+const router = require('express').Router()
+const crud = require('../../controllers/crud')
+const User = require('../../models/user')
+const {isAuthorized} = require('../../middlewares/is-authenticated')
 
-const router = Router()
+router.get('/',
+/*
+    #swagger.description = 'Get all users.'
+    #swagger.responses[200] = {
+        description: 'Success',
+        schema: { $ref: "#/definitions/UserArray" }
+    }
+*/
+    isAuthorized('admin'),
+    crud.getAll(User),
+)
 
-// Get all users
-router.get('/', crud.getAll(User))
+router.get('/:id', /*
+    #swagger.description = 'Get specified user.'
+    #swagger.parameters['id'] = { description: 'Record id' }
+    #swagger.responses[200] = {
+        description: 'Success',
+        schema: { $ref: "#/definitions/User" }
+    }
+*/
+    isAuthorized('admin'),
+	crud.checkObjectId(),
+	crud.getSingle(User),
+)
 
-// Create a new user
-router.post('/', crud.postSingle(User))
+router.post('/',
+/*
+    #swagger.description = 'Create a new user.'
+    #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'User object.',
+        required: true,
+        schema: { $ref: "#/definitions/User" }
+    }
+    #swagger.responses[200] = {
+        description: 'Success',
+        schema: { $ref: "#/definitions/InsertedDocument" }
+    }
+*/
+    isAuthorized('admin'),
+	crud.postSingle(User),
+)
 
-// Get user By ID
-router.get('/:id', crud.checkObjectId(), crud.getSingle(User))
+router.put('/:id',
+/*
+    #swagger.description =  'Update specified user.'
+    #swagger.parameters['id'] = { description: 'Record id' }
+    #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'User object.',
+        required: true,
+        schema: { $ref: "#/definitions/User" }
+    }
+    #swagger.responses[200] = {
+        description: 'Success',
+        schema: { $ref: "#/definitions/InsertedDocument" }
+    }
+*/
+    isAuthorized('admin'),
+	crud.checkObjectId(),
+	crud.putSingle(User),
+)
 
-// Update user By ID
-router.put('/:id', crud.checkObjectId(), crud.putSingle(User))
-
-// Delete user By ID
-router.delete('/:id', crud.checkObjectId(), crud.deleteSingle(User))
+router.delete('/:id',
+/*
+    #swagger.description = 'Delete specified user.'
+    #swagger.parameters['id'] = { description: 'Record id' }
+*/
+    isAuthorized('admin'),
+	crud.checkObjectId(),
+	crud.deleteSingle(User),
+)
 
 module.exports = router

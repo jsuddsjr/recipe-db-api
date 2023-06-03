@@ -3,9 +3,14 @@
     "apidocs",
     "autogen",
     "datestring",
+    "emailaddress",
+    "liteprofile",
     "middlewares",
+    "nvbhy",
     "onrender",
-    "resave"
+    "resave",
+    "userid",
+    "virtuals"
   ],
   "editor.formatOnSaveMode": "modificationsIfAvailable",
   "files.eol": "\n",

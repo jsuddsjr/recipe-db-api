@@ -5,7 +5,7 @@ const {
 	ValidCalorieString,
 	ValidMetricWeightString,
 	ValidServingSizeString,
-} = require('../validators.js')
+} = require('../validators')
 
 const nutritionSchema = new Schema(
 	{

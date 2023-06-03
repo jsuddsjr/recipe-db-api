@@ -4,8 +4,8 @@ const {
 	RequiredString,
 	ValidEmail,
 	ValidUrl,
-} = require('../validators.js')
-const imageSchema = require('./image.js')
+} = require('../validators')
+const imageSchema = require('./image')
 
 const personSchema = new Schema(
 	{

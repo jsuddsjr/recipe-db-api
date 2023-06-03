@@ -1,4 +1,4 @@
-;(function () {
+(function () {
 	// Fetch all the forms we want to apply custom Bootstrap validation styles to
 	// eslint-disable-next-line no-undef
 	for (const form of document.querySelectorAll('form.needs-validation')) {

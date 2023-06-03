@@ -1,6 +1,6 @@
 const Realm = require('realm-web')
 const {Router} = require('express')
-const config = require('../config/config.js')
+const config = require('../../config/config')
 
 const router = Router()
 
@@ -11,7 +11,7 @@ router.get('/', async (request, response) => {
 		/* FetchProfile */ true,
 	)
 
-	response.render('view-user', {
+	response.render('user', {
 		title: 'User',
 		userid: user.id,
 		active: {

@@ -1,28 +1,77 @@
-const {Router} = require('express')
-const Ingredient = require('../../models/ingredient.js')
-const crud = require('../../controllers/crud.js')
-const {isAuthenticated} = require('../../middlewares/is-authenticated.js')
+const router = require('express').Router()
+const Ingredient = require('../../models/ingredient')
+const crud = require('../../controllers/crud')
+const {isAuthenticated} = require('../../middlewares/is-authenticated')
 
-const router = Router()
+router.get('/',
+/*
+    #swagger.description = 'Get all recipes.'
+    #swagger.responses[200] = {
+        description: 'Success',
+        schema: { $ref: "#/definitions/IngredientArray" }
+    }
+*/
+    crud.getAll(Ingredient),
+)
 
-// Get all records
-router.get('/', crud.getAll(Ingredient))
+router.get('/:id', /*
+    #swagger.description = 'Get specified recipe.'
+    #swagger.parameters['id'] = { description: 'Record id' }
+    #swagger.responses[200] = {
+        description: 'Success',
+        schema: { $ref: "#/definitions/Ingredient" }
+    }
+*/
+	crud.checkObjectId(),
+	crud.getSingle(Ingredient),
+)
 
-// Get record By ID
-router.get('/:id', crud.checkObjectId(), crud.getSingle(Ingredient))
+router.post('/',
+/*
+    #swagger.description = 'Create a new recipe.'
+    #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Ingredient object.',
+        required: true,
+        schema: { $ref: "#/definitions/Ingredient" }
+    }
+    #swagger.responses[200] = {
+        description: 'Success',
+        schema: { $ref: "#/definitions/InsertedDocument" }
+    }
+*/
+    isAuthenticated,
+	crud.postSingle(Ingredient),
+)
 
-// Create a new record
-router.post('/', isAuthenticated, crud.postSingle(Ingredient))
-
-// Update record By ID
-router.put(
-	'/:id',
-	isAuthenticated,
+router.put('/:id',
+/*
+    #swagger.description =  'Update specified recipe.'
+    #swagger.parameters['id'] = { description: 'Record id' }
+    #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Ingredient object.',
+        required: true,
+        schema: { $ref: "#/definitions/Ingredient" }
+    }
+    #swagger.responses[200] = {
+        description: 'Success',
+        schema: { $ref: "#/definitions/InsertedDocument" }
+    }
+*/
+    isAuthenticated,
 	crud.checkObjectId(),
 	crud.putSingle(Ingredient),
 )
 
-// Delete record By ID
-router.delete('/:id', isAuthenticated, crud.checkObjectId(), crud.deleteSingle(Ingredient))
+router.delete('/:id',
+/*
+    #swagger.description = 'Delete specified recipe.'
+    #swagger.parameters['id'] = { description: 'Record id' }
+*/
+    isAuthenticated,
+	crud.checkObjectId(),
+	crud.deleteSingle(Ingredient),
+)
 
 module.exports = router
