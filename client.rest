@@ -32,6 +32,9 @@ Content-Type: application/json
     "password": "awesomeSauce123!"
 }
 
+### Log out
+GET {{host}}/auth/logout
+
 ### Add default recipe
 #! 401 Unauthorized
 # @name recipe
@@ -276,4 +279,38 @@ Content-Type: application/json
     "image": "should be an object",
     "cookTime": "15 minutes",
     "url": "not a valid url"
+}
+
+### Get some ingredients
+GET {{host}}/api/ingredients
+
+### Add ingredient
+# @name ingredient
+POST {{host}}/api/ingredients
+Content-Type: application/json
+
+{
+    "name": "milk",
+    "servingSize": "1 cup",
+    "calories": "122 calories"
+}
+
+#### Variables
+@ingredientId = {{ingredient.response.body._id}}
+
+### Verify ingredient was added
+GET {{host}}/api/ingredients/{{ingredientId}}
+
+### Delete ingredient
+DELETE {{host}}/api/ingredients/{{ingredientId}}
+
+### Add ingredient
+#! Validation errors
+POST {{host}}/api/ingredients
+Content-Type: application/json
+
+{
+    "name": "",
+    "servingSize": "1 gal",
+    "calories": "122"
 }
