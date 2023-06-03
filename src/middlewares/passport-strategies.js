@@ -42,21 +42,21 @@ const standardVerify = async (accessToken, refreshToken, profile, done) => {
 passport.use(new GoogleStrategy({
   clientID: config.GOOGLE_CLIENT_ID,
   clientSecret: config.GOOGLE_CLIENT_SECRET,
-  callbackURL: '/auth/google/callback',
+  callbackURL: config.HOST_URL + '/auth/google/callback',
   scope: ['profile', 'email']
 }, standardVerify))
 
 passport.use(new GitHubStrategy({
   clientID: config.GITHUB_CLIENT_ID,
   clientSecret: config.GITHUB_CLIENT_SECRET,
-  callbackURL: '/auth/github/callback',
+  callbackURL: config.HOST_URL + '/auth/github/callback',
   scope: ['profile', 'email']
 }, standardVerify))
 
 passport.use(new LinkedInStrategy({
   clientID: config.LINKEDIN_CLIENT_ID,
   clientSecret: config.LINKEDIN_CLIENT_SECRET,
-  callbackURL: '/auth/linkedin/callback',
+  callbackURL: config.HOST_URL + '/auth/linkedin/callback',
   scope: ['r_liteprofile', 'r_emailaddress']
 }, standardVerify))
 

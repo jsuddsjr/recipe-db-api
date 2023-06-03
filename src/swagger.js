@@ -3,6 +3,7 @@ const path = require('node:path')
 const swaggerAutogen = require('swagger-autogen')
 const m2s = require('mongoose-to-swagger')
 const models = require('./models')
+const hostUrl = new URL(require('./config/config').HOST_URL)
 
 const arguments_ = new Set(require('node:process').argv.slice(2))
 
@@ -55,8 +56,8 @@ This API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [S
 		url: 'https://github.com/jsuddsjr',
 		email: 'jsuddsjr@noreply.github.com'
 	},
-	schemes: ["https"],
-	host: 'recipe-db-api.onrender.com',
+	schemes: [hostUrl.protocol.slice(0, -1)],
+	host: hostUrl.host,
 	basePath: '/api',
 
 	//! The @definitions property is copied as-is to the output.
