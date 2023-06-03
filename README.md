@@ -11,6 +11,7 @@ The site is currently hosted on Render, but not forever.
 ## Things I learned while building this project
 
 * [Express](https://www.npmjs.com/package/express) (routes, middleware, body-parser, CORS)
+* [Express-Generator](https://www.npmjs.com/package/express-generator) (starter project) -- Because it works.
 * [Express-Validator](https://www.npmjs.com/package/express-validator) (request validation) -- *Almost* everything I needed.
 * [Mongoose](https://www.npmjs.com/package/mongoose) (models, child schemas, CRUD, validation)
 * [Passport Authentication](https://www.npmjs.com/package/passport) (user/pass and OAuth2)
