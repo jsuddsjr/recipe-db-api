@@ -1,6 +1,3 @@
-// @host = localhost:3000
-@host = recipe-db-api.onrender.com
-
 ### Home page
 GET http://{{host}}/
 

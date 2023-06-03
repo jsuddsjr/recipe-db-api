@@ -1,6 +1,6 @@
 const {pattern} = require('iso8601-duration')
-const {isValidISODateString} = require('iso-datestring-validator')
-const {isEmail} = require('is-email-validation')
+const { isValidISODateString } = require('iso-datestring-validator')
+const {isEmail, isURL} = require('validator')
 
 const ValidDuration = {
 	type: String,
@@ -36,13 +36,7 @@ const ValidUrl = {
 	type: String,
 	trim: true,
 	validate: {
-		validator(value) {
-			try {
-				return Boolean(URL(value))
-			} catch {
-				return false
-			}
-		},
+		validator: isURL,
 		message: properties => `${properties.value} not a valid URL format`,
 	},
 	example: 'https://example.com',

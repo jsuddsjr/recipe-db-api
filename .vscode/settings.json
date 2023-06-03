@@ -23,11 +23,11 @@
   },
   "rest-client.environmentVariables": {
     "$shared": {
-      "host": "http://localhost:5012"
+      "host": "http://localhost:4567"
     },
     "Development": {},
     "Production": {
-      "host": "https://team7project.onrender.com"
+      "host": "https://recipe-db-api.onrender.com"
     }
   }
 }

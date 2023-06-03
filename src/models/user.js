@@ -1,5 +1,6 @@
 const {Schema, model} = require('mongoose')
 const imageSchema = require('./schemas/image')
+const bcrypt = require('bcrypt')
 const {
 	defaultString,
 	RequiredString,
@@ -43,14 +44,24 @@ const userSchema = new Schema(
 	{
 		timestamps: true,
 		methods: {
-			verifyPassword: async function (password) {
-				return await require('bcrypt').compare(password, this.password)
+			/**
+			 * Verify a plain text password. (Requires model to be selected with password field.)
+			 * @param {string} password Password to verify.
+			 * @returns {Promise<boolean>}
+			 */
+			verifyPassword: function (password) {
+				return bcrypt.compare(password, this.password)
 			},
 		},
 		virtuals: {
 			password: {
+				/**
+				 * Stored the password as encrypted hash.
+				 * @param {string} password A plain text password.
+				 * @returns {Promise<void>}
+				 */
 				put: async function (password) {
-					this.password = await require('bcrypt').hash(password, 10)
+					this.password = await bcrypt.hash(password, 16)
 				}
 			}
 		}
