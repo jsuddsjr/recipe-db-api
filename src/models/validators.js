@@ -69,6 +69,7 @@ const RequiredString = {required: true, ...TrimmedString}
 const ValidMetricWeightString = {
 	type: String,
 	trim: true,
+	required: false,
 	validate: {
 		validator(value) {
 			return /^\d+ m?g$/.test(value)
@@ -82,6 +83,7 @@ const ValidMetricWeightString = {
 const ValidCalorieString = {
 	type: String,
 	trim: true,
+	required: false,
 	validate: {
 		validator(value) {
 			return /^\d+ (?:kcal|calories)$/.test(value)

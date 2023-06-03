@@ -1,7 +1,6 @@
 const {Schema} = require('mongoose')
 const {
 	defaultString,
-	RequiredString,
 	ValidCalorieString,
 	ValidMetricWeightString,
 	ValidServingSizeString,

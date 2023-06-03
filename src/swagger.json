@@ -700,7 +700,6 @@
         "@context",
         "@type",
         "servingSize",
-        "calories",
         "name"
       ],
       "properties": {
@@ -719,51 +718,61 @@
         },
         "calories": {
           "type": "string",
+          "required": false,
           "description": "The number of calories.",
           "example": "100 kcal"
         },
         "carbohydrateContent": {
           "type": "string",
+          "required": false,
           "description": "The weight in grams or milligrams.",
           "example": "100 mg"
         },
         "cholesterolContent": {
           "type": "string",
+          "required": false,
           "description": "The weight in grams or milligrams.",
           "example": "100 mg"
         },
         "fiberContent": {
           "type": "string",
+          "required": false,
           "description": "The weight in grams or milligrams.",
           "example": "100 mg"
         },
         "proteinContent": {
           "type": "string",
+          "required": false,
           "description": "The weight in grams or milligrams.",
           "example": "100 mg"
         },
         "saturatedFatContent": {
           "type": "string",
+          "required": false,
           "description": "The weight in grams or milligrams.",
           "example": "100 mg"
         },
         "sodiumContent": {
           "type": "string",
+          "required": false,
           "description": "The weight in grams or milligrams.",
           "example": "100 mg"
         },
         "sugarContent": {
           "type": "string",
+          "required": false,
           "description": "The weight in grams or milligrams.",
           "example": "100 mg"
         },
         "fatContent": {
           "type": "string",
+          "required": false,
           "description": "The weight in grams or milligrams.",
           "example": "100 mg"
         },
         "unsaturatedFatContent": {
           "type": "string",
+          "required": false,
           "description": "The weight in grams or milligrams.",
           "example": "100 mg"
         },
@@ -878,51 +887,61 @@
             },
             "calories": {
               "type": "string",
+              "required": false,
               "description": "The number of calories.",
               "example": "100 kcal"
             },
             "carbohydrateContent": {
               "type": "string",
+              "required": false,
               "description": "The weight in grams or milligrams.",
               "example": "100 mg"
             },
             "cholesterolContent": {
               "type": "string",
+              "required": false,
               "description": "The weight in grams or milligrams.",
               "example": "100 mg"
             },
             "fiberContent": {
               "type": "string",
+              "required": false,
               "description": "The weight in grams or milligrams.",
               "example": "100 mg"
             },
             "proteinContent": {
               "type": "string",
+              "required": false,
               "description": "The weight in grams or milligrams.",
               "example": "100 mg"
             },
             "saturatedFatContent": {
               "type": "string",
+              "required": false,
               "description": "The weight in grams or milligrams.",
               "example": "100 mg"
             },
             "sodiumContent": {
               "type": "string",
+              "required": false,
               "description": "The weight in grams or milligrams.",
               "example": "100 mg"
             },
             "sugarContent": {
               "type": "string",
+              "required": false,
               "description": "The weight in grams or milligrams.",
               "example": "100 mg"
             },
             "fatContent": {
               "type": "string",
+              "required": false,
               "description": "The weight in grams or milligrams.",
               "example": "100 mg"
             },
             "unsaturatedFatContent": {
               "type": "string",
+              "required": false,
               "description": "The weight in grams or milligrams.",
               "example": "100 mg"
             }
