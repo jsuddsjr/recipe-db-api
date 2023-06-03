@@ -99,7 +99,12 @@ const recipeSchema = new Schema(
 			...ValidDuration,
 			description: 'The total time it takes to prepare and cook the recipe.',
 		},
-		video: { type: videoSchema, description: 'An optional video.' }
+		url: {
+			...ValidUrl,
+			description: 'The canonical URL of the recipe.',
+		},
+		video: { type: videoSchema, description: 'An optional video.' },
+		__v: {type: Number, select: false},
 	},
 	{
 		timestamps: true,
@@ -107,9 +112,9 @@ const recipeSchema = new Schema(
 )
 
 recipeSchema.add({
-	authorIds: [foreignKey(User, 'Author ids.')],
-	ownerId: foreignKey(User, 'Owner id.'),
-	nutritionIds: [foreignKey(Ingredient, 'Ingredient ids.')],
+	authors: [foreignKey(User, 'Author ids.')],
+	owner: foreignKey(User, 'Owner id.'),
+	ingredients: [foreignKey(Ingredient, 'Ingredient ids.')],
 })
 
 const Recipe = model('Recipe', recipeSchema)

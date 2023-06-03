@@ -11,9 +11,9 @@
     "lint:fix": "npm run lint -- --fix",
     "lint": "eslint src/**/*.js",
     "serve:reload": "livereload --debug -ee 'pug' src/",
-    "serve:watch": "set DEBUG=express:* && nodemon ./src/bin/www",
-    "serve": "npm-run-all --parallel serve:watch serve:reload",
-    "start": "node ./src/bin/www",
+    "serve:watch": "set DEBUG=express:* & nodemon --inspect ./src/bin/www",
+    "serve": "npm run swagger & npm-run-all --parallel serve:*",
+    "start": "npm run swagger -- --serve",
     "swagger": "node ./src/swagger.js"
   },
   "dependencies": {

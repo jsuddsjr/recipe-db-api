@@ -11,7 +11,7 @@ router.get('/',
         schema: { $ref: "#/definitions/RecipeArray" }
     }
 */
-    crud.getAll(Recipe),
+    crud.getAll(Recipe, ['owner']),
 )
 
 router.get('/:id', /*
@@ -41,6 +41,11 @@ router.post('/',
     }
 */
     isAuthenticated,
+    (request, response, next) => {
+        // Add owner to request body
+        request.body.owner = request.user._id
+        next()
+    },
 	crud.postSingle(Recipe),
 )
 

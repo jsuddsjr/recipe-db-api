@@ -15,7 +15,7 @@ const videoSchema = new Schema(
 		name: {...RequiredString, description: 'The video name.'},
 		url: { ...RequiredUrl, description: 'The video URL.' },
 		// TODO: Figure out how to make a working alias.
-		contentUrl: {...RequiredUrl, description: 'The video URL.'},
+		// contentUrl: {...RequiredUrl, description: 'The video URL.'},
 		description: {...TrimmedString, description: 'The video description.'},
 		thumbnailUrl: {...ValidUrl, description: 'An optional thumbnail URL.'},
 		embedUrl: {...ValidUrl, description: 'An optional embed URL.'},

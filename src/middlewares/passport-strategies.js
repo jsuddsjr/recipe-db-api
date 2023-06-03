@@ -19,17 +19,18 @@ const standardVerify = async (accessToken, refreshToken, profile, done) => {
   try {
     let user = await User.findOne({ identifier: profile.id })
     if (!user) {
-      const newUser = {
+      const email = Array.isArray(profile.emails)
+        ? profile.emails[0].value
+        : undefined
+      const image = Array.isArray(profile.photos)
+        ? { url: profile.photos[0].value }
+        : undefined
+      user = await User.create({
         identifier: profile.id,
         displayName: profile.displayName,
-        email: profile.emails[0].value,
-        image: {
-          url: profile.photos[0].value,
-          width: 96,
-          height: 96
-        }
-      }
-      user = await User.create(newUser)
+        email,
+        image
+      })
     }
     done(false, user)
   } catch (error) {
@@ -66,9 +67,11 @@ passport.use(new LocalStrategy({
 /** @type {import('passport-local').VerifyFunction} */
 async function(email, password, done) {
   try {
-    const model = await User.findOne({ email }, { password: 1 })
+    const model = await User.findOne({ email }, { hash: 1 })
     if (!model) {
-      const result = await User.create({ email, password })
+      const user = new User({ displayName: email, email })
+      user.setPassword(password)  // Saved as a hash.
+      const result = await user.save()
       return done(false, result)
     } else if (model.verifyPassword(password)) {
       return done(false, model)

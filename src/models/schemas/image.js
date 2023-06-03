@@ -24,13 +24,11 @@ const imageSchema = new Schema(
 		},
 		height: {
 			type: Number,
-			required: true,
 			example: 300,
 			description: 'The image height in pixels.',
 		},
 		width: {
 			type: Number,
-			required: true,
 			example: 400,
 			description: 'The image width in pixels.',
 		},

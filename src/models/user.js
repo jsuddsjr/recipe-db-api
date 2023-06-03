@@ -38,31 +38,27 @@ const userSchema = new Schema(
 		},
 		image: { type: imageSchema, description: 'An optional user image.' },
 		keywords: [{ ...TrimmedString, description: 'A collection of keywords.' }],
-		password: { ...TrimmedString, select: false, description: 'Local password (not visible to default view)' },
-		role: {...TrimmedString, description: 'The user role.', enum: ['user', 'admin'], default: 'user'}
+		hash: { ...TrimmedString, select: false, description: 'Password hash (not visible to default view)' },
+		role: { ...TrimmedString, description: 'The user role.', enum: ['user', 'admin'], default: 'user' },
+		__v: { type: Number, select: false },
 	},
 	{
 		timestamps: true,
 		methods: {
 			/**
-			 * Verify a plain text password. (Requires model to be selected with password field.)
+			 * Verify a plain text password. (Requires model to be selected with hash field.)
 			 * @param {string} password Password to verify.
-			 * @returns {Promise<boolean>}
+			 * @returns {Promise<boolean>} True if the password matches.
 			 */
 			verifyPassword: function (password) {
-				return bcrypt.compare(password, this.password)
+				return this.hash && bcrypt.compare(password, this.hash)
 			},
-		},
-		virtuals: {
-			password: {
-				/**
-				 * Stored the password as encrypted hash.
-				 * @param {string} password A plain text password.
-				 * @returns {Promise<void>}
-				 */
-				put: async function (password) {
-					this.password = await bcrypt.hash(password, 16)
-				}
+			/**
+			 * Set a plain text password.
+			 * @param {string} password The plain text password to hash.
+			 */
+			setPassword: function (password) {
+				this.hash = bcrypt.hashSync(password, 16)
 			}
 		}
 	},

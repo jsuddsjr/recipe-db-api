@@ -3,13 +3,9 @@
   "info": {
     "title": "Recipe DB API",
     "version": "0.0.1",
-    "description": "\nA simple recipe database built with MongoDb and Express.js.\n\n### 401 Unauthorized\nTo use routes that modify data, you need to be authenticated. [Click here to log in with your Google account](/auth/google).\n\n### Credits\nThis API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [Source code is available on GitHub](https://github.com/jsuddsjr/recipe-db-api).\n\n**This api not intended for regular use.**\n"
+    "description": "\nA simple recipe database built with MongoDb and Express.js.\n\n### 401 Unauthorized\nTo use routes that modify data, you need to be authenticated. To authenticate, you can use one of the following methods:\n\n- [Click here to log in with your Google account](/auth/google).\n- [Click here to log in with your GitHub account](/auth/github).\n- [Click here to verify your user account](/auth/me).\n- [Click here to log out](/auth/logout).\n\n### Credits\nThis API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [Source code is available on GitHub](https://github.com/jsuddsjr/recipe-db-api).\n\n**This api not intended for serious use.**\n"
   },
-  "host": "localhost:4567",
   "basePath": "/api",
-  "schemes": [
-    "https"
-  ],
   "paths": {
     "/ingredients/": {
       "get": {
@@ -703,9 +699,9 @@
       "required": [
         "@context",
         "@type",
-        "name",
         "servingSize",
-        "calories"
+        "calories",
+        "name"
       ],
       "properties": {
         "@context": {
@@ -715,11 +711,6 @@
         "@type": {
           "type": "string",
           "description": "The schema type."
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the food.",
-          "example": "Apple"
         },
         "servingSize": {
           "type": "string",
@@ -775,6 +766,11 @@
           "type": "string",
           "description": "The weight in grams or milligrams.",
           "example": "100 mg"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the food.",
+          "example": "Apple"
         }
       }
     },
@@ -854,9 +850,7 @@
               }
             },
             "required": [
-              "@type",
-              "height",
-              "width"
+              "@type"
             ]
           }
         },
@@ -876,11 +870,6 @@
             "@type": {
               "type": "string",
               "description": "The schema type."
-            },
-            "name": {
-              "type": "string",
-              "description": "The name of the food.",
-              "example": "Apple"
             },
             "servingSize": {
               "type": "string",
@@ -940,61 +929,8 @@
           }
         },
         "owner": {
-          "type": "object",
-          "description": "The owner of this recipe.",
-          "properties": {
-            "@type": {
-              "type": "string",
-              "description": "The schema type."
-            },
-            "name": {
-              "type": "string",
-              "description": "The person name."
-            },
-            "email": {
-              "type": "string",
-              "description": "An optional email.",
-              "example": "john.doe@example.com"
-            },
-            "url": {
-              "type": "string",
-              "description": "An optional URL.",
-              "example": "https://example.com"
-            },
-            "image": {
-              "type": "object",
-              "properties": {
-                "@type": {
-                  "type": "string",
-                  "description": "The schema type."
-                },
-                "url": {
-                  "type": "string",
-                  "description": "The image URL.",
-                  "example": "https://example.com/image.jpg"
-                },
-                "accessibilitySummary": {
-                  "type": "string",
-                  "description": "The image alt text"
-                },
-                "published": {
-                  "type": "string",
-                  "description": "The image publish date.",
-                  "example": "2020-01-01T00:00:00.000Z"
-                },
-                "height": {
-                  "type": "number",
-                  "description": "The image height in pixels.",
-                  "example": 300
-                },
-                "width": {
-                  "type": "number",
-                  "description": "The image width in pixels.",
-                  "example": 400
-                }
-              }
-            }
-          }
+          "type": "string",
+          "description": "Owner id."
         },
         "prepTime": {
           "type": "string",
@@ -1071,9 +1007,7 @@
                     }
                   },
                   "required": [
-                    "@type",
-                    "height",
-                    "width"
+                    "@type"
                   ]
                 }
               },
@@ -1112,6 +1046,11 @@
           "description": "The total time it takes to prepare and cook the recipe.",
           "example": "PT1H"
         },
+        "url": {
+          "type": "string",
+          "description": "The canonical URL of the recipe.",
+          "example": "https://example.com"
+        },
         "video": {
           "type": "object",
           "description": "An optional video.",
@@ -1125,11 +1064,6 @@
               "description": "The video name."
             },
             "url": {
-              "type": "string",
-              "description": "The video URL.",
-              "example": "https://example.com"
-            },
-            "contentUrl": {
               "type": "string",
               "description": "The video URL.",
               "example": "https://example.com"
@@ -1165,18 +1099,14 @@
             }
           }
         },
-        "authorIds": {
+        "authors": {
           "type": "array",
           "items": {
             "type": "string",
             "description": "Author ids."
           }
         },
-        "ownerId": {
-          "type": "string",
-          "description": "Owner id."
-        },
-        "nutritionIds": {
+        "ingredients": {
           "type": "array",
           "items": {
             "type": "string",
@@ -1268,9 +1198,9 @@
             "description": "A collection of keywords."
           }
         },
-        "password": {
+        "hash": {
           "type": "string",
-          "description": "Local password (not visible to default view)"
+          "description": "Password hash (not visible to default view)"
         },
         "role": {
           "type": "string",

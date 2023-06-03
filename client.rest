@@ -1,32 +1,56 @@
+#! NOTE: Please select your desired Rest Client environment before running the tests !#
+
 ### Home page
-GET http://{{host}}/
+GET {{host}}/
 
 ### Get recipes
-GET http://{{host}}/api/recipes
+# @name allRecipes
+GET {{host}}/api/recipes
+
+@firstId = {{allRecipes.response.body.$[0]._id}}
 
 ### Get one recipe
-GET http://{{host}}/api/recipes/6456b1e5920fb2341245ce53
+GET {{host}}/api/recipes/{{firstId}}
 
-### Add default recipe
-POST http://{{host}}/api/recipes
+### Log in
+#! Validation errors
+GET {{host}}/auth/login
 Content-Type: application/json
 
 {
-    "_id": "6456b1e5920fb2341245ce53",
+    "email": "bad@example",
+    "password": "123456"
+}
+
+### Log in
+#* Good credentials
+GET {{host}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "good@example.org",
+    "password": "awesomeSauce123!"
+}
+
+### Add default recipe
+#! 401 Unauthorized
+# @name recipe
+POST {{host}}/api/recipes
+Content-Type: application/json
+
+{
     "@type": "Recipe",
     "name": "Party Coffee Cake",
     "image": [
         {
             "@type": "ImageObject",
-            "contentUrl": "https://example.com/photos/1x1/photo.jpg",
+            "url": "https://example.com/photos/1x1/photo.jpg",
             "description": "Best thing since sliced bread.",
             "width": "400",
             "height": "300",
             "accessibilitySummary": "A slice of coffee cake with a steaming cup of tea."
         }
     ],
-    "authorIds": "645e638760c3b38ff277b420",
-    "ownerId": "6456be3627f2d14364cfc08a",
     "datePublished": "2018-03-10T00:00:00-05:00",
     "description": "This coffee cake is awesome and perfect for parties.",
     "prepTime": "PT20M",
@@ -38,14 +62,6 @@ Content-Type: application/json
     "recipeYield": "10",
     "recipeCategory": "Dessert",
     "recipeCuisine": "American",
-    "nutritionIds": [
-        "645da4656bca5d09293d5a93",
-        "645da4656bca5d09293d5a94",
-        "645da4656bca5d09293d5a95",
-        "645da4656bca5d09293d5a96",
-        "645da4656bca5d09293d5a97",
-        "645da4656bca5d09293d5a98"
-    ],
     "recipeIngredient": [
         "2 cups of flour",
         "3/4 cup white sugar",
@@ -121,7 +137,7 @@ Content-Type: application/json
         "@type": "VideoObject",
         "name": "How to make a Party Coffee Cake",
         "description": "This is how you make a Party Coffee Cake.",
-        "contentUrl": "https://www.example.com/video123.mp4",
+        "url": "https://www.example.com/video123.mp4",
         "embedUrl": "https://www.example.com/videoplayer?video=123",
         "uploadDate": "2018-02-05T08:00:00+08:00",
         "duration": "PT1M33S",
@@ -129,12 +145,18 @@ Content-Type: application/json
     }
 }
 
-### Delete default recipe
-DELETE http://{{host}}/api/recipes/6456b1e5920fb2341245ce53
+#### Variables
+@recipeId = {{recipe.response.body._id}}
+
+### Verify recipe was added
+GEt {{host}}/api/recipes/{{recipeId}}
+
+### Delete recipe
+DELETE {{host}}/api/recipes/{{recipeId}}
 
 ### Add a recipe
 # @name recipe
-POST http://{{host}}/api/recipes
+POST {{host}}/api/recipes
 Content-Type: application/json
 
 {
@@ -224,11 +246,11 @@ Content-Type: application/json
     "totalTime": "PT70M"
 }
 
-####  Variable response
+#### Variables
 @recipeId = {{recipe.response.body._id}}
 
 ### Update the record
-PUT http://{{host}}/api/recipes/{{recipeId}}
+PUT {{host}}/api/recipes/{{recipeId}}
 Content-Type: application/json
 
 {
@@ -239,7 +261,19 @@ Content-Type: application/json
 }
 
 ### Verify updated
-GET http://{{host}}/api/recipes/{{recipeId}}
+GET {{host}}/api/recipes/{{recipeId}}
 
 ### Delete this record
-DELETE http://{{host}}/api/recipes/{{recipeId}}
+DELETE {{host}}/api/recipes/{{recipeId}}
+
+### Add a recipe
+#! Validation errors
+POST {{host}}/api/recipes
+Content-Type: application/json
+
+{
+    "name": "",
+    "image": "should be an object",
+    "cookTime": "15 minutes",
+    "url": "not a valid url"
+}

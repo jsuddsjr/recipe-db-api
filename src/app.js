@@ -34,11 +34,8 @@ app.use(express.urlencoded({extended: false}))
 
 app.use(
 	'/api-docs',
-	swaggerUi.serve,
-	swaggerUi.setup(swaggerSchema, {
-		customSiteTitle: 'Recipe DB API',
-		explorer: true,
-	}),
+	swaggerUi.serveWithOptions({redirect: false}),
+	swaggerUi.setup(swaggerSchema, {explorer: true}),
 )
 
 if (app.get('env') === 'development') {

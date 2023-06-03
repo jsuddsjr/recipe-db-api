@@ -17,11 +17,6 @@ const nutritionSchema = new Schema(
 			...defaultString('NutritionInformation'),
 			description: 'The schema type.',
 		},
-		name: {
-			...RequiredString,
-			example: 'Apple',
-			description: 'The name of the food.',
-		},
 		servingSize: {
 			required: true,
 			...ValidServingSizeString,

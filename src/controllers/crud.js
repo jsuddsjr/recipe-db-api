@@ -14,11 +14,12 @@ const checkObjectId =
 /**
  * GET route for getting all records that returns a 200 status
  * @param {import('mongoose').Model} model A Mongoose model
+ * @param {object[]} populate An array of fields to populate
  * @returns {Promise<import('express').RequestHandler>} Express middleware
  */
-const getAll = (model) => async (request, response) => {
+const getAll = (model, populate=[]) => async (request, response) => {
 	try {
-		const results = await model.find()
+		const results = await model.find().populate(...populate)
 		response.status(200).json(results)
 	} catch (error) {
 		response.status(500).json({message: error.message})
