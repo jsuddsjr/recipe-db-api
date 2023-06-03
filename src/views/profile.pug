@@ -10,9 +10,9 @@ block content
         = message.message || message.msg || message
 
   if user
-    h2= 'Welcome, #{user.displayName}!'
+    h2 Welcome #{user.displayName}!
   else
-    h2= 'Login'
+    h2 Login
     form.row.center.my-4.needs-validation(action='/auth/login' method='POST' novalidate)
       +input_block('text', 'email', 'Email')(required, placeholder='email@example.com', autocomplete='email')
         .invalid-feedback

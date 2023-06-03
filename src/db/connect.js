@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const config = require('../config/config')
+const mongoose = require("mongoose")
+const config = require("../config/config")
 
 /** @type {mongoose.Mongoose} */
 let _database
@@ -18,12 +18,12 @@ let _database
  */
 const initDatabase = callback => {
 	if (_database) {
-		console.log('Db is already initialized!')
+		console.log("Db is already initialized!")
 		return callback(false, _database)
 	}
 
 	mongoose.connect(config.MONGO_DB_URL, {
-		dbName: 'recipes'
+		dbName: "recipes"
 	}).then(
 		value => {
 			_database = value

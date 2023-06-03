@@ -1,8 +1,8 @@
-const router = require('express').Router()
+const router = require("express").Router()
 
-router.use('/api', require('./api'))
+router.use("/api", require("./api"))
 
-router.use('/', /* #swagger.ignore = true */ require('./web'))
-router.use('/auth', /* #swagger.ignore = true */ require('./auth'))
+router.use("/", /* #swagger.ignore = true */ require("./web"))
+router.use("/auth", /* #swagger.ignore = true */ require("./auth"))
 
 module.exports = router

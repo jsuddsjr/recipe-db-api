@@ -86,14 +86,45 @@
       "plugin:unicorn/recommended"
     ],
     "rules": {
+      "brace-style": [
+        "error",
+        "1tbs",
+        {
+          "allowSingleLine": true
+        }
+      ],
+      "max-len": [
+        "warn",
+        {
+          "code": 120,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": false,
+          "ignoreTemplateLiterals": true,
+          "ignoreTrailingComments": true,
+          "ignoreUrls": true
+        }
+      ],
+      "new-cap": "off",
+      "no-trailing-spaces": "error",
+      "no-unused-vars": [
+        "error",
+        {
+          "args": "all",
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "quotes": [
+        "warn",
+        "double"
+      ],
       "semi": [
         "error",
         "never"
       ],
       "strict": "error",
       "unicorn/prefer-module": "off",
-      "unicorn/prefer-top-level-await": "off",
-      "new-cap": "off"
+      "unicorn/prefer-top-level-await": "off"
     }
   }
 }

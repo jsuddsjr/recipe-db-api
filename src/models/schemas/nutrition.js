@@ -1,25 +1,25 @@
-const {Schema} = require('mongoose')
+const {Schema} = require("mongoose")
 const {
 	defaultString,
 	ValidCalorieString,
 	ValidMetricWeightString,
 	ValidServingSizeString,
-} = require('../validators')
+} = require("../validators")
 
 const nutritionSchema = new Schema(
 	{
-		'@context': {
-			...defaultString('http://schema.org'),
-			description: 'The schema context.',
+		"@context": {
+			...defaultString("http://schema.org"),
+			description: "The schema context.",
 		},
-		'@type': {
-			...defaultString('NutritionInformation'),
-			description: 'The schema type.',
+		"@type": {
+			...defaultString("NutritionInformation"),
+			description: "The schema type.",
 		},
 		servingSize: {
 			required: true,
 			...ValidServingSizeString,
-			description: 'The serving size of the food.',
+			description: "The serving size of the food.",
 		},
 		calories: {
 			required: true,

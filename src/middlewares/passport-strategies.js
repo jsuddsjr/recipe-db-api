@@ -1,11 +1,11 @@
-const GoogleStrategy = require('passport-google-oauth20').Strategy
-const LocalStrategy = require('passport-local').Strategy
-const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy
-const GitHubStrategy = require('passport-github2').Strategy
-const config = require('../config/config')
+const GoogleStrategy = require("passport-google-oauth20").Strategy
+const LocalStrategy = require("passport-local").Strategy
+const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy
+const GitHubStrategy = require("passport-github2").Strategy
+const config = require("../config/config")
 
-const passport = require('passport')
-const { User } = require('../models')
+const passport = require("passport")
+const { User } = require("../models")
 
 /**
  * A general verify function for passport strategies.
@@ -42,27 +42,27 @@ const standardVerify = async (accessToken, refreshToken, profile, done) => {
 passport.use(new GoogleStrategy({
   clientID: config.GOOGLE_CLIENT_ID,
   clientSecret: config.GOOGLE_CLIENT_SECRET,
-  callbackURL: config.HOST_URL + '/auth/google/callback',
-  scope: ['profile', 'email']
+  callbackURL: config.HOST_URL + "/auth/google/callback",
+  scope: ["profile", "email"]
 }, standardVerify))
 
 passport.use(new GitHubStrategy({
   clientID: config.GITHUB_CLIENT_ID,
   clientSecret: config.GITHUB_CLIENT_SECRET,
-  callbackURL: config.HOST_URL + '/auth/github/callback',
-  scope: ['profile', 'email']
+  callbackURL: config.HOST_URL + "/auth/github/callback",
+  scope: ["profile", "email"]
 }, standardVerify))
 
 passport.use(new LinkedInStrategy({
   clientID: config.LINKEDIN_CLIENT_ID,
   clientSecret: config.LINKEDIN_CLIENT_SECRET,
-  callbackURL: config.HOST_URL + '/auth/linkedin/callback',
-  scope: ['r_liteprofile', 'r_emailaddress']
+  callbackURL: config.HOST_URL + "/auth/linkedin/callback",
+  scope: ["r_liteprofile", "r_emailaddress"]
 }, standardVerify))
 
 passport.use(new LocalStrategy({
-  usernameField: 'email',
-  passwordField: 'password',
+  usernameField: "email",
+  passwordField: "password",
 },
 /** @type {import('passport-local').VerifyFunction} */
 async function(email, password, done) {
@@ -75,9 +75,8 @@ async function(email, password, done) {
       return done(false, result)
     } else if (model.verifyPassword(password)) {
       return done(false, model)
-    }
-    else {
-      return done('Wrong password.')
+    } else {
+      return done("Wrong password.")
     }
   } catch(error) {
     done(error)

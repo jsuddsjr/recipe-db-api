@@ -29,5 +29,6 @@
     "Production": {
       "host": "https://recipe-db-api.onrender.com"
     }
-  }
+  },
+  "debug.javascript.autoAttachFilter": "onlyWithFlag"
 }

@@ -1,9 +1,9 @@
-const router = require('express').Router()
-const crud = require('../../controllers/crud')
-const Recipe = require('../../models/recipe')
-const {isAuthenticated} = require('../../middlewares/is-authenticated')
+const router = require("express").Router()
+const crud = require("../../controllers/crud")
+const Recipe = require("../../models/recipe")
+const {isAuthenticated} = require("../../middlewares/is-authenticated")
 
-router.get('/',
+router.get("/",
 /*
     #swagger.description = 'Get all recipes.'
     #swagger.responses[200] = {
@@ -11,10 +11,10 @@ router.get('/',
         schema: { $ref: "#/definitions/RecipeArray" }
     }
 */
-    crud.getAll(Recipe, ['owner']),
+    crud.getAll(Recipe, ["owner"]),
 )
 
-router.get('/:id', /*
+router.get("/:id", /*
     #swagger.description = 'Get specified recipe.'
     #swagger.parameters['id'] = { description: 'Record id' }
     #swagger.responses[200] = {
@@ -26,7 +26,7 @@ router.get('/:id', /*
 	crud.getSingle(Recipe),
 )
 
-router.post('/',
+router.post("/",
 /*
     #swagger.description = 'Create a new recipe.'
     #swagger.parameters['body'] = {
@@ -49,7 +49,7 @@ router.post('/',
 	crud.postSingle(Recipe),
 )
 
-router.put('/:id',
+router.put("/:id",
 /*
     #swagger.description =  'Update specified recipe.'
     #swagger.parameters['id'] = { description: 'Record id' }
@@ -69,7 +69,7 @@ router.put('/:id',
 	crud.putSingle(Recipe),
 )
 
-router.delete('/:id',
+router.delete("/:id",
 /*
     #swagger.description = 'Delete specified recipe.'
     #swagger.parameters['id'] = { description: 'Record id' }

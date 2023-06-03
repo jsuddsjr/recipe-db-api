@@ -1,9 +1,9 @@
-const router = require('express').Router()
-const crud = require('../../controllers/crud')
-const User = require('../../models/user')
-const {isAuthorized} = require('../../middlewares/is-authenticated')
+const router = require("express").Router()
+const crud = require("../../controllers/crud")
+const User = require("../../models/user")
+const {isAuthorized} = require("../../middlewares/is-authenticated")
 
-router.get('/',
+router.get("/",
 /*
     #swagger.description = 'Get all users.'
     #swagger.responses[200] = {
@@ -11,11 +11,11 @@ router.get('/',
         schema: { $ref: "#/definitions/UserArray" }
     }
 */
-    isAuthorized('admin'),
+    isAuthorized("admin"),
     crud.getAll(User),
 )
 
-router.get('/:id', /*
+router.get("/:id", /*
     #swagger.description = 'Get specified user.'
     #swagger.parameters['id'] = { description: 'Record id' }
     #swagger.responses[200] = {
@@ -23,12 +23,12 @@ router.get('/:id', /*
         schema: { $ref: "#/definitions/User" }
     }
 */
-    isAuthorized('admin'),
+    isAuthorized("admin"),
 	crud.checkObjectId(),
 	crud.getSingle(User),
 )
 
-router.post('/',
+router.post("/",
 /*
     #swagger.description = 'Create a new user.'
     #swagger.parameters['body'] = {
@@ -42,11 +42,11 @@ router.post('/',
         schema: { $ref: "#/definitions/InsertedDocument" }
     }
 */
-    isAuthorized('admin'),
+    isAuthorized("admin"),
 	crud.postSingle(User),
 )
 
-router.put('/:id',
+router.put("/:id",
 /*
     #swagger.description =  'Update specified user.'
     #swagger.parameters['id'] = { description: 'Record id' }
@@ -61,17 +61,17 @@ router.put('/:id',
         schema: { $ref: "#/definitions/InsertedDocument" }
     }
 */
-    isAuthorized('admin'),
+    isAuthorized("admin"),
 	crud.checkObjectId(),
 	crud.putSingle(User),
 )
 
-router.delete('/:id',
+router.delete("/:id",
 /*
     #swagger.description = 'Delete specified user.'
     #swagger.parameters['id'] = { description: 'Record id' }
 */
-    isAuthorized('admin'),
+    isAuthorized("admin"),
 	crud.checkObjectId(),
 	crud.deleteSingle(User),
 )

@@ -1,39 +1,39 @@
 /* eslint-disable unicorn/no-null */
-const path = require('node:path')
-const swaggerAutogen = require('swagger-autogen')
-const m2s = require('mongoose-to-swagger')
-const models = require('./models')
-const hostUrl = new URL(require('./config/config').HOST_URL)
+const path = require("node:path")
+const swaggerAutogen = require("swagger-autogen")
+const m2s = require("mongoose-to-swagger")
+const models = require("./models")
+const hostUrl = new URL(require("./config/config").HOST_URL)
 
-const arguments_ = new Set(require('node:process').argv.slice(2))
+const arguments_ = new Set(require("node:process").argv.slice(2))
 
 const InsertedDocument = {
 	properties: {
 		_id: {
-			type: 'string',
+			type: "string",
 			length: 24,
-			example: '5e4a1d5b5e5e5e5e5e5e5e5e',
-			description: 'A unique identifier.',
+			example: "5e4a1d5b5e5e5e5e5e5e5e5e",
+			description: "A unique identifier.",
 		},
 	},
 }
 
 const ErrorMessage = {
-	description: 'Error object.',
+	description: "Error object.",
 	properties: {
 		message: {
-			type: 'string',
-			example: 'The error message.',
-			description: 'The error message.',
+			type: "string",
+			example: "The error message.",
+			description: "The error message.",
 		},
 	},
 }
 
 const swaggerDefinition = {
-	swagger: '2.0',
+	swagger: "2.0",
 	info: {
-		title: 'Recipe DB API',
-		version: '0.0.1',
+		title: "Recipe DB API",
+		version: "0.0.1",
 		description: `
 A simple recipe database built with MongoDb and Express.js.
 
@@ -52,27 +52,27 @@ This API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [S
 `,
 	},
 	contact: {
-		name: 'John Sudds',
-		url: 'https://github.com/jsuddsjr',
-		email: 'jsuddsjr@noreply.github.com'
+		name: "John Sudds",
+		url: "https://github.com/jsuddsjr",
+		email: "jsuddsjr@noreply.github.com"
 	},
 	schemes: [hostUrl.protocol.slice(0, -1)],
 	host: hostUrl.host,
-	basePath: '/api',
+	basePath: "/api",
 
 	//! The @definitions property is copied as-is to the output.
 	// eslint-disable-next-line unicorn/no-array-reduce
-	'@definitions': Object.keys(models).reduce(
+	"@definitions": Object.keys(models).reduce(
 		(accumulator, key) => {
 			accumulator[key] = m2s(models[key], {
-				props: ['example', 'description'],
-				omitFields: ['_id', 'createdAt', 'updatedAt'],
+				props: ["example", "description"],
+				omitFields: ["_id", "createdAt", "updatedAt"],
 			})
 			accumulator[`${key}Array`] = {
-				type: 'array',
+				type: "array",
 				items: {
 					$ref: `#/definitions/${key}`,
-					description: 'An array of ' + key + ' objects.',
+					description: "An array of " + key + " objects.",
 				},
 			}
 			return accumulator
@@ -85,15 +85,15 @@ This API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [S
 }
 
 const buildSwagger = async () => {
-	const outputFile = path.join(__dirname, './swagger.json')
-	const endpointsFiles = [path.join(__dirname, './routes/api/*.js')]
+	const outputFile = path.join(__dirname, "./swagger.json")
+	const endpointsFiles = [path.join(__dirname, "./routes/api/*.js")]
 
 	const result = await swaggerAutogen(outputFile, endpointsFiles, swaggerDefinition)
 	if (result.success && result.data) {
-		console.log(`Swagger JSON file was created on ${result.data.host || '(missing HOST_URL)'}.`)
-		if (arguments_.has('--serve')) {
-			console.log('Starting server...')
-			require('./bin/www')	// Start the server.
+		console.log(`Swagger JSON file was created on ${result.data.host || "(missing HOST_URL)"}.`)
+		if (arguments_.has("--serve")) {
+			console.log("Starting server...")
+			require("./bin/www")	// Start the server.
 		}
 	} else {
 		throw new Error("Unable to create Swagger JSON file")

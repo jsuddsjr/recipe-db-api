@@ -1,6 +1,6 @@
-const {pattern} = require('iso8601-duration')
-const { isValidISODateString } = require('iso-datestring-validator')
-const {isEmail, isURL} = require('validator')
+const {pattern} = require("iso8601-duration")
+const { isValidISODateString } = require("iso-datestring-validator")
+const {isEmail, isURL} = require("validator")
 
 const ValidDuration = {
 	type: String,
@@ -11,8 +11,8 @@ const ValidDuration = {
 		},
 		message: properties => `${properties.value} not a valid ISO8601 duration`,
 	},
-	example: 'PT1H',
-	description: 'The duration in ISO8601 format.',
+	example: "PT1H",
+	description: "The duration in ISO8601 format.",
 }
 
 const RequiredDuration = {required: true, ...ValidDuration}
@@ -26,8 +26,8 @@ const ValidDate = {
 		},
 		message: properties => `${properties.value} is not a valid ISO8601 date`,
 	},
-	example: '2020-01-01T00:00:00.000Z',
-	description: 'The date in ISO8601 format.',
+	example: "2020-01-01T00:00:00.000Z",
+	description: "The date in ISO8601 format.",
 }
 
 const RequiredDate = {required: true, ...ValidDate}
@@ -39,8 +39,8 @@ const ValidUrl = {
 		validator: isURL,
 		message: properties => `${properties.value} not a valid URL format`,
 	},
-	example: 'https://example.com',
-	description: 'The URL.',
+	example: "https://example.com",
+	description: "The URL.",
 }
 
 const RequiredUrl = {required: true, ...ValidUrl}
@@ -53,8 +53,8 @@ const ValidEmail = {
 		validator: isEmail,
 		message: properties => `${properties.value} not a valid email format`,
 	},
-	example: 'john.doe@example.com',
-	description: 'The email.',
+	example: "john.doe@example.com",
+	description: "The email.",
 }
 
 const RequiredEmail = {required: true, ...ValidEmail}
@@ -76,8 +76,8 @@ const ValidMetricWeightString = {
 		},
 		message: properties => `${properties.value} should match "[0-9]+ m?g" pattern`,
 	},
-	example: '100 mg',
-	description: 'The weight in grams or milligrams.',
+	example: "100 mg",
+	description: "The weight in grams or milligrams.",
 }
 
 const ValidCalorieString = {
@@ -91,8 +91,8 @@ const ValidCalorieString = {
 		message: properties =>
 			`${properties.value} should match "[0-9]+ (kcal|calories)" pattern`,
 	},
-	example: '100 kcal',
-	description: 'The number of calories.',
+	example: "100 kcal",
+	description: "The number of calories.",
 }
 
 const ValidServingSizeString = {
@@ -105,8 +105,8 @@ const ValidServingSizeString = {
 		message: properties =>
 			`${properties.value} should match "[0-9]+ (tbsp|tsp|cup|oz|g|mg)" pattern`,
 	},
-	example: '1 cup',
-	description: 'The serving size (tsp, tbsp, cup, oz, g, or mg).',
+	example: "1 cup",
+	description: "The serving size (tsp, tbsp, cup, oz, g, or mg).",
 }
 
 /**
@@ -128,7 +128,7 @@ const defaultString = defaultValue => ({
 const foreignKey = (
 	model,
 	description = `References to ${model.modelName}`,
-) => ({type: 'ObjectId', description, ref: model.modelName})
+) => ({type: "ObjectId", description, ref: model.modelName})
 
 module.exports = {
 	defaultString,

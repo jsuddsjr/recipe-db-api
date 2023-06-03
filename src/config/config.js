@@ -1,6 +1,6 @@
-const process = require('node:process')
+const process = require("node:process")
 
-require('dotenv').config({debug: true})
+require("dotenv").config({debug: true})
 
 module.exports = {
 	MONGO_DB_URL: process.env.MONGO_DB_URL,

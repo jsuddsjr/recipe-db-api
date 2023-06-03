@@ -13,7 +13,7 @@ module.exports = {
 
 		response
 			.status(401)
-			.send('You cannot access this resource without being logged in.')
+			.send("You cannot access this resource without being logged in.")
 	},
 	/**
 	 * The role to check.
@@ -27,6 +27,6 @@ module.exports = {
 
 		response
 			.status(401)
-			.send('You cannot access this resource without being logged in as an admin.')
+			.send("You cannot access this resource without being logged in as an admin.")
 	}
 }
