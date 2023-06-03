@@ -55,8 +55,8 @@ This API was written by [John Sudds](mailto:jsuddsjr@github.com) for CSE 341. [S
 		url: 'https://github.com/jsuddsjr',
 		email: 'jsuddsjr@noreply.github.com'
 	},
-	schemes: null,
-	host: null, // Swagger-UI to select the current host.
+	schemes: ["https"],
+	host: 'recipe-db-api.onrender.com',
 	basePath: '/api',
 
 	//! The @definitions property is copied as-is to the output.
